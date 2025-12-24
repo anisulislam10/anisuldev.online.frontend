@@ -39,15 +39,15 @@ const Hero = () => {
         itemScope
         itemType="https://schema.org/Person"
       >
-        {/* Your existing Hero content remains exactly the same */}
         <meta itemProp="name" content="Anisul Islam" />
         <meta itemProp="jobTitle" content="Full Stack Software Engineer" />
         <meta itemProp="knowsAbout" content="React.js, Node.js, Next.js, Express.js, MongoDB, JavaScript" />
         
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
+          {/* Changed grid order - left content first on mobile, then on lg screens it's side by side */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content - Comes first on mobile */}
+            <div className="order-2 lg:order-1 space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold">
                 <span className="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span>
@@ -75,31 +75,31 @@ const Hero = () => {
               </p>
 
               {/* Tech Stack with schema */}
-<div className="space-y-3" itemScope itemType="https://schema.org/ItemList">
-  <h3 className="text-base font-semibold text-gray-800">Tech Stack:</h3>
-  <meta itemProp="name" content="Technology Stack" />
-  <div className="flex flex-wrap gap-2">
-    {techStack.map((tech, index) => (
-      <div
-        key={index}
-        className="flex items-center space-x-1.5 px-3 py-1.5 bg-white rounded-full shadow-sm border hover:shadow-md transition-shadow duration-300 text-sm"
-        itemProp="itemListElement"
-        itemScope
-        itemType="https://schema.org/ListItem"
-      >
-        <meta itemProp="position" content={String(index + 1)} />
-        <div itemProp="item" itemScope itemType="https://schema.org/Thing">
-          <meta itemProp="name" content={tech.name} />
-          <div className="flex items-center space-x-1.5">
-            {React.cloneElement(tech.icon, { size: 16 })}
-            <span className="font-medium text-gray-700">{tech.name}</span>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-  <meta itemProp="numberOfItems" content={String(techStack.length)} />
-</div>
+              <div className="space-y-3" itemScope itemType="https://schema.org/ItemList">
+                <h3 className="text-base font-semibold text-gray-800">Tech Stack:</h3>
+                <meta itemProp="name" content="Technology Stack" />
+                <div className="flex flex-wrap gap-2">
+                  {techStack.map((tech, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center space-x-1.5 px-3 py-1.5 bg-white rounded-full shadow-sm border hover:shadow-md transition-shadow duration-300 text-sm"
+                      itemProp="itemListElement"
+                      itemScope
+                      itemType="https://schema.org/ListItem"
+                    >
+                      <meta itemProp="position" content={String(index + 1)} />
+                      <div itemProp="item" itemScope itemType="https://schema.org/Thing">
+                        <meta itemProp="name" content={tech.name} />
+                        <div className="flex items-center space-x-1.5">
+                          {React.cloneElement(tech.icon, { size: 16 })}
+                          <span className="font-medium text-gray-700">{tech.name}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <meta itemProp="numberOfItems" content={String(techStack.length)} />
+              </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
@@ -154,19 +154,19 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right Content - Profile Card with Schema */}
-            <div className="relative">
-              <div className="relative h-[500px] w-full">
+            {/* Right Content - Profile Card - Comes second on mobile */}
+            <div className="order-1 lg:order-2 relative w-full max-w-md mx-auto lg:max-w-none">
+              <div className="relative h-[400px] sm:h-[450px] lg:h-[500px] w-full">
                 {/* Main Card */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl shadow-2xl transform rotate-3"></div>
                 
                 {/* Content Card */}
                 <div 
-                  className="absolute inset-0 bg-white rounded-3xl shadow-2xl transform -rotate-3 flex flex-col items-center justify-center p-8"
+                  className="absolute inset-0 bg-white rounded-3xl shadow-2xl transform -rotate-3 flex flex-col items-center justify-center p-6 sm:p-8"
                   itemScope
                   itemType="https://schema.org/ProfilePage"
                 >
-                  <div className="w-48 h-48 mb-6 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                  <div className="w-40 h-40 sm:w-48 sm:h-48 mb-4 sm:mb-6 rounded-full overflow-hidden border-4 border-white shadow-xl">
                     <img 
                       src="/Anisul_Islam_Software_Developer_Chitral.png" 
                       alt="Anisul Islam - Full Stack Software Engineer"
@@ -175,34 +175,34 @@ const Hero = () => {
                       loading="lazy"
                     />
                   </div>
-                  <div className="text-center space-y-6">
+                  <div className="text-center space-y-4 sm:space-y-6">
                     <div>
-                      <h3 className="text-3xl font-bold text-gray-800" itemProp="name">Anisul Islam</h3>
-                      <p className="text-gray-600 mt-2 text-lg" itemProp="jobTitle">Full Stack Software Engineer</p>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-gray-800" itemProp="name">Anisul Islam</h3>
+                      <p className="text-gray-600 mt-1 sm:mt-2 text-base sm:text-lg" itemProp="jobTitle">Full Stack Software Engineer</p>
                     </div>
                     
                     {/* Stats with schema */}
-                    <div className="grid grid-cols-3 gap-6">
+                    <div className="grid grid-cols-3 gap-3 sm:gap-6">
                       <div className="text-center" itemProp="numberOfProjects">
-                        <div className="text-3xl font-bold text-blue-600">50+</div>
-                        <div className="text-sm text-gray-600">Projects</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-blue-600">50+</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Projects</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-purple-600">100%</div>
-                        <div className="text-sm text-gray-600">Client Satisfaction</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-purple-600">100%</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Satisfaction</div>
                       </div>
                       <div 
                         className="text-center"
                         itemProp="yearsOfExperience"
                         content="3"
                       >
-                        <div className="text-3xl font-bold text-blue-600">3+</div>
-                        <div className="text-sm text-gray-600">Years Experience</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-blue-600">3+</div>
+                        <div className="text-xs sm:text-sm text-gray-600">Years Exp</div>
                       </div>
                     </div>
                     
                     <button 
-                      className="w-full max-w-xs mx-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                      className="w-full max-w-xs mx-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 sm:py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-sm sm:text-base"
                       aria-label="Hire me - Available for work"
                     >
                       Available for Work
@@ -210,12 +210,12 @@ const Hero = () => {
                   </div>
                 </div>
                 
-                {/* Floating Elements */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
-                  <Rocket className="text-white" size={24} />
+                {/* Floating Elements - Hidden on small screens, shown on medium and up */}
+                <div className="hidden sm:block absolute -top-4 -right-4 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 rounded-full flex items-center justify-center animate-bounce">
+                  <Rocket className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-green-400 rounded-full flex items-center justify-center animate-pulse">
-                  <Code className="text-white" size={20} />
+                <div className="hidden sm:block absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 bg-green-400 rounded-full flex items-center justify-center animate-pulse">
+                  <Code className="text-white w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </div>
             </div>
