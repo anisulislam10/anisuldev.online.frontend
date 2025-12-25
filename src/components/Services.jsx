@@ -220,10 +220,10 @@ const Services = () => {
                   <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 p-5 h-full">
                     <div className="flex flex-col items-center text-center">
                       {/* Icon with Gradient Background */}
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${tech.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`w-5 h-5  bg-gradient-to-br ${tech.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                         <div className="text-white">
                           {typeof tech.icon === 'string' ? (
-                            <span className="text-2xl">{tech.icon}</span>
+                            <span className="text-sm">{tech.icon}</span>
                           ) : (
                             React.cloneElement(tech.icon, { className: "w-7 h-7" })
                           )}

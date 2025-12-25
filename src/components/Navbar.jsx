@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import logo from './../../public/logo_anisuldev.online.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,10 +19,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-gray-800">
-              Anisul<span className="text-blue-600">.</span>
-            </span>
+          <div className="flex-shrink-0 w-27 h-27 flex items-center">
+            <img src={logo} alt="AnisulDev Logo" />
           </div>
 
           {/* Desktop Navigation */}

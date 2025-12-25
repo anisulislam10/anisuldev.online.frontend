@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from './../../public/anisuldev.online_logo_light.png';
+
 import { 
   Heart, 
   Github, 
@@ -85,9 +87,10 @@ const Footer = () => {
                 <span className="text-2xl font-bold text-white">AI</span>
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-white">
-                  Anisul <span className="text-blue-400">.</span>
-                </h2>
+                {/* Logo */}
+                         <div className="flex-shrink-0 w-27 h-27 flex items-center">
+                           <img src={logo} alt="AnisulDev Logo" />
+                         </div>
                 <p className="text-gray-400 text-sm">Full Stack Developer</p>
               </div>
             </div>
