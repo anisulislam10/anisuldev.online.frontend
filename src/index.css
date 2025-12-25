@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+
+/* Infinite Scroll Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 40s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animation-paused {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .animate-scroll-right {
+    animation: scroll-right 25s linear infinite;
+  }
+  
+  .animate-scroll-left {
+    animation: scroll-left 25s linear infinite;
+  }
+}
+
+/* Hover effects for tech cards */
+.group:hover .tech-icon {
+  transform: rotateY(180deg);
+}
+
+.group:hover .tech-name {
+  color: #3b82f6;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Scrollbar styling for the tech stack container */
+.overflow-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Twitter, ArrowRight, Code, Server, Database, Rocket } from 'lucide-react';
-import UnderConstructionModal from './nderConstructionModal'; // Adjust path as needed
+// import UnderConstructionModal from './nderConstructionModal'; // Adjust path as needed
 
 const Hero = () => {
   const [showModal, setShowModal] = useState(false);
@@ -256,10 +256,10 @@ const Hero = () => {
       </section>
 
       {/* Under Construction Modal */}
-      <UnderConstructionModal 
+      {/* <UnderConstructionModal 
         isOpen={showModal} 
         onClose={() => setShowModal(false)} 
-      />
+      /> */}
     </>
   );
 };
