@@ -22,6 +22,8 @@
     Brain
     } from 'lucide-react';
     import Deployment from '../components/Deployment';
+    import MetaTags from '../components/MetaTags'; // Add this import
+
 
     const About = () => {
     const skills = [
@@ -108,13 +110,15 @@
 
     return (
         <>
-        <MetaTags 
-        title="About Anisul Islam | Full Stack Developer from Pakistan"
-        description="Anisul Islam is a Full Stack Developer from Chitral, Pakistan specializing in MERN Stack, React Native, API Development. BS Software Engineering graduate with certifications from Coursera and Cisco."
-        keywords="Full Stack Developer Pakistan, MERN Stack Developer, React Native Developer, Software Engineer Pakistan, Web Developer Islamabad, API Developer, Mobile App Developer"
-        canonical="https://www.anisuldev.online/about"
-        image="https://www.anisuldev.online/Anisul_Islam_Software_Developer_Chitral.png"
-      />        <section id="about" className="py-20 bg-gradient-to-b from-white to-gray-50">
+       
+    <MetaTags 
+      title="About Anisul Islam | Full Stack Software Engineer "
+      description="Anisul Islam is a Full Stack Developer from Chitral, Pakistan specializing in MERN Stack, React Native, API Development. BS Software Engineering graduate with certifications from Coursera and Cisco."
+      keywords="Full Stack Developer Pakistan, MERN Stack Developer, React Native Developer, Software Engineer Pakistan, Web Developer Islamabad, API Developer, Mobile App Developer"
+      canonical="https://www.anisuldev.online/about"
+      image="https://www.anisuldev.online/Anisul_Islam_Software_Developer_Chitral.png"
+    />
+              <section id="about" className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="text-center mb-16">
