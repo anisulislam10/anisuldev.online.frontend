@@ -6,7 +6,7 @@ import BlogDetailsPage from './Pages/BlogsDetails'; // Make sure this import is 
 import Navbar from './components/Navbar';
 import UnderConstructionModal from './components/nderConstructionModal';
 import NotFound from './components/NotFound';
-import { About } from './Pages/About';
+import About  from './Pages/About';
 function App() {
   return (
     <><BrowserRouter>
