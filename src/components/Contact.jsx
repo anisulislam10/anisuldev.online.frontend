@@ -230,7 +230,7 @@ const Contact = () => {
                 </span>
               </div>
               <p className="text-gray-600 text-sm">
-                Currently accepting 2-3 new projects for Q1 2024. Let's discuss your requirements!
+                Currently accepting 2-3 new projects for Q1 2025. Let's discuss your requirements!
               </p>
             </div>
           </div>

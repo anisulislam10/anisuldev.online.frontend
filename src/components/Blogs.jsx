@@ -183,13 +183,13 @@ const formatArticles = (articles) => {
   const getFallbackPosts = () => [
     {
       id: 1,
-      title: "Latest Technology Trends 2024",
-      excerpt: "Explore the latest trends and technologies shaping the tech industry in 2024.",
+      title: "Latest Technology Trends 2025",
+      excerpt: "Explore the latest trends and technologies shaping the tech industry in 2025.",
       author: "Tech Insights",
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       readTime: "8 min read",
       category: "Technology",
-      tags: ["Tech", "Trends", "2024", "Innovation"],
+      tags: ["Tech", "Trends", "2025", "Innovation"],
       image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
       views: "1.2K",
       comments: 42,

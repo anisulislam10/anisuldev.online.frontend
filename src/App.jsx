@@ -9,6 +9,7 @@ import NotFound from './components/NotFound';
 import About  from './Pages/About';
 import ContactPage from './Pages/Contact';
 import Footer from './components/Footer';
+import AllProjects from './Pages/AllProjects';
 function App() {
   return (
     <><BrowserRouter>
@@ -17,14 +18,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blogsDetails" element={<BlogDetailsPage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<UnderConstructionModal />} />
+        <Route path="/projects" element={<AllProjects />} />
         <Route path="/docs" element={<UnderConstructionModal />} />
          <Route path="/contact" element={<ContactPage/>} />
         <Route path="*" element={<NotFound/>} /> 
         <Route path="/blogs" element={<BlogPage />} />
         {/* Add this route for individual blog posts */}
-        <Route path="/blog/:title" element={<BlogDetailsPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailsPage />} />
         {/* Keep this if you still need it */}
+        
         
       </Routes>
               <Footer />
