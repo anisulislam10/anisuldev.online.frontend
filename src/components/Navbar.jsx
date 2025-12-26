@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: 'About', to: '/about' },
     { name: 'Projects', to: '/projects' },
     { name: 'Blogs', to: '/blogs' },
-    { name: 'Docs', to: '/docs' },
+    { name: 'Tools', to: '/tools' },
     { name: 'Contact', to: '/contact' },
   ];
 
@@ -36,9 +36,9 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+            <Link to="/contact" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               Get a Quote
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}

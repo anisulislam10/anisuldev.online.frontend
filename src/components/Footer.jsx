@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from './../../public/anisuldev.online_logo_light.png';
-
 import { 
   Heart, 
   Github, 
@@ -24,14 +23,21 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id.replace('#', ''));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blogs', href: '#blogs' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', id: 'home' },
+    { name: 'Services', id: 'services' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Blogs', id: 'blogs' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   const services = [
@@ -44,17 +50,17 @@ const Footer = () => {
   ];
 
   const resources = [
-    { name: 'Documentation', icon: <BookOpen className="w-4 h-4" />, href: '#docs' },
-    { name: 'GitHub Profile', icon: <Github className="w-4 h-4" />, href: 'https://github.com/anisul-islam' },
-    { name: 'Resume/CV', icon: <FileCode className="w-4 h-4" />, href: '/resume.pdf' },
-    { name: 'Tech Stack', icon: <Code className="w-4 h-4" />, href: '#services' }
+    { name: 'Documentation', icon: <BookOpen className="w-4 h-4" />, href: '#', isExternal: false },
+    { name: 'GitHub Profile', icon: <Github className="w-4 h-4" />, href: 'https://github.com/anisul-islam', isExternal: true },
+    { name: 'Resume/CV', icon: <FileCode className="w-4 h-4" />, href: '/resume.pdf', isExternal: false },
+    { name: 'Tech Stack', icon: <Code className="w-4 h-4" />, href: '#services', isExternal: false }
   ];
 
   const contactInfo = [
     { icon: <Mail className="w-4 h-4" />, text: 'info@anisuldev.online', href: 'mailto:info@anisuldev.online' },
     { icon: <Phone className="w-4 h-4" />, text: '+923439275550', href: 'tel:+923439275550' },
-    { icon: <MapPin className="w-4 h-4" />, text: 'Islamabad, Pakistan', href: '#' },
-    { icon: <Calendar className="w-4 h-4" />, text: 'Available for Freelance', href: '#contact' }
+    { icon: <MapPin className="w-4 h-4" />, text: 'Islamabad, Pakistan', href: '#', onClick: () => {} },
+    { icon: <Calendar className="w-4 h-4" />, text: 'Available for Freelance', href: '#contact', isExternal: false }
   ];
 
   const socialLinks = [
@@ -88,9 +94,9 @@ const Footer = () => {
               </div>
               <div>
                 {/* Logo */}
-                         <div className="flex-shrink-0 w-27 h-27 flex items-center">
-                           <img src={logo} alt="AnisulDev Logo" />
-                         </div>
+                <div className="flex-shrink-0 w-27 h-27 flex items-center">
+                  <img src={logo} alt="AnisulDev Logo" />
+                </div>
                 <p className="text-gray-400 text-sm">Full Stack Developer</p>
               </div>
             </div>
@@ -127,20 +133,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const element = document.querySelector(link.href);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className="group flex items-center text-gray-400 hover:text-white transition-all duration-300"
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="group flex items-center text-gray-400 hover:text-white transition-all duration-300 w-full text-left"
                   >
                     <ArrowUp className="w-4 h-4 mr-2 transform rotate-90 group-hover:translate-x-1 transition-transform duration-300" />
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -173,16 +172,40 @@ const Footer = () => {
               </h3>
               <div className="space-y-3">
                 {contactInfo.map((info, index) => (
-                  <a
-                    key={index}
-                    href={info.href}
-                    className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors duration-300">
-                      {info.icon}
-                    </div>
-                    <span>{info.text}</span>
-                  </a>
+                  info.onClick ? (
+                    <button
+                      key={index}
+                      onClick={info.onClick}
+                      className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300 w-full text-left"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors duration-300">
+                        {info.icon}
+                      </div>
+                      <span>{info.text}</span>
+                    </button>
+                  ) : info.href.startsWith('#') ? (
+                    <button
+                      key={index}
+                      onClick={() => scrollToSection(info.href)}
+                      className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300 w-full text-left"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors duration-300">
+                        {info.icon}
+                      </div>
+                      <span>{info.text}</span>
+                    </button>
+                  ) : (
+                    <a
+                      key={index}
+                      href={info.href}
+                      className="group flex items-center text-gray-400 hover:text-white transition-colors duration-300"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors duration-300">
+                        {info.icon}
+                      </div>
+                      <span>{info.text}</span>
+                    </a>
+                  )
                 ))}
               </div>
             </div>
@@ -193,16 +216,20 @@ const Footer = () => {
               <p className="text-gray-400 text-sm mb-3">
                 Subscribe for tech insights and updates
               </p>
-              <div className="flex">
+              <form className="flex" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="email"
                   placeholder="Your email"
                   className="flex-1 px-4 py-3 rounded-l-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                  required
                 />
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 px-4 py-3 rounded-r-lg transition-all duration-300 flex items-center">
+                <button 
+                  type="submit"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90 px-4 py-3 rounded-r-lg transition-all duration-300 flex items-center"
+                >
                   <Send className="w-4 h-4" />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -216,7 +243,7 @@ const Footer = () => {
             {technologies.map((tech, index) => (
               <span
                 key={index}
-                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-gray-700 hover:text-white transition-all duration-300 cursor-pointer"
+                className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm hover:bg-gray-700 hover:text-white transition-all duration-300"
               >
                 {tech}
               </span>
@@ -231,17 +258,39 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Resources</h4>
               <div className="grid grid-cols-2 gap-4">
                 {resources.map((resource, index) => (
-                  <a
-                    key={index}
-                    href={resource.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
-                  >
-                    {resource.icon}
-                    <span className="text-sm">{resource.name}</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                  resource.isExternal ? (
+                    <a
+                      key={index}
+                      href={resource.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                    >
+                      {resource.icon}
+                      <span className="text-sm">{resource.name}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  ) : resource.href.startsWith('#') ? (
+                    <button
+                      key={index}
+                      onClick={() => scrollToSection(resource.href)}
+                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 w-full text-left"
+                    >
+                      {resource.icon}
+                      <span className="text-sm">{resource.name}</span>
+                      <ArrowUp className="w-3 h-3 transform rotate-45" />
+                    </button>
+                  ) : (
+                    <a
+                      key={index}
+                      href={resource.href}
+                      className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
+                    >
+                      {resource.icon}
+                      <span className="text-sm">{resource.name}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )
                 ))}
               </div>
             </div>
@@ -252,12 +301,12 @@ const Footer = () => {
                   <h4 className="text-white font-semibold mb-2">Ready to work together?</h4>
                   <p className="text-gray-400 text-sm">Let's build something amazing</p>
                 </div>
-                <a
-                  href="#contact"
+                <button
+                  onClick={() => scrollToSection('contact')}
                   className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   Get a Quote
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -297,17 +346,17 @@ const Footer = () => {
               © {currentYear} Anisul Islam. All rights reserved.
             </p>
             <div className="flex items-center space-x-4">
-              <a href="#" className="hover:text-gray-300 transition-colors duration-300">
+              <button className="hover:text-gray-300 transition-colors duration-300">
                 Privacy Policy
-              </a>
+              </button>
               <span>•</span>
-              <a href="#" className="hover:text-gray-300 transition-colors duration-300">
+              <button className="hover:text-gray-300 transition-colors duration-300">
                 Terms of Service
-              </a>
+              </button>
               <span>•</span>
-              <a href="#" className="hover:text-gray-300 transition-colors duration-300">
+              <button className="hover:text-gray-300 transition-colors duration-300">
                 Cookies
-              </a>
+              </button>
             </div>
           </div>
           

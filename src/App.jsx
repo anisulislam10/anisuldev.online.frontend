@@ -10,6 +10,7 @@ import About  from './Pages/About';
 import ContactPage from './Pages/Contact';
 import Footer from './components/Footer';
 import AllProjects from './Pages/AllProjects';
+import { Tools } from './Pages/Tools';
 function App() {
   return (
     <><BrowserRouter>
@@ -19,7 +20,7 @@ function App() {
         <Route path="/blogsDetails" element={<BlogDetailsPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<AllProjects />} />
-        <Route path="/docs" element={<UnderConstructionModal />} />
+        <Route path="/tools" element={<Tools/>} />
          <Route path="/contact" element={<ContactPage/>} />
         <Route path="*" element={<NotFound/>} /> 
         <Route path="/blogs" element={<BlogPage />} />

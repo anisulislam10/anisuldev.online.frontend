@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Twitter, ArrowRight, Code, Server, Database, Rocket } from 'lucide-react';
+import { Link } from 'react-router-dom';
 // import UnderConstructionModal from './nderConstructionModal'; // Adjust path as needed
 
 const Hero = () => {
@@ -103,20 +104,20 @@ const Hero = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 pt-4">
-                <button 
+                <Link to="/projects" 
                   className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold flex items-center space-x-2 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   aria-label="View my portfolio projects"
                 >
                   <span>View Projects</span>
                   <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </button>
+                </Link>
                 
-                <button 
+                <Link to="/contact"
                   className="group border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-full font-semibold flex items-center space-x-2 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                   aria-label="Get a free quote for your project"
                 >
                   <span>Get a Quote</span>
-                </button>
+                </Link>
               </div>
 
               {/* Social Links with proper schema */}

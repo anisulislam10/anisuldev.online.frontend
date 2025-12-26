@@ -19,8 +19,15 @@ import {
   Cloud,
   Zap
 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const AllProjects = () => {
+     // SEO Metadata
+  const seoTitle = ' Projects Portfolio | Full Stack Developer';
+  const seoDescription = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
+  const seoKeywords = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
+  const seoImage = '/blogs-og-image.jpg';
+    
   const projects = [
     {
       id: 1,
@@ -244,7 +251,16 @@ const AllProjects = () => {
   };
 
   return (
+
+    
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+
+        <SEOHead
+                title={seoTitle}
+                description={seoDescription}
+                keywords={seoKeywords}
+                ogImage={seoImage}
+              />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
