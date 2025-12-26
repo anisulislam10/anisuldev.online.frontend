@@ -1,28 +1,32 @@
-import React from 'react';
+// App.js
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home';
+import BlogPage from './Pages/AllBlogs';
+import BlogDetailsPage from './Pages/BlogsDetails'; // Make sure this import is correct
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Deployment from './components/Deployment';
-import Projects from './components/Projects';
-import Blogs from './components/Blogs';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-
+import UnderConstructionModal from './components/nderConstructionModal';
+import NotFound from './components/NotFound';
+import { About } from './Pages/About';
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services/>
-        <Projects/>
-        <Blogs/>
-        <Contact/>
-        <Footer/>
-        {/* <Deployment/> */}
-        {/* Other sections will be added here */}
-      </main>
-    </div>
+    <><BrowserRouter>
+    <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blogsDetails" element={<BlogDetailsPage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<UnderConstructionModal />} />
+        <Route path="/docs" element={<UnderConstructionModal />} />
+         <Route path="/contact" element={<UnderConstructionModal />} />
+        <Route path="*" element={<NotFound/>} /> 
+        <Route path="/blogs" element={<BlogPage />} />
+        {/* Add this route for individual blog posts */}
+        <Route path="/blog/:title" element={<BlogDetailsPage />} />
+        {/* Keep this if you still need it */}
+        
+      </Routes>
+    </BrowserRouter></>
+    
   );
 }
 

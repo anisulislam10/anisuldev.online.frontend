@@ -1,38 +1,40 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import logo from './../../public/logo_anisuldev.online.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blogs', href: '#blogs' },
-    { name: 'Docs', href: '#docs' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Blogs', to: '/blogs' },
+    { name: 'Docs', to: '/docs' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
     <nav className="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
+
           {/* Logo */}
-          <div className="flex-shrink-0 w-27 h-27 flex items-center">
+          <Link to="/" className="flex-shrink-0 w-27 h-27 flex items-center">
             <img src={logo} alt="AnisulDev Logo" />
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.to}
                 className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               Get a Quote
@@ -55,14 +57,14 @@ const Navbar = () => {
           <div className="md:hidden border-t">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.to}
                   className="block px-3 py-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold">
                 Get a Quote
