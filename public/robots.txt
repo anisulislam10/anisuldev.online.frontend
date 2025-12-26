@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /blogs
+Allow: /blog/
+Disallow: /admin
+Disallow: /private
+
+Sitemap: https://www.anisuldev.online/sitemap.xml
