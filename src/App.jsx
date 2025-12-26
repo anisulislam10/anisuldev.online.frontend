@@ -7,6 +7,8 @@ import Navbar from './components/Navbar';
 import UnderConstructionModal from './components/nderConstructionModal';
 import NotFound from './components/NotFound';
 import About  from './Pages/About';
+import ContactPage from './Pages/Contact';
+import Footer from './components/Footer';
 function App() {
   return (
     <><BrowserRouter>
@@ -17,7 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<UnderConstructionModal />} />
         <Route path="/docs" element={<UnderConstructionModal />} />
-         <Route path="/contact" element={<UnderConstructionModal />} />
+         <Route path="/contact" element={<ContactPage/>} />
         <Route path="*" element={<NotFound/>} /> 
         <Route path="/blogs" element={<BlogPage />} />
         {/* Add this route for individual blog posts */}
@@ -25,6 +27,8 @@ function App() {
         {/* Keep this if you still need it */}
         
       </Routes>
+              <Footer />
+
     </BrowserRouter></>
     
   );
