@@ -159,7 +159,7 @@ Chitral's beauty is in its landscape. Its future will be built by the skills of 
     ],
     
     metadata: {
-      views: 0, // This would be populated dynamically
+      views: 10, // This would be populated dynamically
       likes: 0,
       shares: 0,
       comments: 0
