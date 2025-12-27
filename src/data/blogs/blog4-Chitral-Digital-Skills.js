@@ -10,9 +10,9 @@ const blog4 = {
     bio: "With 5+ years of experience in Node.js ecosystem, specializing in scalable backend systems and mentoring junior developers.",
     avatar: "/favico.png"
   },
-  date: "Apr 10, 2024",
-  updatedDate: "Apr 12, 2024",
-  readTime: "8 min read",
+  date: "Dec 27, 2025",
+  updatedDate: "Dec 27, 2025",
+  readTime: "4 min read",
   category: "Career & Education",
   difficulty: "Beginner",
   icon: "TrendingUp",
