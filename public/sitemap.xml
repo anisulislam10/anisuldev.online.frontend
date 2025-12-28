@@ -53,6 +53,29 @@
 
 
 
+ <url>
+    <loc>https://www.anisuldev.online/services/backend-development</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+
+  <url>
+    <loc>https://www.anisuldev.online/services/react-native-development</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.anisuldev.online/services/web-app-development</loc>
+    <lastmod>2025-12-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+
    <url>
     <loc>https://www.anisuldev.online/blog/expressjs-system-design-real-world-projects</loc>
     <lastmod>2025-12-27</lastmod>
