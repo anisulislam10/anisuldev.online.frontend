@@ -11,6 +11,9 @@ import ContactPage from './Pages/Contact';
 import Footer from './components/Footer';
 import AllProjects from './Pages/AllProjects';
 import { Tools } from './Pages/Tools';
+import ReactNativePage from './Pages/ReactNative';
+import WebApplicationsPage from './Pages/WebApplications';
+import BackendDatabasesPage from './Pages/BackendDevelopment';
 function App() {
   return (
     <><BrowserRouter>
@@ -27,8 +30,12 @@ function App() {
         {/* Add this route for individual blog posts */}
         <Route path="/blog/:slug" element={<BlogDetailsPage />} />
         {/* Keep this if you still need it */}
-        
-        
+
+        <Route path="/services/react-native-development" element={<ReactNativePage />} />
+        <Route path="/services/web-app-development" element={<WebApplicationsPage />} />
+        <Route path="/services/backend-development" element={<BackendDatabasesPage />} />
+
+
       </Routes>
               <Footer />
 

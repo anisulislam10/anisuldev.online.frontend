@@ -35,10 +35,12 @@ const Services = () => {
         "Offline Capabilities",
         "Push Notifications",
         "App Store Deployment"
+
       ],
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
-      delay: "100"
+      delay: "100",
+       link: "/services/react-native-development"
     },
     {
       icon: <Globe className="w-6 h-6 sm:w-8 sm:h-8" />,
@@ -53,7 +55,8 @@ const Services = () => {
       ],
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-gradient-to-br from-purple-50 to-pink-50",
-      delay: "200"
+      delay: "200",
+       link: "/services/web-app-development"
     },
     {
       icon: <Server className="w-6 h-6 sm:w-8 sm:h-8" />,
@@ -68,7 +71,8 @@ const Services = () => {
       ],
       color: "from-green-500 to-emerald-500",
       bgColor: "bg-gradient-to-br from-green-50 to-emerald-50",
-      delay: "300"
+      delay: "300",
+       link: "/services/backend-development"
     },
   ];
 
@@ -262,10 +266,10 @@ const Services = () => {
               </ul>
 
               {/* Action Button */}
-              <button className="group flex items-center font-semibold text-gray-700 hover:text-gray-900 transition-colors duration-300 text-sm sm:text-base">
-                <span className="mr-1.5 sm:mr-2">Learn more</span>
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
+              <Link to={service.link} className="group flex items-center font-semibold text-gray-700 hover:text-gray-900 transition-colors duration-300 text-sm sm:text-base">
+        <span className="mr-1.5 sm:mr-2">Learn more</span>
+        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
+      </Link>
             </div>
           ))}
         </div>
