@@ -2,12 +2,14 @@ import blog1 from './blog1-nodejs-junior-interview';
 import blog2 from './blog2-expressjs-mid-level';
 import blog3 from './blog3-system-design';
 import blog4 from './blog4-Chitral-Digital-Skills';
+import blog5 from './blog5-react-optimization'
 
 export const blogs = [
   blog1,
   blog2,
   blog3,
-  blog4
+  blog4,
+  blog5
 ];
 
 // Helper function to create URL-friendly slugs
