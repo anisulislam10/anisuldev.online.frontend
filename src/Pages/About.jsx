@@ -122,7 +122,7 @@ const About = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Section Header */}
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-500 font-semibold mb-4">
+                        <div className="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 font-semibold mb-4" style={{ color: 'var(--accent-indigo)' }}>
                             <User className="w-4 h-4 mr-2" />
                             About Me
                         </div>
@@ -141,8 +141,9 @@ const About = () => {
                             <div className="rounded-2xl p-8 border mb-8"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
                                 <div className="text-center mb-6">
-                                    <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-1 mb-7">
-                                        <div className="w-30 h-30 sm:w-48 sm:h-48 mb-4 sm:mb-6 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                                    <div className="w-40 h-40 mx-auto rounded-full p-1 mb-7 shadow-xl" style={{ background: 'var(--gradient-hero)' }}>
+                                        <div className="w-full h-full rounded-full overflow-hidden border-4"
+                                            style={{ borderColor: 'var(--bg-card)' }}>
                                             <img
                                                 src="/Anisul_Islam_Software_Developer_Chitral.png"
                                                 alt="Anisul Islam - Full Stack Software Engineer"
@@ -195,7 +196,8 @@ const About = () => {
                                 <a
                                     href="/cv/Anisul_Resume[Updated].pdf"
                                     download
-                                    className="w-full inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                    className="w-full inline-flex items-center justify-center text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                    style={{ background: 'var(--gradient-hero)' }}
                                 >
                                     <Download className="w-5 h-5 mr-2" />
                                     Download CV
@@ -204,9 +206,15 @@ const About = () => {
 
                             {/* Expertise Areas */}
                             <div className="rounded-2xl p-6 border"
-                                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+                                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}
+                                onMouseEnter={e => {
+                                    e.currentTarget.style.background = 'var(--bg-card-hover)';
+                                    e.currentTarget.style.borderColor = 'var(--accent-indigo)';
+                                    e.currentTarget.style.color = 'var(--accent-indigo)';
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                }}>
                                 <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Cpu className="w-5 h-5 mr-2 text-blue-600" />
+                                    <Cpu className="w-5 h-5 mr-2" style={{ color: 'var(--accent-blue)' }} />
                                     Expertise
                                 </h3>
                                 <div className="space-y-3">
@@ -267,7 +275,7 @@ const About = () => {
                             <div className="rounded-2xl p-8 border mb-8"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                                 <h3 className="text-2xl font-bold mb-6 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Code className="w-6 h-6 mr-2 text-purple-600" />
+                                    <Code className="w-6 h-6 mr-2" style={{ color: 'var(--accent-indigo)' }} />
                                     Technical Stack
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -279,8 +287,8 @@ const About = () => {
                                             </div>
                                             <div className="w-full rounded-full h-2.5" style={{ background: 'var(--bg-card-hover)' }}>
                                                 <div
-                                                    className="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 rounded-full transition-all duration-1000"
-                                                    style={{ width: `${skill.level}%` }}
+                                                    className="h-2.5 rounded-full transition-all duration-1000"
+                                                    style={{ width: `${skill.level}%`, background: 'var(--gradient-hero)' }}
                                                 ></div>
                                             </div>
                                         </div>
@@ -292,7 +300,7 @@ const About = () => {
                             <div className="rounded-2xl p-8 border"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                                 <h3 className="text-2xl font-bold mb-6 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Award className="w-6 h-6 mr-2 text-green-600" />
+                                    <Award className="w-6 h-6 mr-2" style={{ color: 'var(--accent-cyan)' }} />
                                     Certifications & Training
                                 </h3>
                                 <div className="space-y-4">
@@ -300,13 +308,14 @@ const About = () => {
                                         <div key={index} className="flex items-start p-4 rounded-lg transition-colors duration-300"
                                             style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
                                             <div className="flex-shrink-0">
-                                                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 flex items-center justify-center mr-4">
+                                                <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4"
+                                                    style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
                                                     {cert.issuer.includes('Cisco') ? (
-                                                        <Cpu className="w-5 h-5 text-blue-600" />
+                                                        <Cpu className="w-5 h-5" style={{ color: 'var(--accent-blue)' }} />
                                                     ) : cert.issuer.includes('Coursera') ? (
-                                                        <Brain className="w-5 h-5 text-purple-600" />
+                                                        <Brain className="w-5 h-5" style={{ color: 'var(--accent-indigo)' }} />
                                                     ) : (
-                                                        <Award className="w-5 h-5 text-green-600" />
+                                                        <Award className="w-5 h-5" style={{ color: 'var(--accent-cyan)' }} />
                                                     )}
                                                 </div>
                                             </div>
@@ -324,13 +333,19 @@ const About = () => {
 
                     <div className="mt-16">
                         <div className="flex items-center mb-12">
-                            <GraduationCap className="w-10 h-10 text-indigo-500 mr-4" />
+                            <GraduationCap className="w-10 h-10 mr-4" style={{ color: 'var(--accent-indigo)' }} />
                             <h3 className="text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>Education Background</h3>
                         </div>
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                             {education.map((edu, index) => (
                                 <div key={index} className="rounded-2xl p-8 border transition-shadow duration-300"
-                                    style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+                                    style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+                                    onMouseEnter={e => {
+                                        e.currentTarget.style.background = 'var(--bg-card-hover)';
+                                        e.currentTarget.style.borderColor = 'var(--accent-indigo)';
+                                        e.currentTarget.style.color = 'var(--accent-indigo)';
+                                        e.currentTarget.style.transform = 'translateY(-2px)';
+                                    }}>
                                     <div className="flex items-center mb-4" style={{ color: 'var(--accent-indigo)' }}>
                                         <Calendar className="w-5 h-5 mr-2" />
                                         <span className="font-semibold">{edu.year}</span>

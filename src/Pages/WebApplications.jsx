@@ -414,13 +414,16 @@ const WebApplicationsPage = () => {
       </script>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: 'var(--gradient-hero)' }}>
         <div className="absolute inset-0 bg-grid-white/10 bg-grid-16"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-6">
             <Link
               to="/"
-              className="inline-flex items-center text-sm text-purple-200 hover:text-white transition-colors"
+              className="inline-flex items-center text-sm transition-colors"
+              style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-purple)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Services
@@ -429,16 +432,17 @@ const WebApplicationsPage = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-sm font-medium mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full border mb-4"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-purple)', color: 'var(--accent-purple)', backdropFilter: 'blur(8px)' }}>
                 <Globe className="w-4 h-4 mr-2" />
                 Web Development
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Modern <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">Web Applications</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
+                Modern <span className="gradient-text animate-grad-shift">Web Applications</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-purple-100 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 Build high-performance web applications with React.js & Next.js.
                 Experience optimal performance, SEO optimization, and seamless user experiences
                 across all devices.
@@ -454,7 +458,10 @@ const WebApplicationsPage = () => {
                 </Link>
                 <a
                   href="#packages"
-                  className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all"
+                  className="inline-flex items-center px-6 py-3 border font-semibold rounded-full transition-all"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-purple)'; e.currentTarget.style.color = 'var(--accent-purple)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 >
                   View Packages
                 </a>
@@ -463,10 +470,11 @@ const WebApplicationsPage = () => {
 
             <div className="relative">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-sm rounded-3xl p-6 md:p-8 border shadow-2xl"
+                  style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="flex items-center justify-center mb-6">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full blur-xl opacity-50"></div>
+                      <div className="absolute inset-0 rounded-full blur-xl opacity-50" style={{ background: 'var(--accent-purple)' }}></div>
                       <Globe className="w-20 h-20 relative z-10" />
                     </div>
                   </div>
@@ -530,7 +538,7 @@ const WebApplicationsPage = () => {
             {performanceMetrics.map((item, index) => (
               <div key={index} className="text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <div className="p-2 rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 text-purple-600">
+                  <div className="p-2 rounded-lg text-purple-600" style={{ background: 'var(--bg-card-hover)' }}>
                     {item.icon}
                   </div>
                 </div>
@@ -679,7 +687,7 @@ const WebApplicationsPage = () => {
       </section>
 
       {/* Technical Stack */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-16 md:py-20" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
@@ -797,7 +805,7 @@ const WebApplicationsPage = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white font-semibold rounded-full hover:shadow-xl transition-all"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-xl transition-all"
             >
               Request Custom Quote
               <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
@@ -807,25 +815,26 @@ const WebApplicationsPage = () => {
       </section>
 
       {/* Benefits Summary */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Benefits</span> of Our Approach
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+                The <span className="gradient-text">Benefits</span> of Our Approach
               </h2>
 
               <div className="space-y-6">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center text-purple-600">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-purple-600"
+                        style={{ background: 'var(--bg-card-hover)' }}>
                         {benefit.icon}
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">{benefit.title}</h3>
-                      <p className="text-gray-600">{benefit.description}</p>
+                      <h3 className="text-lg font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{benefit.title}</h3>
+                      <p style={{ color: 'var(--text-secondary)' }}>{benefit.description}</p>
                     </div>
                   </div>
                 ))}
@@ -833,23 +842,27 @@ const WebApplicationsPage = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-6 md:p-8 border border-purple-100">
+              <div className="rounded-3xl p-6 md:p-8 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-purple-600 mb-2">90%+</div>
-                    <div className="text-sm text-gray-600">Performance Score</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Performance Score</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-green-600 mb-2">95%+</div>
-                    <div className="text-sm text-gray-600">SEO Optimization</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>SEO Optimization</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-blue-600 mb-2">100%</div>
-                    <div className="text-sm text-gray-600">Responsive Design</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Responsive Design</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-yellow-600 mb-2">24/7</div>
-                    <div className="text-sm text-gray-600">Support Available</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Support Available</div>
                   </div>
                 </div>
 
@@ -871,12 +884,12 @@ const WebApplicationsPage = () => {
       {/* CTA Section */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-purple-900 to-pink-900 rounded-3xl p-8 md:p-12 text-white text-center">
+          <div className="rounded-3xl p-8 md:p-12 text-white text-center" style={{ background: 'var(--gradient-hero)' }}>
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Ready to Build Your Web Application?
               </h2>
-              <p className="text-lg text-purple-100 mb-8">
+              <p className="text-lg mb-8" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and create a web solution that drives results for your business.
               </p>
 
@@ -889,14 +902,15 @@ const WebApplicationsPage = () => {
                   <Rocket className="w-5 h-5 ml-3" />
                 </Link>
                 <a
-                  href="#"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all"
+                  href="/projects"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 font-bold rounded-full transition-all"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                 >
                   View Portfolio
                 </a>
               </div>
 
-              <p className="mt-8 text-sm text-purple-200">
+              <p className="mt-8 text-sm" style={{ color: 'var(--text-muted)' }}>
                 Typically respond within 24 hours • Free initial consultation • No commitment required
               </p>
             </div>

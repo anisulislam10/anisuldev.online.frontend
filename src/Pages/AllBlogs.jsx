@@ -115,13 +115,12 @@ const AllBlogs = () => {
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
-      case 'Beginner': return 'bg-green-100 text-green-600';
-      case 'Intermediate': return 'bg-yellow-100 text-yellow-600';
-      case 'Advanced': return 'bg-red-100 text-red-600';
-      default: return 'bg-gray-100 text-gray-600';
+      case 'Beginner': return 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/20';
+      case 'Intermediate': return 'bg-amber-500/10 text-amber-500 border border-amber-500/20';
+      case 'Advanced': return 'bg-rose-500/10 text-rose-500 border border-rose-500/20';
+      default: return 'bg-slate-500/10 text-slate-500 border border-slate-500/20';
     }
   };
-
   const getCategoryIcon = (category) => {
     switch (category) {
       case 'Fundamentals': return <Code className="w-4 h-4" />;
@@ -165,14 +164,15 @@ const AllBlogs = () => {
       <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4">
-              <BookOpen className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Backend Development</span>
+            <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
+              <BookOpen className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
+              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Backend Development</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Latest Tech <span className="text-blue-400">Blogs</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+              Latest Tech <span className="gradient-text animate-grad-shift">Blogs</span>
             </h1>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Comprehensive Node.js & Express.js interview preparation guides for junior to mid-level backend developers
             </p>
 
@@ -215,10 +215,10 @@ const AllBlogs = () => {
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedCategory === cat.id
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                      : 'text-gray-700 hover:bg-gray-200'
+                      ? 'text-white shadow-lg'
+                      : 'hover:bg-gray-200'
                       }`}
-                    style={selectedCategory !== cat.id ? { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' } : {}}
+                    style={selectedCategory === cat.id ? { background: 'var(--gradient-hero)' } : { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' }}
                     aria-label={`Filter by ${cat.name} category`}
                   >
                     {cat.name}
@@ -237,10 +237,10 @@ const AllBlogs = () => {
                     key={diff.id}
                     onClick={() => setSelectedDifficulty(diff.id)}
                     className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedDifficulty === diff.id
-                      ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
-                      : 'text-gray-700 hover:bg-gray-200'
+                      ? 'text-white shadow-lg'
+                      : 'hover:bg-gray-200'
                       }`}
-                    style={selectedDifficulty !== diff.id ? { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' } : {}}
+                    style={selectedDifficulty === diff.id ? { background: 'var(--gradient-hero)' } : { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' }}
                     aria-label={`Filter by ${diff.name} difficulty`}
                   >
                     {diff.name}
@@ -274,8 +274,8 @@ const AllBlogs = () => {
         {/* Blog Articles List with semantic HTML */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" aria-label="Loading"></div>
-            <p className="mt-4 text-gray-600">Loading articles...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderColor: 'var(--accent-indigo)' }} aria-label="Loading"></div>
+            <p className="mt-4" style={{ color: 'var(--text-secondary)' }}>Loading articles...</p>
           </div>
         ) : filteredArticles.length === 0 ? (
           <div className="text-center py-12">
@@ -297,8 +297,9 @@ const AllBlogs = () => {
                     itemType="https://schema.org/Article"
                   >
                     {article.featured && (
-                      <div className="absolute top-4 left-4 z-10">
-                        <span className="inline-flex items-center px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
+                      <div className="absolute top-4 right-4 z-10">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
+                          style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }}>
                           <Star className="w-3 h-3 mr-1" />
                           Featured
                         </span>
@@ -341,7 +342,11 @@ const AllBlogs = () => {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300" style={{ color: 'var(--text-primary)' }} itemProp="headline">
+                      <h3 className="text-xl font-bold mb-3 line-clamp-2 transition-colors duration-300"
+                        style={{ color: 'var(--text-primary)' }}
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-indigo)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}
+                        itemProp="headline">
                         {article.title}
                       </h3>
 
@@ -380,7 +385,8 @@ const AllBlogs = () => {
 
                         <Link
                           to={`/blog/${article.slug}`}
-                          className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                          className="inline-flex items-center text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                          style={{ background: 'var(--gradient-hero)' }}
                           aria-label={`Read more about ${article.title}`}
                           itemProp="url"
                         >
@@ -404,9 +410,9 @@ const AllBlogs = () => {
         )}
 
         {/* Author Section with semantic markup */}
-        <section className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }} itemScope itemType="https://schema.org/Person">
+        <section className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }} itemScope itemType="https://schema.org/Person">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 shadow-lg" style={{ borderColor: 'var(--bg-card)' }}>
               <img
                 src="favico.png"
                 alt="Anisul Islam"
@@ -421,10 +427,10 @@ const AllBlogs = () => {
                 I craft beautiful, performant web applications using modern technologies. Passionate about React.js, Node.js, Next.js, Express.js, MongoDB and the entire JavaScript ecosystem. Turning complex problems into simple, beautiful designs.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm" itemProp="knowsAbout">React.js</span>
-                <span className="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm" itemProp="knowsAbout">Node.js</span>
-                <span className="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm" itemProp="knowsAbout">Express.js</span>
-                <span className="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm" itemProp="knowsAbout">MongoDB</span>
+                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">React.js</span>
+                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">Node.js</span>
+                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">Express.js</span>
+                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">MongoDB</span>
               </div>
             </div>
           </div>

@@ -376,13 +376,16 @@ const ReactNativePage = () => {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: 'var(--gradient-hero)' }}>
+      <section className="relative overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: 'var(--gradient-hero)' }}>
         <div className="absolute inset-0 bg-grid-white/10 bg-grid-16"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-6">
             <Link
               to="/"
-              className="inline-flex items-center text-sm text-blue-200 hover:text-white transition-colors"
+              className="inline-flex items-center text-sm transition-colors"
+              style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-indigo)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Services
@@ -391,16 +394,17 @@ const ReactNativePage = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm font-medium mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full border mb-4"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }}>
                 <Zap className="w-4 h-4 mr-2" />
                 Mobile Development
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                React Native <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">Development</span>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: 'var(--text-primary)' }}>
+                React Native <span className="gradient-text animate-grad-shift">Development</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl mb-8 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 Build high-performance mobile applications for iOS and Android using a single codebase.
                 Experience native-like performance with faster development cycles and reduced costs.
               </p>
@@ -408,14 +412,17 @@ const ReactNativePage = () => {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
                   Start Your Project
                   <Rocket className="w-4 h-4 ml-2" />
                 </Link>
                 <a
                   href="#packages"
-                  className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all"
+                  className="inline-flex items-center px-6 py-3 border font-semibold rounded-full transition-all"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 >
                   View Packages
                 </a>
@@ -424,42 +431,43 @@ const ReactNativePage = () => {
 
             <div className="relative">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-blue-800/50 to-cyan-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-sm rounded-3xl p-6 md:p-8 border shadow-2xl"
+                  style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="flex items-center justify-center mb-6">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur-xl opacity-50"></div>
+                      <div className="absolute inset-0 rounded-full blur-xl opacity-50" style={{ background: 'var(--accent-indigo)' }}></div>
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="text-sm">iOS Development</span>
+                        <div className="w-3 h-3 rounded-full" style={{ background: 'var(--accent-green)' }}></div>
+                        <span className="text-sm" style={{ color: 'var(--text-primary)' }}>iOS Development</span>
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                        <span className="text-sm">Android Development</span>
+                        <div className="w-3 h-3 rounded-full" style={{ background: 'var(--accent-indigo)' }}></div>
+                        <span className="text-sm" style={{ color: 'var(--text-primary)' }}>Android Development</span>
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-                        <span className="text-sm">Cross-Platform</span>
+                        <div className="w-3 h-3 rounded-full" style={{ background: 'var(--accent-purple)' }}></div>
+                        <span className="text-sm" style={{ color: 'var(--text-primary)' }}>Cross-Platform</span>
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <span className="text-sm">Native Performance</span>
+                        <div className="w-3 h-3 rounded-full" style={{ background: 'var(--accent-cyan)' }}></div>
+                        <span className="text-sm" style={{ color: 'var(--text-primary)' }}>Native Performance</span>
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
@@ -480,7 +488,7 @@ const ReactNativePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">React Native</span>
+              Why Choose <span className="gradient-text">React Native</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Leverage the power of React Native to build stunning mobile applications with exceptional performance
@@ -496,7 +504,8 @@ const ReactNativePage = () => {
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.borderColor = 'var(--accent-blue)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
               >
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-blue-100 to-cyan-100 text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-indigo-50 to-blue-50 text-indigo-600 mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'var(--bg-card-hover)' }}>
                   {feature.icon}
                 </div>
 
@@ -521,7 +530,7 @@ const ReactNativePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              Development <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Process</span>
+              Development <span className="gradient-text">Process</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A structured, transparent process to ensure your project's success from concept to launch
@@ -630,7 +639,7 @@ const ReactNativePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              Development <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Packages</span>
+              Development <span className="gradient-text">Packages</span>
             </h2>
             <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Choose the package that best fits your project requirements and budget
@@ -678,8 +687,8 @@ const ReactNativePage = () => {
                   <Link
                     to="/contact"
                     className={`block text-center py-3 px-6 rounded-full font-semibold transition-all ${index === 1
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
-                        : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
+                      : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
                       }`}
                   >
                     Get Started
@@ -695,7 +704,7 @@ const ReactNativePage = () => {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white font-semibold rounded-full hover:shadow-xl transition-all"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-xl transition-all"
             >
               Request Custom Quote
               <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
@@ -710,7 +719,7 @@ const ReactNativePage = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">Benefits</span> of Our Approach
+                The <span className="gradient-text">Benefits</span> of Our Approach
               </h2>
 
               <div className="space-y-6">
@@ -752,7 +761,7 @@ const ReactNativePage = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl text-white">
+                <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl text-white">
                   <div className="flex items-center">
                     <Headphones className="w-8 h-8 mr-4" />
                     <div>
@@ -769,32 +778,35 @@ const ReactNativePage = () => {
 
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl p-8 md:p-12 text-white text-center" style={{ background: 'var(--gradient-hero)' }}>
+          <div className="rounded-3xl p-8 md:p-12 border text-center" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
                 Ready to Build Your Mobile App?
               </h2>
-              <p className="text-lg text-blue-100 mb-8">
+              <p className="text-lg mb-8" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and create a mobile solution that drives results for your business.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-bold rounded-full hover:bg-gray-100 transition-all transform hover:-translate-y-1 shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-lg transition-all transform hover:-translate-y-1 shadow-lg"
                 >
                   Start Free Consultation
                   <Rocket className="w-5 h-5 ml-3" />
                 </Link>
                 <a
-                  href="#"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all"
+                  href="/projects"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 font-bold rounded-full transition-all hover:shadow-md"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 >
                   View Case Studies
                 </a>
               </div>
 
-              <p className="mt-8 text-sm text-blue-200">
+              <p className="mt-8 text-sm" style={{ color: 'var(--text-muted)' }}>
                 Typically respond within 24 hours • Free initial consultation • No commitment required
               </p>
             </div>

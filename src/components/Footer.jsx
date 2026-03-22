@@ -53,8 +53,7 @@ const Footer = () => {
     >
       {/* Top gradient border */}
       <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(99,102,241,0.5), rgba(34,211,238,0.4), transparent)' }} />
-
+        style={{ background: 'linear-gradient(90deg, transparent, var(--border-glow), transparent)' }} />
       {/* Orbs */}
       <div className="orb orb-indigo w-[400px] h-[400px] top-0 right-0 opacity-10" />
       <div className="orb orb-purple w-[300px] h-[300px] bottom-0 left-0 opacity-8" />
@@ -83,8 +82,8 @@ const Footer = () => {
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300"
                   style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
-                    e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)';
+                    e.currentTarget.style.background = 'var(--bg-card-hover)';
+                    e.currentTarget.style.borderColor = 'var(--accent-indigo)';
                     e.currentTarget.style.color = 'var(--accent-indigo)';
                     e.currentTarget.style.transform = 'translateY(-2px)';
                   }}
@@ -202,8 +201,8 @@ const Footer = () => {
                 className="px-3 py-1 rounded-full text-xs transition-all duration-200 cursor-default"
                 style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.background = 'rgba(99,102,241,0.08)';
-                  e.currentTarget.style.borderColor = 'rgba(99,102,241,0.2)';
+                  e.currentTarget.style.background = 'var(--bg-card-hover)';
+                  e.currentTarget.style.borderColor = 'var(--accent-indigo)';
                   e.currentTarget.style.color = 'var(--accent-indigo)';
                 }}
                 onMouseLeave={e => {

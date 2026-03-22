@@ -108,7 +108,7 @@ const Projects = () => {
                         style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}
                         title="View Code"
                       >
-                        <Github className="w-4 h-4 text-gray-700" />
+                        <Github className="w-4 h-4" style={{ color: 'var(--text-secondary)' }} />
                       </a>
                     )}
                     {project.liveLink && project.liveLink !== "#" && (
@@ -117,7 +117,7 @@ const Projects = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 rounded-lg transition-colors duration-300"
-                        style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)' }}
+                        style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}
                         title="Live Demo"
                       >
                         <ExternalLink className="w-4 h-4 text-blue-600" />
@@ -175,8 +175,13 @@ const Projects = () => {
                     rel="noopener noreferrer"
                     className="flex-1 border transition-all duration-300 px-4 py-2.5 rounded-lg font-semibold text-center"
                     style={{ borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)' }}
-                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.08)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.background = 'var(--bg-card-hover)';
+                      e.currentTarget.style.borderColor = 'var(--accent-indigo)';
+                      e.currentTarget.style.color = 'var(--accent-indigo)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)'; }}
                   >
                     <span className="flex items-center justify-center space-x-2">
                       <Code className="w-4 h-4" />
@@ -206,7 +211,7 @@ const Projects = () => {
                 href="https://github.com/username"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-900 text-white px-6 py-2 rounded-full font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
+                className="bg-gray-900 dark:bg-gray-800 text-white px-6 py-2 rounded-full font-semibold flex items-center space-x-2 hover:shadow-lg transition-all duration-300"
               >
                 <Github className="w-4 h-4" />
                 <span>GitHub</span>
@@ -215,7 +220,7 @@ const Projects = () => {
                 href="#contact"
                 className="border px-6 py-2 rounded-full font-semibold flex items-center space-x-2 transition-all duration-300"
                 style={{ borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.08)'; }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-card-hover)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
               >
                 <span>Case Study</span>

@@ -141,14 +141,13 @@ const Contact = () => {
             <div className="lg:col-span-2 flex flex-col gap-5">
 
               {/* Availability */}
-              <div className="flex items-center justify-between p-4 rounded-xl"
-                style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+              <div className="flex items-center justify-between p-4 rounded-xl border"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-green)', opacity: 0.9 }}>
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm font-semibold" style={{ color: 'var(--accent-green)' }}>Available for new projects</span>
+                  <span className="text-sm font-semibold text-emerald-500">Available for new projects</span>
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-xs font-semibold"
-                  style={{ background: 'rgba(16,185,129,0.1)', color: 'var(--accent-green)' }}>Open</span>
+                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-500">Open</span>
               </div>
 
               {/* Contact items */}
@@ -187,9 +186,9 @@ const Contact = () => {
                       className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
                       style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}
                       onMouseEnter={e => {
-                        e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
-                        e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
-                        e.currentTarget.style.color = '#a5b4fc';
+                        e.currentTarget.style.background = 'var(--bg-card-hover)';
+                        e.currentTarget.style.borderColor = 'var(--accent-indigo)';
+                        e.currentTarget.style.color = 'var(--accent-indigo)';
                         e.currentTarget.style.transform = 'translateY(-2px)';
                       }}
                       onMouseLeave={e => {
@@ -216,7 +215,7 @@ const Contact = () => {
                   ].map((f, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8' }}>
+                        style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--accent-indigo)' }}>
                         {f.icon}
                       </div>
                       <div>
@@ -239,12 +238,11 @@ const Contact = () => {
 
                 {errors.submit && (
                   <div className="flex items-center gap-2 p-3 rounded-lg mb-4 text-sm"
-                    style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', color: '#fca5a5' }}>
+                    style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', color: '#ef4444' }}>
                     <AlertCircle size={15} />
                     {errors.submit}
                   </div>
                 )}
-
                 <form ref={form} onSubmit={handleSubmit} className="space-y-5">
                   {/* Name + Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -299,8 +297,8 @@ const Contact = () => {
                           onClick={() => setFormData(p => ({ ...p, projectType: t.value }))}
                           className="flex flex-col items-center gap-1 p-3 rounded-lg text-xs font-medium transition-all duration-200"
                           style={{
-                            background: formData.projectType === t.value ? 'rgba(99,102,241,0.15)' : 'var(--bg-card)',
-                            border: formData.projectType === t.value ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
+                            background: formData.projectType === t.value ? 'var(--bg-card-hover)' : 'var(--bg-card)',
+                            border: formData.projectType === t.value ? '1px solid var(--accent-indigo)' : '1px solid var(--border-subtle)',
                             color: formData.projectType === t.value ? 'var(--accent-indigo)' : 'var(--text-muted)',
                           }}
                         >
@@ -322,8 +320,8 @@ const Contact = () => {
                             onClick={() => setFormData(p => ({ ...p, budget: b.value }))}
                             className="py-2 px-3 rounded-lg text-xs font-medium transition-all duration-200"
                             style={{
-                              background: formData.budget === b.value ? 'rgba(99,102,241,0.15)' : 'var(--bg-card)',
-                              border: formData.budget === b.value ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
+                              background: formData.budget === b.value ? 'var(--bg-card-hover)' : 'var(--bg-card)',
+                              border: formData.budget === b.value ? '1px solid var(--accent-indigo)' : '1px solid var(--border-subtle)',
                               color: formData.budget === b.value ? 'var(--accent-indigo)' : 'var(--text-muted)',
                             }}
                           >
@@ -399,14 +397,14 @@ const Contact = () => {
                   key={i}
                   className="p-5 rounded-xl cursor-pointer transition-all duration-300"
                   style={{
-                    background: openFaq === i ? 'rgba(99,102,241,0.07)' : 'var(--bg-card)',
-                    border: openFaq === i ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
+                    background: openFaq === i ? 'var(--bg-card-hover)' : 'var(--bg-card)',
+                    border: openFaq === i ? '1px solid var(--accent-indigo)' : '1px solid var(--border-subtle)',
                   }}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold"
-                      style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8' }}>
+                      style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--accent-indigo)' }}>
                       {i + 1}
                     </div>
                     <div className="flex-1">

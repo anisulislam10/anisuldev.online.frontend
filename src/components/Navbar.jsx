@@ -64,11 +64,9 @@ const Navbar = () => {
                   key={item.name}
                   to={item.to}
                   className="relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg group"
-                  style={{
-                    color: isActive(item.to) ? 'var(--accent-indigo)' : 'var(--text-secondary)',
-                  }}
                 >
-                  <span className="relative z-10 group-hover:text-indigo-500 dark:group-hover:text-indigo-300 transition-colors duration-200">
+                  <span className="relative z-10 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-200"
+                    style={{ color: isActive(item.to) ? 'var(--accent-indigo)' : 'var(--text-secondary)' }}>
                     {item.name}
                   </span>
                   {/* Active indicator */}
@@ -89,7 +87,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center gap-3">
               <button
                 onClick={toggleTheme}
-                className="p-2.5 rounded-xl transition-all duration-300 border border-transparent hover:border-indigo-500/20 bg-white/5 hover:bg-indigo-500/10 text-slate-400 hover:text-indigo-500"
+                className="p-2.5 rounded-xl transition-all duration-300 border border-transparent hover:border-indigo-500/20 bg-gray-100/10 dark:bg-white/5 hover:bg-indigo-500/10 text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-sm dark:shadow-none"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun size={19} /> : <Moon size={19} />}
@@ -119,7 +117,7 @@ const Navbar = () => {
             <div className="flex items-center gap-2 md:hidden">
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg text-slate-400"
+                className="p-2 rounded-lg text-gray-500 dark:text-slate-400"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}

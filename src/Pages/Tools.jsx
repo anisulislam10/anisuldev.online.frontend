@@ -437,8 +437,8 @@ export const Tools = () => {
             <input
               type="text"
               placeholder="Search tools by name, description, or tags..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+              className="w-full pl-12 pr-4 py-3 rounded-xl border focus:ring-2 focus:outline-none transition-all"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)', '--tw-ring-color': 'var(--accent-indigo)', '--tw-ring-opacity': '0.2' }}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -452,8 +452,8 @@ export const Tools = () => {
             <button
               onClick={() => setSelectedCategory('all')}
               className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === 'all'
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'hover:shadow-md'
+                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                : 'hover:shadow-md'
                 }`}
               style={selectedCategory === 'all' ? {} : { background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
             >
@@ -465,8 +465,8 @@ export const Tools = () => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id
-                    ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                    : 'hover:shadow-md'
+                  ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
+                  : 'hover:shadow-md'
                   }`}
                 style={selectedCategory === category.id ? {} : { background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
               >
@@ -578,14 +578,14 @@ export const Tools = () => {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-gray-900 to-blue-900 rounded-2xl p-12 text-white">
-            <h2 className="text-3xl font-bold mb-4">Missing a Tool?</h2>
-            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+          <div className="rounded-2xl p-12 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Missing a Tool?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Have a favorite developer tool that's not on the list? Let me know and I'll add it!
             </p>
             <a
               href="mailto:anis.inbox10@gmail.com"
-              className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+              className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
             >
               <MessageSquare className="w-5 h-5 mr-2" />
               Suggest a Tool

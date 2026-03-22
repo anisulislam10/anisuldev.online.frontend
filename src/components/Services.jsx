@@ -108,12 +108,12 @@ const Services = () => {
                 boxShadow: '0 0 0 0 transparent',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.border = `1px solid rgba(255,255,255,0.14)`;
-                e.currentTarget.style.boxShadow = `0 0 40px ${svc.glow}`;
+                e.currentTarget.style.borderColor = 'var(--accent-indigo)';
+                e.currentTarget.style.boxShadow = `0 12px 40px ${svc.glow}`;
                 e.currentTarget.style.transform = 'translateY(-4px)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.border = '1px solid var(--border-subtle)';
+                e.currentTarget.style.borderColor = 'var(--border-subtle)';
                 e.currentTarget.style.boxShadow = '0 0 0 0 transparent';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
@@ -232,8 +232,8 @@ const Services = () => {
                 key={i}
                 className="relative p-5 rounded-xl transition-all duration-300 group"
                 style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <div className="text-4xl font-black mb-3 gradient-text opacity-60">{step.step}</div>
                 <h4 className="text-base font-bold mb-1.5" style={{ color: 'var(--text-primary)' }}>{step.title}</h4>
@@ -253,8 +253,8 @@ const Services = () => {
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-6 p-8 lg:p-10 rounded-2xl"
           style={{
-            background: 'linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(34,211,238,0.08) 100%)',
-            border: '1px solid rgba(99,102,241,0.2)',
+            background: 'var(--gradient-card)',
+            border: '1px solid var(--border-subtle)',
           }}
         >
           <div>

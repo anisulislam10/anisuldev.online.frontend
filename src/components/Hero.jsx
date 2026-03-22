@@ -158,8 +158,8 @@ const Hero = () => {
                     className="flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-300"
                     style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
-                      e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
+                      e.currentTarget.style.background = 'var(--bg-card-hover)';
+                      e.currentTarget.style.borderColor = 'var(--accent-indigo)';
                       e.currentTarget.style.color = 'var(--accent-indigo)';
                       e.currentTarget.style.transform = 'translateY(-2px)';
                     }}
@@ -191,7 +191,7 @@ const Hero = () => {
               }}
             >
               {/* Title bar */}
-              <div className="flex items-center gap-2 px-4 py-3" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.03)' }}>
+              <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-card-hover)' }}>
                 <div className="flex gap-1.5">
                   <span className="w-3 h-3 rounded-full" style={{ background: '#ff5f57' }} />
                   <span className="w-3 h-3 rounded-full" style={{ background: '#febc2e' }} />
@@ -235,7 +235,7 @@ const Hero = () => {
                 <div
                   key={s.label}
                   className="card text-center py-4 px-2 rounded-xl"
-                  style={{ background: 'rgba(255,255,255,0.03)' }}
+                  style={{ background: 'var(--bg-card-hover)' }}
                 >
                   <div
                     className="text-2xl sm:text-3xl font-black gradient-text"
@@ -250,8 +250,8 @@ const Hero = () => {
 
             {/* Profile card */}
             <div
-              className="flex items-center gap-4 p-4 rounded-xl"
-              style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.15)' }}
+              className="flex items-center gap-4 p-4 rounded-xl border"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}
             >
               <div className="flex-shrink-0">
                 <div className="relative w-14 h-14 rounded-xl overflow-hidden"

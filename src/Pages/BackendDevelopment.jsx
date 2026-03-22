@@ -496,7 +496,10 @@ const BackendDatabasesPage = () => {
                 </Link>
                 <a
                   href="#packages"
-                  className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all"
+                  className="inline-flex items-center px-6 py-3 border font-semibold rounded-full transition-all"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-emerald)'; e.currentTarget.style.color = 'var(--accent-emerald)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
                 >
                   View Packages
                 </a>
@@ -505,10 +508,11 @@ const BackendDatabasesPage = () => {
 
             <div className="relative">
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-emerald-800/50 to-teal-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
+                <div className="backdrop-blur-sm rounded-3xl p-6 md:p-8 border shadow-2xl"
+                  style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="flex items-center justify-center mb-6">
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-full blur-xl opacity-50"></div>
+                      <div className="absolute inset-0 rounded-full blur-xl opacity-50" style={{ background: 'var(--accent-emerald)' }}></div>
                       <Server className="w-20 h-20 relative z-10" />
                     </div>
                   </div>
@@ -581,7 +585,8 @@ const BackendDatabasesPage = () => {
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.borderColor = 'var(--accent-emerald)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
               >
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-emerald-100 to-cyan-100 text-emerald-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 text-emerald-600 mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={{ background: 'var(--bg-card-hover)' }}>
                   {feature.icon}
                 </div>
 
@@ -850,8 +855,8 @@ const BackendDatabasesPage = () => {
                   <Link
                     to="/contact"
                     className={`block text-center py-3 px-6 rounded-full font-semibold transition-all ${pkg.popular
-                        ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white hover:shadow-lg'
-                        : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
+                      ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white hover:shadow-lg'
+                      : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
                       }`}
                   >
                     Get Started
@@ -862,12 +867,12 @@ const BackendDatabasesPage = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>
               Need a custom solution? Let's discuss your specific requirements.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-900 to-black text-white font-semibold rounded-full hover:shadow-xl transition-all"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-xl transition-all"
             >
               Request Custom Quote
               <ArrowLeft className="w-4 h-4 ml-2 transform rotate-180" />
@@ -877,25 +882,26 @@ const BackendDatabasesPage = () => {
       </section>
 
       {/* Benefits Summary */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 md:py-20 transition-colors duration-300" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-600">Benefits</span> of Our Approach
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+                The <span className="gradient-text">Benefits</span> of Our Approach
               </h2>
 
               <div className="space-y-6">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-cyan-100 flex items-center justify-center text-emerald-600">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center text-emerald-600"
+                        style={{ background: 'var(--bg-card-hover)' }}>
                         {benefit.icon}
                       </div>
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">{benefit.title}</h3>
-                      <p className="text-gray-600">{benefit.description}</p>
+                      <h3 className="text-lg font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{benefit.title}</h3>
+                      <p style={{ color: 'var(--text-secondary)' }}>{benefit.description}</p>
                     </div>
                   </div>
                 ))}
@@ -903,23 +909,27 @@ const BackendDatabasesPage = () => {
             </div>
 
             <div className="relative">
-              <div className="bg-gradient-to-br from-emerald-50 to-cyan-50 rounded-3xl p-6 md:p-8 border border-emerald-100">
+              <div className="rounded-3xl p-6 md:p-8 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-emerald-600 mb-2">99.9%</div>
-                    <div className="text-sm text-gray-600">Uptime Guarantee</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Uptime Guarantee</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-green-600 mb-2">&lt;100ms</div>
-                    <div className="text-sm text-gray-600">API Response Time</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>API Response Time</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-                    <div className="text-sm text-gray-600">Monitoring</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Monitoring</div>
                   </div>
-                  <div className="bg-white rounded-2xl p-6 text-center shadow-md">
+                  <div className="rounded-2xl p-6 text-center border shadow-sm transition-all duration-300"
+                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)' }}>
                     <div className="text-3xl font-bold text-yellow-600 mb-2">A+</div>
-                    <div className="text-sm text-gray-600">Security Rating</div>
+                    <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>Security Rating</div>
                   </div>
                 </div>
 
@@ -941,12 +951,12 @@ const BackendDatabasesPage = () => {
       {/* CTA Section */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-emerald-900 to-cyan-900 rounded-3xl p-8 md:p-12 text-white text-center">
+          <div className="rounded-3xl p-8 md:p-12 text-white text-center" style={{ background: 'var(--gradient-hero)' }}>
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Ready to Build Your Backend System?
               </h2>
-              <p className="text-lg text-emerald-100 mb-8">
+              <p className="text-lg mb-8" style={{ color: 'var(--text-secondary)' }}>
                 Let's discuss your project and create a robust backend solution that scales with your business.
               </p>
 
@@ -959,14 +969,15 @@ const BackendDatabasesPage = () => {
                   <Rocket className="w-5 h-5 ml-3" />
                 </Link>
                 <a
-                  href="#"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white/10 transition-all"
+                  href="/projects"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 font-bold rounded-full transition-all"
+                  style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                 >
                   View Case Studies
                 </a>
               </div>
 
-              <p className="mt-8 text-sm text-emerald-200">
+              <p className="mt-8 text-sm" style={{ color: 'var(--text-muted)' }}>
                 Typically respond within 24 hours • Free initial consultation • No commitment required
               </p>
             </div>

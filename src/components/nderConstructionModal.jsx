@@ -8,8 +8,8 @@ const UnderConstructionModal = () => {
     <div className="min-h-screen pt-16 transition-colors duration-300" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-yellow-100/10 rounded-full mb-6">
-            <Construction className="w-12 h-12 text-yellow-600" />
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-6" style={{ background: 'var(--bg-card-hover)' }}>
+            <Construction className="w-12 h-12" style={{ color: 'var(--accent-cyan)' }} />
           </div>
           <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
             Page Under Construction
@@ -22,7 +22,7 @@ const UnderConstructionModal = () => {
             <div className="p-6 rounded-xl border text-left transition-all duration-300"
               style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
               <h3 className="font-semibold mb-3 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                <CheckCircle className="w-4 h-4 mr-2 text-yellow-500" />
+                <CheckCircle className="w-4 h-4 mr-2" style={{ color: 'var(--accent-cyan)' }} />
                 What's Coming
               </h3>
               <ul className="space-y-2" style={{ color: 'var(--text-secondary)' }}>
@@ -34,17 +34,17 @@ const UnderConstructionModal = () => {
             <div className="p-6 rounded-xl border text-left transition-all duration-300"
               style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
               <h3 className="font-semibold mb-3 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                <CheckCircle className="w-4 h-4 mr-2 text-blue-500" />
+                <CheckCircle className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
                 Available Pages
               </h3>
               <ul className="space-y-2" style={{ color: 'var(--text-secondary)' }}>
                 <li>
-                  <Link to="/" className="text-blue-600 hover:text-blue-700 hover:underline flex items-center">
+                  <Link to="/" className="hover:underline flex items-center transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                     <span className="mr-2">•</span> Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blogs" className="text-blue-600 hover:text-blue-700 hover:underline flex items-center">
+                  <Link to="/blogs" className="hover:underline flex items-center transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                     <span className="mr-2">•</span> Blogs
                   </Link>
                 </li>

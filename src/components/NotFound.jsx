@@ -9,8 +9,8 @@ const NotFound = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
           {/* Error Icon */}
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-red-100/10 rounded-full mb-6">
-            <AlertCircle className="w-12 h-12 text-red-600" />
+          <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-6" style={{ background: 'var(--bg-card-hover)' }}>
+            <AlertCircle className="w-12 h-12" style={{ color: 'var(--accent-purple)' }} />
           </div>
 
           {/* Error Code */}
@@ -39,17 +39,17 @@ const NotFound = () => {
                 <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}>Popular Pages:</p>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • Home Page
                     </Link>
                   </li>
                   <li>
-                    <Link to="/blogs" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/blogs" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • All Blogs
                     </Link>
                   </li>
                   <li>
-                    <Link to="/about" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/about" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • About Us
                     </Link>
                   </li>
@@ -59,17 +59,17 @@ const NotFound = () => {
                 <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}>Categories:</p>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/blog/technology" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/blog/technology" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • Technology
                     </Link>
                   </li>
                   <li>
-                    <Link to="/blog/programming" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/blog/programming" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • Programming
                     </Link>
                   </li>
                   <li>
-                    <Link to="/blog/web-development" className="text-blue-600 hover:text-blue-700 hover:underline">
+                    <Link to="/blog/web-development" className="hover:underline transition-colors" style={{ color: 'var(--accent-indigo)' }}>
                       • Web Development
                     </Link>
                   </li>

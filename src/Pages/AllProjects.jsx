@@ -265,14 +265,15 @@ const AllProjects = () => {
       <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4">
-              <Code className="w-4 h-4 mr-2" />
-              <span className="text-sm font-semibold">Professional Portfolio</span>
+            <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
+              <Code className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
+              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Professional Portfolio</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              My <span className="text-blue-400">Projects</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+              My <span className="gradient-text animate-grad-shift">Projects</span>
             </h1>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto">
+            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A showcase of production-grade applications built with modern technologies.
               From mobile apps to enterprise web solutions.
             </p>
@@ -284,26 +285,26 @@ const AllProjects = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-blue)' }}>{projects.length}</div>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-indigo)' }}>{projects.length}</div>
             <div style={{ color: 'var(--text-secondary)' }}>Total Projects</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-green)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-cyan)' }}>
               {projects.filter(p => p.platform === 'Mobile').length}
             </div>
             <div style={{ color: 'var(--text-secondary)' }}>Mobile Apps</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-indigo)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-purple)' }}>
               {projects.filter(p => p.platform === 'Web').length}
             </div>
             <div style={{ color: 'var(--text-secondary)' }}>Web Applications</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-orange)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-green)' }}>
               {projects.filter(p => p.featured).length}
             </div>
             <div style={{ color: 'var(--text-secondary)' }}>Featured Projects</div>
@@ -321,11 +322,11 @@ const AllProjects = () => {
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
                 className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                    : 'hover:shadow-md'
+                  ? 'text-white shadow-lg'
+                  : 'hover:shadow-md'
                   }`}
                 style={{
-                  background: selectedCategory === category.id ? '' : 'var(--bg-card)',
+                  background: selectedCategory === category.id ? 'var(--gradient-hero)' : 'var(--bg-card)',
                   color: selectedCategory === category.id ? 'white' : 'var(--text-secondary)',
                   border: selectedCategory === category.id ? 'none' : '1px solid var(--border-subtle)'
                 }}
@@ -350,7 +351,8 @@ const AllProjects = () => {
               {/* Featured Badge */}
               {project.featured && (
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-flex items-center px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm font-semibold">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
+                    style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }}>
                     <Star className="w-3 h-3 mr-1" />
                     Featured
                   </span>
@@ -359,10 +361,11 @@ const AllProjects = () => {
 
               {/* Status Badge */}
               <div className="absolute top-4 right-4 z-10">
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Live'
-                    ? 'bg-green-100 text-green-600'
-                    : 'bg-blue-100 text-blue-600'
-                  }`}>
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold`}
+                  style={project.status === 'Live'
+                    ? { background: 'var(--bg-card)', border: '1px solid var(--accent-cyan)', color: 'var(--accent-cyan)', backdropFilter: 'blur(8px)' }
+                    : { background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }
+                  }>
                   ● {project.status}
                 </span>
               </div>
@@ -376,11 +379,13 @@ const AllProjects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 bg-white/90 text-gray-800 rounded-full text-xs font-semibold flex items-center">
+                  <span className="px-3 py-1 text-white border border-white/20 rounded-full text-xs font-semibold flex items-center"
+                    style={{ background: 'var(--bg-card)', backdropFilter: 'blur(8px)' }}>
                     {getPlatformIcon(project.platform)}
                     <span className="ml-1">{project.platform}</span>
                   </span>
-                  <span className="px-3 py-1 bg-white/90 text-gray-800 rounded-full text-xs font-semibold flex items-center">
+                  <span className="px-3 py-1 text-white border border-white/20 rounded-full text-xs font-semibold flex items-center"
+                    style={{ background: 'var(--bg-card)', backdropFilter: 'blur(8px)' }}>
                     {getCategoryIcon(project.category)}
                     <span className="ml-1">{project.category}</span>
                   </span>
@@ -388,7 +393,10 @@ const AllProjects = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 line-clamp-1 group-hover:text-blue-600 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
+                <h3 className="text-xl font-bold mb-3 line-clamp-1 transition-colors duration-300"
+                  style={{ color: 'var(--text-primary)' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-indigo)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-primary)'}>
                   {project.name}
                 </h3>
 
@@ -428,7 +436,10 @@ const AllProjects = () => {
                           href={sub.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center text-sm text-blue-600 hover:text-blue-700"
+                          className="flex items-center text-sm font-medium transition-colors duration-300"
+                          style={{ color: 'var(--accent-indigo)' }}
+                          onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-blue)'}
+                          onMouseLeave={e => e.currentTarget.style.color = 'var(--accent-indigo)'}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           {sub.name}
@@ -475,11 +486,11 @@ const AllProjects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center transition-colors"
-                        style={{ color: 'var(--text-secondary)' }}
+                        className="inline-flex items-center transition-all duration-300"
+                        style={{ color: 'var(--text-muted)' }}
                         title="Visit Live Site"
-                        onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-blue)'}
-                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+                        onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-indigo)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -512,7 +523,7 @@ const AllProjects = () => {
                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
-                <div className="text-blue-600 mb-3 flex justify-center">{tech.icon}</div>
+                <div className="mb-3 flex justify-center" style={{ color: 'var(--accent-indigo)' }}>{tech.icon}</div>
                 <div className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{tech.count}</div>
                 <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{tech.name} Projects</div>
               </div>
@@ -522,21 +533,25 @@ const AllProjects = () => {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <div className="rounded-2xl p-12 text-white" style={{ background: 'var(--gradient-hero)' }}>
-            <h2 className="text-3xl font-bold mb-4">Interested in Working Together?</h2>
-            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+          <div className="rounded-2xl p-12 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Interested in Working Together?</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Have a project in mind? Let's discuss how we can build something amazing together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:anisul.official2020@gmail.com"
-                className="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+                className="px-8 py-3 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
+                style={{ background: 'var(--gradient-hero)' }}
               >
                 Contact Me
               </a>
               <a
                 href="/blogs"
-                className="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-colors"
+                className="px-8 py-3 border font-semibold rounded-lg transition-all duration-300"
+                style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
               >
                 View My Blogs
               </a>
