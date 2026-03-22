@@ -49,7 +49,7 @@ const Footer = () => {
   return (
     <footer
       className="relative overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #050508 0%, #030305 100%)' }}
+      style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border-subtle)' }}
     >
       {/* Top gradient border */}
       <div className="absolute top-0 left-0 right-0 h-px"
@@ -69,7 +69,7 @@ const Footer = () => {
             <Link to="/" className="inline-block">
               <img src={logo} alt="AnisulDev" className="h-8 w-auto opacity-85 hover:opacity-100 transition-opacity" />
             </Link>
-            <p className="text-sm leading-relaxed" style={{ color: '#475569' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               Full Stack Software Engineer passionate about crafting digital experiences with modern JavaScript technologies.
             </p>
             <div className="flex gap-2.5">
@@ -81,17 +81,17 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   aria-label={s.label}
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', color: '#475569' }}
+                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                   onMouseEnter={e => {
                     e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
                     e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)';
-                    e.currentTarget.style.color = '#a5b4fc';
+                    e.currentTarget.style.color = 'var(--accent-indigo)';
                     e.currentTarget.style.transform = 'translateY(-2px)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
-                    e.currentTarget.style.color = '#475569';
+                    e.currentTarget.style.background = 'var(--bg-card)';
+                    e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                    e.currentTarget.style.color = 'var(--text-secondary)';
                     e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
@@ -103,8 +103,8 @@ const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#6366f1' }} />
+            <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-indigo)' }} />
               Navigation
             </h3>
             <ul className="space-y-2.5">
@@ -113,9 +113,9 @@ const Footer = () => {
                   <Link
                     to={link.to}
                     className="text-sm transition-all duration-200 flex items-center gap-1.5 group"
-                    style={{ color: '#475569' }}
-                    onMouseEnter={e => { e.currentTarget.style.color = '#a5b4fc'; e.currentTarget.style.paddingLeft = '4px'; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = '#475569'; e.currentTarget.style.paddingLeft = '0px'; }}
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-indigo)'; e.currentTarget.style.paddingLeft = '4px'; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.paddingLeft = '0px'; }}
                   >
                     {link.name}
                   </Link>
@@ -126,17 +126,17 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#22d3ee' }} />
+            <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-cyan)' }} />
               Services
             </h3>
             <ul className="space-y-2.5">
               {services.map((svc, i) => (
                 <li key={i}>
                   <div className="flex items-center gap-2 text-sm transition-colors duration-200 cursor-default"
-                    style={{ color: '#475569' }}
-                    onMouseEnter={e => { e.currentTarget.style.color = '#94a3b8'; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = '#475569'; }}
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-secondary)'; }}
                   >
                     <span className="text-sm">{svc.emoji}</span>
                     {svc.name}
@@ -149,8 +149,8 @@ const Footer = () => {
           {/* Contact + Newsletter */}
           <div className="space-y-5">
             <div>
-              <h3 className="text-sm font-semibold mb-4 flex items-center gap-2" style={{ color: '#e2e8f0' }}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#10b981' }} />
+              <h3 className="text-sm font-semibold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-green)' }} />
                 Contact
               </h3>
               <div className="space-y-2.5">
@@ -158,11 +158,11 @@ const Footer = () => {
                   <a
                     key={i} href={c.href}
                     className="flex items-center gap-2.5 text-sm transition-colors duration-200"
-                    style={{ color: '#475569' }}
-                    onMouseEnter={e => { e.currentTarget.style.color = '#94a3b8'; }}
-                    onMouseLeave={e => { e.currentTarget.style.color = '#475569'; }}
+                    style={{ color: 'var(--text-secondary)' }}
+                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--text-primary)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-secondary)'; }}
                   >
-                    <span style={{ color: '#334155' }}>{c.icon}</span>
+                    <span style={{ color: 'var(--text-muted)' }}>{c.icon}</span>
                     {c.text}
                   </a>
                 ))}
@@ -171,14 +171,14 @@ const Footer = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="text-xs font-semibold mb-2" style={{ color: '#94a3b8' }}>Newsletter</h4>
-              <p className="text-xs mb-3" style={{ color: '#334155' }}>Subscribe for tech insights</p>
+              <h4 className="text-xs font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Newsletter</h4>
+              <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>Subscribe for tech insights</p>
               <form className="flex gap-0" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="email"
                   placeholder="your@email.com"
                   className="input-dark rounded-r-none text-xs flex-1"
-                  style={{ borderRadius: '8px 0 0 8px' }}
+                  style={{ borderRadius: '8px 0 0 8px', borderColor: 'var(--border-subtle)', background: 'var(--bg-card)' }}
                 />
                 <button
                   type="submit"
@@ -193,23 +193,23 @@ const Footer = () => {
         </div>
 
         {/* ── Tech Tags ── */}
-        <div className="py-8" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <p className="text-xs text-center mb-4" style={{ color: '#334155' }}>Technologies I work with</p>
+        <div className="py-8" style={{ borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
+          <p className="text-xs text-center mb-4" style={{ color: 'var(--text-muted)' }}>Technologies I work with</p>
           <div className="flex flex-wrap justify-center gap-2">
             {technologies.map((t, i) => (
               <span
                 key={i}
                 className="px-3 py-1 rounded-full text-xs transition-all duration-200 cursor-default"
-                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: '#475569' }}
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                 onMouseEnter={e => {
                   e.currentTarget.style.background = 'rgba(99,102,241,0.08)';
                   e.currentTarget.style.borderColor = 'rgba(99,102,241,0.2)';
-                  e.currentTarget.style.color = '#818cf8';
+                  e.currentTarget.style.color = 'var(--accent-indigo)';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
-                  e.currentTarget.style.color = '#475569';
+                  e.currentTarget.style.background = 'var(--bg-card)';
+                  e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
                 }}
               >
                 {t}
@@ -220,10 +220,10 @@ const Footer = () => {
 
         {/* ── CTA strip ── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-8"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          style={{ borderBottom: '1px solid var(--border-subtle)' }}>
           <div>
-            <h4 className="text-base font-semibold" style={{ color: '#e2e8f0' }}>Ready to work together?</h4>
-            <p className="text-sm mt-0.5" style={{ color: '#475569' }}>Let's build something amazing</p>
+            <h4 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>Ready to work together?</h4>
+            <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>Let's build something amazing</p>
           </div>
           <Link
             to="/contact"
@@ -239,27 +239,27 @@ const Footer = () => {
 
         {/* ── Bottom bar ── */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
-          <div className="flex items-center gap-1.5 text-xs" style={{ color: '#334155' }}>
+          <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-muted)' }}>
             <Code size={13} />
             Built with React, Vite &amp; Tailwind CSS
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs" style={{ color: '#334155' }}>
+          <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-muted)' }}>
             Made with
             <Heart size={12} className="animate-pulse" style={{ color: '#ec4899', marginLeft: '3px', marginRight: '3px' }} />
             by Anisul Islam
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-xs" style={{ color: '#334155' }}>
+            <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
               © {currentYear} Anisul Islam. All rights reserved.
             </span>
             <button
               onClick={scrollToTop}
               className="flex items-center gap-1.5 text-xs transition-all duration-200"
-              style={{ color: '#334155' }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#a5b4fc'; }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#334155'; }}
+              style={{ color: 'var(--text-muted)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-indigo)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
             >
               <ArrowUp size={13} className="hover:-translate-y-0.5 transition-transform" />
               Top

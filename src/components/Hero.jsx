@@ -94,14 +94,14 @@ const Hero = () => {
             {/* Heading */}
             <div className="animate-fade-up delay-100" style={{ animationFillMode: 'both' }}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight" itemProp="name">
-                <span style={{ color: '#f1f5f9' }}>Hi, I'm</span>{' '}
+                <span style={{ color: 'var(--text-primary)' }}>Hi, I'm</span>{' '}
                 <span className="gradient-text animate-grad-shift">
                   Anisul Islam
                 </span>
               </h1>
               <h2
                 className="mt-3 text-lg sm:text-xl lg:text-2xl font-medium"
-                style={{ color: '#94a3b8' }}
+                style={{ color: 'var(--text-secondary)' }}
                 itemProp="jobTitle"
               >
                 JavaScript Lover &amp; Full Stack Software Engineer
@@ -111,7 +111,7 @@ const Hero = () => {
             {/* Description */}
             <p
               className="animate-fade-up delay-200 text-base sm:text-lg leading-relaxed max-w-xl"
-              style={{ color: '#64748b', animationFillMode: 'both' }}
+              style={{ color: 'var(--text-secondary)', animationFillMode: 'both' }}
               itemProp="description"
             >
               I craft beautiful, performant web &amp; mobile applications using modern
@@ -142,7 +142,7 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="animate-fade-up delay-500 flex items-center gap-4 pt-2" style={{ animationFillMode: 'both' }}>
-              <span className="text-sm" style={{ color: '#475569' }}>Connect:</span>
+              <span className="text-sm" style={{ color: 'var(--text-muted)' }}>Connect:</span>
               <div className="flex gap-3" itemProp="sameAs">
                 {[
                   { href: 'https://github.com/anisulislam10', icon: <Github size={17} />, label: 'GitHub' },
@@ -156,17 +156,17 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     aria-label={s.label}
                     className="flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-300"
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b' }}
+                    style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                     onMouseEnter={e => {
                       e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
                       e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
-                      e.currentTarget.style.color = '#a5b4fc';
+                      e.currentTarget.style.color = 'var(--accent-indigo)';
                       e.currentTarget.style.transform = 'translateY(-2px)';
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                      e.currentTarget.style.color = '#64748b';
+                      e.currentTarget.style.background = 'var(--bg-card)';
+                      e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                      e.currentTarget.style.color = 'var(--text-secondary)';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
@@ -184,9 +184,9 @@ const Hero = () => {
             <div
               className="rounded-2xl overflow-hidden"
               style={{
-                background: 'rgba(13,13,20,0.8)',
-                border: '1px solid rgba(255,255,255,0.09)',
-                boxShadow: '0 20px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(99,102,241,0.1)',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-subtle)',
+                boxShadow: 'var(--shadow-card)',
                 backdropFilter: 'blur(16px)',
               }}
             >
@@ -207,7 +207,7 @@ const Hero = () => {
               <div className="p-5 code-block" style={{ minHeight: '280px' }}>
                 {codeLines.slice(0, typedLine).map((line, li) => (
                   <div key={li} className="flex items-start leading-7">
-                    <span className="select-none mr-4 text-xs w-4 text-right flex-shrink-0" style={{ color: '#334155', lineHeight: '1.75rem' }}>
+                    <span className="select-none mr-4 text-xs w-4 text-right flex-shrink-0" style={{ color: 'var(--text-muted)', lineHeight: '1.75rem' }}>
                       {li + 1}
                     </span>
                     <span>
@@ -222,7 +222,7 @@ const Hero = () => {
                 ))}
                 {typedLine >= codeLines.length && (
                   <div className="flex items-center mt-1">
-                    <span className="select-none mr-4 text-xs w-4 text-right" style={{ color: '#334155' }}>{codeLines.length + 1}</span>
+                    <span className="select-none mr-4 text-xs w-4 text-right" style={{ color: 'var(--text-muted)' }}>{codeLines.length + 1}</span>
                     <span style={{ color: '#6366f1', opacity: showCursor ? 1 : 0 }}>▋</span>
                   </div>
                 )}
@@ -243,7 +243,7 @@ const Hero = () => {
                   >
                     {s.value}
                   </div>
-                  <div className="text-xs mt-1" style={{ color: '#475569' }}>{s.label}</div>
+                  <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -266,8 +266,8 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex-1 min-w-0">
-                <div className="font-bold text-sm" style={{ color: '#e2e8f0' }}>Anisul Islam</div>
-                <div className="text-xs mt-0.5" style={{ color: '#64748b' }}>Full Stack Software Engineer</div>
+                <div className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>Anisul Islam</div>
+                <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>Full Stack Software Engineer</div>
                 <div className="flex items-center gap-1.5 mt-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="text-xs" style={{ color: '#34d399' }}>Open to work</span>

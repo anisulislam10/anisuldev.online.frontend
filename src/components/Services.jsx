@@ -70,7 +70,7 @@ const Services = () => {
 
   return (
     <section id="services" className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #050508 0%, #080810 50%, #050508 100%)' }}>
+      style={{ background: 'var(--bg-primary)' }}>
 
       {/* Background grid */}
       <div className="absolute inset-0 bg-dot opacity-30" />
@@ -91,7 +91,7 @@ const Services = () => {
             What I{' '}
             <span className="gradient-text animate-grad-shift">Build</span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+          <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             Full-stack solutions tailored to your needs — from sleek mobile apps to complex web platforms and scalable backends.
           </p>
         </div>
@@ -103,8 +103,8 @@ const Services = () => {
               key={i}
               className="group relative rounded-2xl p-6 flex flex-col overflow-hidden transition-all duration-500"
               style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.07)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
                 boxShadow: '0 0 0 0 transparent',
               }}
               onMouseEnter={e => {
@@ -113,7 +113,7 @@ const Services = () => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
+                e.currentTarget.style.border = '1px solid var(--border-subtle)';
                 e.currentTarget.style.boxShadow = '0 0 0 0 transparent';
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
@@ -130,12 +130,12 @@ const Services = () => {
                 {svc.icon}
               </div>
 
-              <h3 className="text-lg font-bold mb-2" style={{ color: '#e2e8f0' }}>{svc.title}</h3>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: '#64748b' }}>{svc.description}</p>
+              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{svc.title}</h3>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>{svc.description}</p>
 
               <ul className="space-y-2.5 mb-6 flex-1">
                 {svc.features.map((f, fi) => (
-                  <li key={fi} className="flex items-center gap-2.5 text-sm" style={{ color: '#94a3b8' }}>
+                  <li key={fi} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
                     <CheckCircle size={14} className="flex-shrink-0" style={{ color: '#10b981' }} />
                     {f}
                   </li>
@@ -145,7 +145,7 @@ const Services = () => {
               <Link
                 to={svc.link}
                 className="flex items-center gap-1.5 text-sm font-semibold group/link"
-                style={{ color: '#a5b4fc' }}
+                style={{ color: 'var(--accent-indigo)' }}
               >
                 Learn more
                 <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform duration-200" />
@@ -157,16 +157,16 @@ const Services = () => {
         {/* ── Tech Stack Scroll ── */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-bold" style={{ color: '#e2e8f0' }}>Tech Stack</h3>
-            <div className="flex gap-1 p-1 rounded-lg" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+            <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Tech Stack</h3>
+            <div className="flex gap-1 p-1 rounded-lg" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
               {(['left', 'right']).map((dir) => (
                 <button
                   key={dir}
                   onClick={() => setDirection(dir)}
                   className="p-1.5 rounded-md transition-all duration-200"
                   style={{
-                    background: direction === dir ? 'rgba(99,102,241,0.8)' : 'transparent',
-                    color: direction === dir ? '#fff' : '#64748b',
+                    background: direction === dir ? 'var(--accent-indigo)' : 'transparent',
+                    color: direction === dir ? '#fff' : 'var(--text-muted)',
                   }}
                   aria-label={`Scroll ${dir}`}
                 >
@@ -183,23 +183,23 @@ const Services = () => {
           >
             {/* Fade masks */}
             <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(90deg, #050508, transparent)' }} />
+              style={{ background: 'linear-gradient(90deg, var(--bg-primary), transparent)' }} />
             <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-              style={{ background: 'linear-gradient(-90deg, #050508, transparent)' }} />
+              style={{ background: 'linear-gradient(-90deg, var(--bg-primary), transparent)' }} />
 
             <div className={`flex gap-3 ${direction === 'right' ? 'animate-scroll-right' : 'animate-scroll-left'} ${isPaused ? 'animation-paused' : ''}`}>
               {duplicated.map((tech, i) => (
                 <div
                   key={`${tech.name}-${i}`}
                   className="flex-shrink-0 flex flex-col items-center gap-2 px-5 py-4 rounded-xl w-32 transition-all duration-200"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
                 >
-                  <div style={{ color: '#64748b' }}>
+                  <div style={{ color: 'var(--text-muted)' }}>
                     {typeof tech.icon === 'string'
                       ? <span className="text-lg">{tech.icon}</span>
                       : React.cloneElement(tech.icon, { size: 18 })}
                   </div>
-                  <span className="text-xs font-semibold text-center leading-tight" style={{ color: '#94a3b8' }}>
+                  <span className="text-xs font-semibold text-center leading-tight" style={{ color: 'var(--text-secondary)' }}>
                     {tech.name}
                   </span>
                   <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: 'rgba(99,102,241,0.1)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)' }}>
@@ -214,14 +214,14 @@ const Services = () => {
         {/* ── Process Steps ── */}
         <div
           className="rounded-2xl p-8 lg:p-12 mb-12"
-          style={{ background: 'rgba(99,102,241,0.04)', border: '1px solid rgba(99,102,241,0.12)' }}
+          style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
         >
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold">
               Development{' '}
               <span className="gradient-text">Process</span>
             </h3>
-            <p className="mt-2 text-sm" style={{ color: '#64748b' }}>
+            <p className="mt-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
               A structured approach to deliver high-quality software
             </p>
           </div>
@@ -231,13 +231,13 @@ const Services = () => {
               <div
                 key={i}
                 className="relative p-5 rounded-xl transition-all duration-300 group"
-                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.35)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <div className="text-4xl font-black mb-3 gradient-text opacity-60">{step.step}</div>
-                <h4 className="text-base font-bold mb-1.5" style={{ color: '#e2e8f0' }}>{step.title}</h4>
-                <p className="text-xs leading-relaxed" style={{ color: '#64748b' }}>{step.desc}</p>
+                <h4 className="text-base font-bold mb-1.5" style={{ color: 'var(--text-primary)' }}>{step.title}</h4>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{step.desc}</p>
 
                 {/* Connector */}
                 {i < 3 && (
@@ -258,10 +258,10 @@ const Services = () => {
           }}
         >
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold" style={{ color: '#e2e8f0' }}>
+            <h3 className="text-xl sm:text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
               Ready to Start Your Project?
             </h3>
-            <p className="mt-1 text-sm" style={{ color: '#64748b' }}>
+            <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>
               Let's discuss how I can bring your ideas to life
             </p>
           </div>

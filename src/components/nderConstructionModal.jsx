@@ -1,43 +1,51 @@
 // components/UnderConstructionModal.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Construction } from 'lucide-react';
+import { Construction, CheckCircle } from 'lucide-react';
 
 const UnderConstructionModal = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-16">
+    <div className="min-h-screen pt-16 transition-colors duration-300" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-yellow-100 rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-yellow-100/10 rounded-full mb-6">
             <Construction className="w-12 h-12 text-yellow-600" />
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
             Page Under Construction
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             This page is currently being developed. Please check back soon for updates!
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl mx-auto mb-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">What's Coming</h3>
-              <ul className="text-gray-600 space-y-2">
+            <div className="p-6 rounded-xl border text-left transition-all duration-300"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+              <h3 className="font-semibold mb-3 flex items-center" style={{ color: 'var(--text-primary)' }}>
+                <CheckCircle className="w-4 h-4 mr-2 text-yellow-500" />
+                What's Coming
+              </h3>
+              <ul className="space-y-2" style={{ color: 'var(--text-secondary)' }}>
                 <li>• Detailed information</li>
                 <li>• Interactive features</li>
                 <li>• Enhanced user experience</li>
               </ul>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-2">Available Pages</h3>
-              <ul className="text-gray-600 space-y-2">
+            <div className="p-6 rounded-xl border text-left transition-all duration-300"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+              <h3 className="font-semibold mb-3 flex items-center" style={{ color: 'var(--text-primary)' }}>
+                <CheckCircle className="w-4 h-4 mr-2 text-blue-500" />
+                Available Pages
+              </h3>
+              <ul className="space-y-2" style={{ color: 'var(--text-secondary)' }}>
                 <li>
-                  <Link to="/" className="text-blue-600 hover:text-blue-700">
-                    • Home
+                  <Link to="/" className="text-blue-600 hover:text-blue-700 hover:underline flex items-center">
+                    <span className="mr-2">•</span> Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blogs" className="text-blue-600 hover:text-blue-700">
-                    • Blogs
+                  <Link to="/blogs" className="text-blue-600 hover:text-blue-700 hover:underline flex items-center">
+                    <span className="mr-2">•</span> Blogs
                   </Link>
                 </li>
               </ul>
@@ -53,7 +61,10 @@ const UnderConstructionModal = () => {
             </Link>
             <Link
               to="/blogs"
-              className="px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
+              className="px-6 py-3 border rounded-lg font-semibold transition-all duration-300"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-blue)'; e.currentTarget.style.color = 'var(--accent-blue)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
             >
               Browse Blogs
             </Link>

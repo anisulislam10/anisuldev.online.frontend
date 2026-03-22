@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
-  ExternalLink, 
-  Github, 
-  Smartphone, 
-  Server, 
-  Globe, 
+import {
+  ExternalLink,
+  Github,
+  Smartphone,
+  Server,
+  Globe,
   Package,
   ShoppingCart,
   Shield,
@@ -22,12 +22,12 @@ import {
 import SEOHead from '../components/SEOHead';
 
 const AllProjects = () => {
-     // SEO Metadata
+  // SEO Metadata
   const seoTitle = ' Projects Portfolio | Full Stack Developer';
   const seoDescription = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
   const seoKeywords = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
   const seoImage = '/blogs-og-image.jpg';
-    
+
   const projects = [
     {
       id: 1,
@@ -252,17 +252,17 @@ const AllProjects = () => {
 
   return (
 
-    
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
 
-        <SEOHead
-                title={seoTitle}
-                description={seoDescription}
-                keywords={seoKeywords}
-                ogImage={seoImage}
-              />
+    <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
+
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        keywords={seoKeywords}
+        ogImage={seoImage}
+      />
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white">
+      <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4">
@@ -280,30 +280,33 @@ const AllProjects = () => {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow-lg border text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">{projects.length}</div>
-            <div className="text-gray-600">Total Projects</div>
+          <div className="p-6 rounded-2xl border text-center transition-all duration-300"
+            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-blue)' }}>{projects.length}</div>
+            <div style={{ color: 'var(--text-secondary)' }}>Total Projects</div>
           </div>
-          <div className="bg-white p-6 rounded-2xl shadow-lg border text-center">
-            <div className="text-3xl font-bold text-green-600 mb-2">
+          <div className="p-6 rounded-2xl border text-center transition-all duration-300"
+            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-green)' }}>
               {projects.filter(p => p.platform === 'Mobile').length}
             </div>
-            <div className="text-gray-600">Mobile Apps</div>
+            <div style={{ color: 'var(--text-secondary)' }}>Mobile Apps</div>
           </div>
-          <div className="bg-white p-6 rounded-2xl shadow-lg border text-center">
-            <div className="text-3xl font-bold text-purple-600 mb-2">
+          <div className="p-6 rounded-2xl border text-center transition-all duration-300"
+            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-indigo)' }}>
               {projects.filter(p => p.platform === 'Web').length}
             </div>
-            <div className="text-gray-600">Web Applications</div>
+            <div style={{ color: 'var(--text-secondary)' }}>Web Applications</div>
           </div>
-          <div className="bg-white p-6 rounded-2xl shadow-lg border text-center">
-            <div className="text-3xl font-bold text-orange-600 mb-2">
+          <div className="p-6 rounded-2xl border text-center transition-all duration-300"
+            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+            <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-orange)' }}>
               {projects.filter(p => p.featured).length}
             </div>
-            <div className="text-gray-600">Featured Projects</div>
+            <div style={{ color: 'var(--text-secondary)' }}>Featured Projects</div>
           </div>
         </div>
       </div>
@@ -311,17 +314,21 @@ const AllProjects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Categories Filter */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Filter by Category</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>Filter by Category</h2>
           <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  selectedCategory === category.id
+                className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id
                     ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
-                }`}
+                    : 'hover:shadow-md'
+                  }`}
+                style={{
+                  background: selectedCategory === category.id ? '' : 'var(--bg-card)',
+                  color: selectedCategory === category.id ? 'white' : 'var(--text-secondary)',
+                  border: selectedCategory === category.id ? 'none' : '1px solid var(--border-subtle)'
+                }}
               >
                 <span className="mr-2">{category.icon}</span>
                 {category.name}
@@ -335,7 +342,10 @@ const AllProjects = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200"
+              className="group rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 border"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}
             >
               {/* Featured Badge */}
               {project.featured && (
@@ -349,11 +359,10 @@ const AllProjects = () => {
 
               {/* Status Badge */}
               <div className="absolute top-4 right-4 z-10">
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
-                  project.status === 'Live' 
-                    ? 'bg-green-100 text-green-600' 
+                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Live'
+                    ? 'bg-green-100 text-green-600'
                     : 'bg-blue-100 text-blue-600'
-                }`}>
+                  }`}>
                   ● {project.status}
                 </span>
               </div>
@@ -378,41 +387,40 @@ const AllProjects = () => {
                 </div>
               </div>
 
-              {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-1 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 line-clamp-1 group-hover:text-blue-600 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                   {project.name}
                 </h3>
 
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="mb-4 line-clamp-3" style={{ color: 'var(--text-secondary)' }}>
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Tech Stack</h4>
+                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Tech Stack</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.slice(0, 4).map((tech, index) => (
-                      <span 
-                        key={index} 
-                        className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                      <span
+                        key={index}
+                        className="inline-flex items-center px-3 py-1 text-xs rounded-full border"
+                        style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' }}
                       >
                         {getTechStackIcon(tech)}
                         <span className="ml-1">{tech}</span>
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs rounded-full">
+                      <span className="px-3 py-1 text-xs rounded-full border"
+                        style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}>
                         +{project.techStack.length - 4} more
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Sub Projects (for Al Waqas Business Suite) */}
                 {project.subProjects && (
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Components</h4>
+                    <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Components</h4>
                     <div className="space-y-2">
                       {project.subProjects.map((sub, idx) => (
                         <a
@@ -431,7 +439,7 @@ const AllProjects = () => {
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex items-center justify-between border-t pt-4">
+                <div className="flex items-center justify-between border-t pt-4" style={{ borderColor: 'var(--border-subtle)' }}>
                   <div className="flex items-center space-x-4">
                     {/* Play Store Link */}
                     {project.playStoreUrl && (
@@ -467,8 +475,11 @@ const AllProjects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-gray-700 hover:text-blue-600 transition-colors"
+                        className="inline-flex items-center transition-colors"
+                        style={{ color: 'var(--text-secondary)' }}
                         title="Visit Live Site"
+                        onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-blue)'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
                       >
                         <ExternalLink className="w-5 h-5" />
                       </a>
@@ -486,8 +497,8 @@ const AllProjects = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Technology Stack Summary</h2>
+        <div className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }}>
+          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>Technology Stack Summary</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
               { name: 'React Native', count: 3, icon: <Smartphone className="w-8 h-8" /> },
@@ -497,10 +508,13 @@ const AllProjects = () => {
               { name: 'MongoDB', count: 5, icon: <Database className="w-8 h-8" /> },
               { name: 'Next.js', count: 1, icon: <Zap className="w-8 h-8" /> },
             ].map((tech, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl text-center hover:shadow-md transition-shadow">
+              <div key={index} className="p-6 rounded-xl text-center border transition-all duration-300"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                 <div className="text-blue-600 mb-3 flex justify-center">{tech.icon}</div>
-                <div className="text-xl font-bold text-gray-900 mb-1">{tech.count}</div>
-                <div className="text-sm text-gray-600">{tech.name} Projects</div>
+                <div className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{tech.count}</div>
+                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{tech.name} Projects</div>
               </div>
             ))}
           </div>
@@ -508,7 +522,7 @@ const AllProjects = () => {
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-gray-900 to-blue-900 rounded-2xl p-12 text-white">
+          <div className="rounded-2xl p-12 text-white" style={{ background: 'var(--gradient-hero)' }}>
             <h2 className="text-3xl font-bold mb-4">Interested in Working Together?</h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
               Have a project in mind? Let's discuss how we can build something amazing together.

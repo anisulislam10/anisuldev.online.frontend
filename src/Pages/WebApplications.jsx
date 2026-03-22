@@ -46,7 +46,7 @@ const WebApplicationsPage = () => {
   React.useEffect(() => {
     // Update document title
     document.title = "Modern Web Application Development | React.js & Next.js Solutions";
-    
+
     // Create and update meta tags
     const metaDescription = document.querySelector('meta[name="description"]') || document.createElement('meta');
     metaDescription.name = "description";
@@ -54,7 +54,7 @@ const WebApplicationsPage = () => {
     if (!document.querySelector('meta[name="description"]')) {
       document.head.appendChild(metaDescription);
     }
-    
+
     // Keywords meta tag
     const metaKeywords = document.querySelector('meta[name="keywords"]') || document.createElement('meta');
     metaKeywords.name = "keywords";
@@ -62,7 +62,7 @@ const WebApplicationsPage = () => {
     if (!document.querySelector('meta[name="keywords"]')) {
       document.head.appendChild(metaKeywords);
     }
-    
+
     // Open Graph meta tags
     const ogTitle = document.querySelector('meta[property="og:title"]') || document.createElement('meta');
     ogTitle.setAttribute('property', 'og:title');
@@ -70,21 +70,21 @@ const WebApplicationsPage = () => {
     if (!document.querySelector('meta[property="og:title"]')) {
       document.head.appendChild(ogTitle);
     }
-    
+
     const ogDescription = document.querySelector('meta[property="og:description"]') || document.createElement('meta');
     ogDescription.setAttribute('property', 'og:description');
     ogDescription.content = "Professional web application development with React.js & Next.js. Build high-performance, SEO-friendly web apps.";
     if (!document.querySelector('meta[property="og:description"]')) {
       document.head.appendChild(ogDescription);
     }
-    
+
     const ogType = document.querySelector('meta[property="og:type"]') || document.createElement('meta');
     ogType.setAttribute('property', 'og:type');
     ogType.content = "website";
     if (!document.querySelector('meta[property="og:type"]')) {
       document.head.appendChild(ogType);
     }
-    
+
     // Cleanup function
     return () => {
       // Reset to default title if needed
@@ -391,7 +391,7 @@ const WebApplicationsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
       {/* Structured Data for SEO */}
       <script type="application/ld+json">
         {JSON.stringify({
@@ -414,7 +414,7 @@ const WebApplicationsPage = () => {
       </script>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900 text-white pt-20 pb-16 md:pt-24 md:pb-20">
+      <section className="relative overflow-hidden text-white pt-20 pb-16 md:pt-24 md:pb-20" style={{ background: 'var(--gradient-hero)' }}>
         <div className="absolute inset-0 bg-grid-white/10 bg-grid-16"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center mb-6">
@@ -426,24 +426,24 @@ const WebApplicationsPage = () => {
               Back to Services
             </Link>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 text-sm font-medium mb-4">
                 <Globe className="w-4 h-4 mr-2" />
                 Web Development
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Modern <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300">Web Applications</span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-purple-100 mb-8 leading-relaxed">
-                Build high-performance web applications with React.js & Next.js. 
-                Experience optimal performance, SEO optimization, and seamless user experiences 
+                Build high-performance web applications with React.js & Next.js.
+                Experience optimal performance, SEO optimization, and seamless user experiences
                 across all devices.
               </p>
-              
+
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
@@ -460,7 +460,7 @@ const WebApplicationsPage = () => {
                 </a>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="relative z-10">
                 <div className="bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl">
@@ -470,7 +470,7 @@ const WebApplicationsPage = () => {
                       <Globe className="w-20 h-20 relative z-10" />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
@@ -479,7 +479,7 @@ const WebApplicationsPage = () => {
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 rounded-full bg-blue-500"></div>
@@ -487,7 +487,7 @@ const WebApplicationsPage = () => {
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 rounded-full bg-purple-500"></div>
@@ -495,7 +495,7 @@ const WebApplicationsPage = () => {
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -503,7 +503,7 @@ const WebApplicationsPage = () => {
                       </div>
                       <CheckCircle className="w-5 h-5 text-green-400" />
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -514,7 +514,7 @@ const WebApplicationsPage = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating elements */}
               <div className="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-20 animate-pulse"></div>
               <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full opacity-20 animate-pulse delay-1000"></div>
@@ -524,7 +524,7 @@ const WebApplicationsPage = () => {
       </section>
 
       {/* Performance Metrics */}
-      <section className="py-8 md:py-12 bg-white">
+      <section className="py-8 md:py-12 border-y transition-all duration-300" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {performanceMetrics.map((item, index) => (
@@ -534,8 +534,8 @@ const WebApplicationsPage = () => {
                     {item.icon}
                   </div>
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-gray-900">{item.target}</div>
-                <div className="text-sm text-gray-600">{item.metric}</div>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>{item.target}</div>
+                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.metric}</div>
               </div>
             ))}
           </div>
@@ -546,30 +546,33 @@ const WebApplicationsPage = () => {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Web Application <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Features</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Comprehensive web development services leveraging modern technologies for optimal results
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {keyFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-6 md:p-8 border border-gray-200 hover:border-purple-300 hover:shadow-xl transition-all duration-300"
+                className="group rounded-2xl p-6 md:p-8 border transition-all duration-300"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.borderColor = 'var(--accent-purple)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
               >
                 <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
-                
+
+                <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>{feature.title}</h3>
+                <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>{feature.description}</p>
+
                 <ul className="space-y-2">
                   {feature.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-700">
+                    <li key={idx} className="flex items-center text-sm" style={{ color: 'var(--text-secondary)' }}>
                       <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mr-3"></div>
                       {benefit}
                     </li>
@@ -581,18 +584,17 @@ const WebApplicationsPage = () => {
         </div>
       </section>
 
-      {/* Development Process */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 md:py-20" style={{ background: 'var(--bg-primary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Development <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Process</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               A structured, transparent process to ensure your web application's success from concept to launch
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {developmentPhases.map((phase, index) => (
               <div
@@ -603,22 +605,23 @@ const WebApplicationsPage = () => {
                 <div className={`absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br ${phase.color} text-white font-bold flex items-center justify-center text-lg z-10`}>
                   {phase.phase}
                 </div>
-                
+
                 {/* Content Card */}
-                <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-300 h-full pt-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{phase.title}</h3>
-                  <p className="text-gray-600 mb-4">{phase.description}</p>
-                  
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                <div className="rounded-2xl p-6 md:p-8 border transition-all duration-300 h-full pt-8"
+                  style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>{phase.title}</h3>
+                  <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>{phase.description}</p>
+
+                  <div className="flex items-center text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
                     <Clock className="w-4 h-4 mr-2" />
                     Duration: {phase.duration}
                   </div>
-                  
+
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-3">Deliverables:</h4>
+                    <h4 className="font-semibold mb-3" style={{ color: 'var(--text-primary)' }}>Deliverables:</h4>
                     <ul className="space-y-2">
                       {phase.deliverables.map((item, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-gray-700">
+                        <li key={idx} className="flex items-start text-sm" style={{ color: 'var(--text-secondary)' }}>
                           <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
@@ -626,7 +629,7 @@ const WebApplicationsPage = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 {/* Connection Line */}
                 {index < developmentPhases.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 right-0 w-4 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 transform translate-x-2 -translate-y-1/2 group-hover:w-8 transition-all duration-300"></div>
@@ -641,26 +644,29 @@ const WebApplicationsPage = () => {
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Types of <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">Applications</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Custom web applications tailored to various business needs and industries
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {appTypes.map((app, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-xl transition-all duration-300 group"
+                className="rounded-2xl p-6 border transition-all duration-300 group"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.borderColor = 'var(--accent-blue)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
               >
                 <div className="text-3xl mb-4">{app.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{app.type}</h3>
-                
+                <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>{app.type}</h3>
+
                 <ul className="space-y-2">
                   {app.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-700">
+                    <li key={idx} className="flex items-center text-sm" style={{ color: 'var(--text-secondary)' }}>
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3 group-hover:scale-125 transition-transform"></div>
                       {feature}
                     </li>
@@ -676,37 +682,39 @@ const WebApplicationsPage = () => {
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">Stack</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Modern tools and technologies for building robust, scalable web applications
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {technicalStack.map((stack, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-shadow"
+                className="rounded-2xl p-6 border transition-shadow"
+                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-6 pb-3 border-b border-gray-200">
+                <h3 className="text-lg font-bold mb-6 pb-3 border-b" style={{ color: 'var(--text-primary)', borderColor: 'var(--border-subtle)' }}>
                   {stack.category}
                 </h3>
-                
+
                 <div className="space-y-4">
                   {stack.items.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-purple-50 transition-colors"
+                      className="flex items-center justify-between p-3 rounded-lg transition-colors"
+                      style={{ background: 'var(--bg-card-hover)' }}
                     >
                       <div>
-                        <div className="font-semibold text-gray-900">{item.name}</div>
+                        <div className="font-semibold" style={{ color: 'var(--text-primary)' }}>{item.name}</div>
                         {item.version && (
-                          <div className="text-sm text-gray-500">v{item.version}</div>
+                          <div className="text-sm" style={{ color: 'var(--text-muted)' }}>v{item.version}</div>
                         )}
                         {item.description && (
-                          <div className="text-sm text-gray-600 mt-1">{item.description}</div>
+                          <div className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>{item.description}</div>
                         )}
                       </div>
                       <div className="w-2 h-2 rounded-full bg-green-500"></div>
@@ -723,59 +731,58 @@ const WebApplicationsPage = () => {
       <section id="packages" className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
               Development <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Packages</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Choose the package that best fits your project requirements and budget
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {packages.map((pkg, index) => (
               <div
                 key={index}
-                className={`relative rounded-3xl overflow-hidden ${
-                  pkg.popular ? 'transform md:scale-105 md:-translate-y-4 shadow-2xl' : 'shadow-xl'
-                }`}
+                className={`relative rounded-3xl overflow-hidden transition-all duration-300 ${pkg.popular ? 'transform md:scale-105 md:-translate-y-4 shadow-2xl' : 'shadow-xl'
+                  }`}
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
               >
                 {pkg.popular && (
                   <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-center py-2 font-bold">
                     MOST POPULAR
                   </div>
                 )}
-                
-                <div className="bg-white p-6 md:p-8 pt-10">
+
+                <div className="p-6 md:p-8 pt-10">
                   <div className="text-center mb-6">
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br ${pkg.color} text-white mb-4`}>
                       <Award className="w-8 h-8" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                    <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{pkg.name}</h3>
                     <div className="text-3xl font-bold bg-gradient-to-r bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 mb-1">
                       {pkg.price}
                     </div>
-                    <div className="text-gray-600 flex items-center justify-center">
+                    <div className="flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>
                       <Clock className="w-4 h-4 mr-2" />
                       Timeline: {pkg.timeline}
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4 mb-8">
                     {pkg.features.map((feature, idx) => (
                       <div key={idx} className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{feature}</span>
+                        <span style={{ color: 'var(--text-secondary)' }}>{feature}</span>
                       </div>
                     ))}
                   </div>
-                  
+
                   <Link
                     to="/contact"
-                    className={`block text-center py-3 px-6 rounded-full font-semibold transition-all ${
-                      pkg.popular
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
-                        : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
-                    }`}
+                    className={`block text-center py-3 px-6 rounded-full font-semibold transition-all ${pkg.popular
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg'
+                      : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg'
+                      }`}
                   >
                     Get Started
                   </Link>
@@ -783,9 +790,9 @@ const WebApplicationsPage = () => {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4" style={{ color: 'var(--text-secondary)' }}>
               Need a custom solution? Let's discuss your specific requirements.
             </p>
             <Link
@@ -807,7 +814,7 @@ const WebApplicationsPage = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 The <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Benefits</span> of Our Approach
               </h2>
-              
+
               <div className="space-y-6">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start">
@@ -824,7 +831,7 @@ const WebApplicationsPage = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-6 md:p-8 border border-purple-100">
                 <div className="grid grid-cols-2 gap-4">
@@ -845,7 +852,7 @@ const WebApplicationsPage = () => {
                     <div className="text-sm text-gray-600">Support Available</div>
                   </div>
                 </div>
-                
+
                 <div className="mt-8 p-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl text-white">
                   <div className="flex items-center">
                     <Headphones className="w-8 h-8 mr-4" />
@@ -872,7 +879,7 @@ const WebApplicationsPage = () => {
               <p className="text-lg text-purple-100 mb-8">
                 Let's discuss your project and create a web solution that drives results for your business.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
@@ -888,7 +895,7 @@ const WebApplicationsPage = () => {
                   View Portfolio
                 </a>
               </div>
-              
+
               <p className="mt-8 text-sm text-purple-200">
                 Typically respond within 24 hours • Free initial consultation • No commitment required
               </p>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { 
-  Calendar, 
-  Clock, 
-  User, 
+import {
+  Calendar,
+  Clock,
+  User,
   Search,
   Filter,
   BookOpen,
@@ -69,22 +69,22 @@ const AllBlogs = () => {
 
   const loadArticles = () => {
     setLoading(true);
-    
+
     setTimeout(() => {
       let filtered = [...blogs];
-      
+
       if (selectedCategory !== 'all') {
         filtered = filtered.filter(blog => blog.category === selectedCategory);
       }
-      
+
       if (selectedDifficulty !== 'all') {
         filtered = filtered.filter(blog => blog.difficulty === selectedDifficulty);
       }
-      
+
       if (searchQuery.trim()) {
         filtered = searchBlogs(searchQuery);
       }
-      
+
       switch (sortBy) {
         case 'latest':
           filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -101,7 +101,7 @@ const AllBlogs = () => {
         default:
           break;
       }
-      
+
       setArticles(filtered);
       setFilteredArticles(filtered);
       setLoading(false);
@@ -138,7 +138,7 @@ const AllBlogs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
       {/* SEO Components */}
       <SEOHead
         title={seoTitle}
@@ -148,7 +148,7 @@ const AllBlogs = () => {
       />
       <WebsiteStructuredData />
       <BreadcrumbStructuredData items={breadcrumbItems} />
-      
+
       {/* Hidden semantic elements for SEO */}
       <div className="sr-only" aria-hidden="true">
         <h1>Node.js and Express.js Interview Preparation Blog</h1>
@@ -162,7 +162,7 @@ const AllBlogs = () => {
       </div>
 
       {/* Main Content */}
-      <div className="bg-gradient-to-r from-gray-900 to-blue-900 text-white">
+      <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-4">
@@ -175,7 +175,7 @@ const AllBlogs = () => {
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
               Comprehensive Node.js & Express.js interview preparation guides for junior to mid-level backend developers
             </p>
-            
+
             {/* Search Schema */}
             <div itemScope itemType="https://schema.org/WebSite" className="sr-only">
               <meta itemProp="url" content="https://anisuldev.online/blogs" />
@@ -198,14 +198,15 @@ const AllBlogs = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search articles, topics, or questions..."
-              className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300"
+              className="w-full pl-12 pr-4 py-4 rounded-xl border outline-none transition-all duration-300"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
               aria-label="Search blog articles"
             />
           </form>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                 Category
               </label>
               <div className="flex flex-wrap gap-2">
@@ -213,11 +214,11 @@ const AllBlogs = () => {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      selectedCategory === cat.id
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedCategory === cat.id
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                      : 'text-gray-700 hover:bg-gray-200'
+                      }`}
+                    style={selectedCategory !== cat.id ? { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' } : {}}
                     aria-label={`Filter by ${cat.name} category`}
                   >
                     {cat.name}
@@ -227,7 +228,7 @@ const AllBlogs = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                 Difficulty Level
               </label>
               <div className="flex flex-wrap gap-2">
@@ -235,11 +236,11 @@ const AllBlogs = () => {
                   <button
                     key={diff.id}
                     onClick={() => setSelectedDifficulty(diff.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      selectedDifficulty === diff.id
-                        ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedDifficulty === diff.id
+                      ? 'bg-gradient-to-r from-green-600 to-blue-600 text-white shadow-lg'
+                      : 'text-gray-700 hover:bg-gray-200'
+                      }`}
+                    style={selectedDifficulty !== diff.id ? { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' } : {}}
                     aria-label={`Filter by ${diff.name} difficulty`}
                   >
                     {diff.name}
@@ -249,14 +250,15 @@ const AllBlogs = () => {
             </div>
 
             <div>
-              <label htmlFor="sort-select" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="sort-select" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
                 Sort By
               </label>
               <select
                 id="sort-select"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300"
+                className="w-full px-4 py-3 rounded-lg border outline-none transition-all duration-300"
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
                 aria-label="Sort articles"
               >
                 {sortOptions.map(option => (
@@ -278,8 +280,8 @@ const AllBlogs = () => {
         ) : filteredArticles.length === 0 ? (
           <div className="text-center py-12">
             <AlertCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No articles found</h3>
-            <p className="text-gray-600">Try a different search term or filter</p>
+            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>No articles found</h3>
+            <p style={{ color: 'var(--text-secondary)' }}>Try a different search term or filter</p>
           </div>
         ) : (
           <>
@@ -287,10 +289,11 @@ const AllBlogs = () => {
               <h2 className="sr-only">Blog Articles List</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredArticles.map((article) => (
-                  <article 
-                    key={article.id} 
-                    className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200"
-                    itemScope 
+                  <article
+                    key={article.id}
+                    className="group rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 border"
+                    style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+                    itemScope
                     itemType="https://schema.org/Article"
                   >
                     {article.featured && (
@@ -315,7 +318,7 @@ const AllBlogs = () => {
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(article.difficulty)}`}>
                           {article.difficulty}
                         </span>
-                        <span className="px-3 py-1 bg-white/90 text-gray-800 rounded-full text-xs font-semibold">
+                        <span className="px-3 py-1 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-full text-xs font-semibold">
                           {getCategoryIcon(article.category)}
                           <span className="ml-1">{article.category}</span>
                         </span>
@@ -323,7 +326,7 @@ const AllBlogs = () => {
                     </div>
 
                     <div className="p-6">
-                      <div className="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+                      <div className="flex items-center space-x-4 text-sm mb-3" style={{ color: 'var(--text-muted)' }}>
                         <time className="flex items-center" dateTime={article.date} itemProp="datePublished">
                           <Calendar className="w-4 h-4 mr-1" />
                           {article.date}
@@ -338,22 +341,22 @@ const AllBlogs = () => {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300" itemProp="headline">
+                      <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300" style={{ color: 'var(--text-primary)' }} itemProp="headline">
                         {article.title}
                       </h3>
 
-                      <p className="text-gray-600 mb-4 line-clamp-3" itemProp="description">
+                      <p className="mb-4 line-clamp-3" style={{ color: 'var(--text-secondary)' }} itemProp="description">
                         {article.excerpt}
                       </p>
 
                       <div className="mb-6 flex flex-wrap gap-2">
                         {article.tags.slice(0, 3).map((tag, index) => (
-                          <span key={index} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full" itemProp="keywords">
+                          <span key={index} className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }} itemProp="keywords">
                             {tag}
                           </span>
                         ))}
                         {article.tags.length > 3 && (
-                          <span className="px-3 py-1 bg-gray-200 text-gray-600 text-xs font-medium rounded-full">
+                          <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}>
                             +{article.tags.length - 3}
                           </span>
                         )}
@@ -370,11 +373,11 @@ const AllBlogs = () => {
                             />
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-gray-900" itemProp="name">{article.author.name}</div>
-                            <div className="text-xs text-gray-500" itemProp="jobTitle">{article.author.role}</div>
+                            <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }} itemProp="name">{article.author.name}</div>
+                            <div className="text-xs" style={{ color: 'var(--text-muted)' }} itemProp="jobTitle">{article.author.role}</div>
                           </div>
                         </div>
-                        
+
                         <Link
                           to={`/blog/${article.slug}`}
                           className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
@@ -401,20 +404,20 @@ const AllBlogs = () => {
         )}
 
         {/* Author Section with semantic markup */}
-        <section className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8" itemScope itemType="https://schema.org/Person">
+        <section className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }} itemScope itemType="https://schema.org/Person">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
-              <img 
-                src="favico.png" 
+              <img
+                src="favico.png"
                 alt="Anisul Islam"
                 className="w-full h-full object-cover"
                 itemProp="image"
               />
             </div>
             <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2" itemProp="name">Anisul Islam</h3>
-              <p className="text-lg text-gray-600 mb-4" itemProp="jobTitle">Full Stack Software Engineer</p>
-              <p className="text-gray-700" itemProp="description">
+              <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }} itemProp="name">Anisul Islam</h3>
+              <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }} itemProp="jobTitle">Full Stack Software Engineer</p>
+              <p style={{ color: 'var(--text-secondary)' }} itemProp="description">
                 I craft beautiful, performant web applications using modern technologies. Passionate about React.js, Node.js, Next.js, Express.js, MongoDB and the entire JavaScript ecosystem. Turning complex problems into simple, beautiful designs.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">

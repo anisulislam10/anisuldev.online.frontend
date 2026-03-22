@@ -101,17 +101,17 @@ const Contact = () => {
       {/* Success Toast */}
       {showSuccess && (
         <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl"
-          style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', backdropFilter: 'blur(16px)' }}>
+          style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
           <CheckCircle size={20} style={{ color: '#10b981' }} />
           <div>
-            <div className="text-sm font-semibold" style={{ color: '#a7f3d0' }}>Message Sent!</div>
-            <div className="text-xs" style={{ color: '#6ee7b7' }}>I'll get back to you within 24h</div>
+            <div className="text-sm font-semibold" style={{ color: 'var(--accent-green)' }}>Message Sent!</div>
+            <div className="text-xs" style={{ color: 'var(--text-secondary)' }}>I'll get back to you within 24h</div>
           </div>
         </div>
       )}
 
       <section id="contact" className="relative py-24 lg:py-32 overflow-hidden"
-        style={{ background: 'linear-gradient(180deg, #050508 0%, #08080f 100%)' }}>
+        style={{ background: 'var(--bg-primary)' }}>
 
         {/* Background */}
         <div className="absolute inset-0 bg-grid opacity-25" />
@@ -130,7 +130,7 @@ const Contact = () => {
               Let's Build{' '}
               <span className="gradient-text animate-grad-shift">Together</span>
             </h2>
-            <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+            <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Ready to start your project? Fill out the form and I'll get back to you within 24 hours.
             </p>
           </div>
@@ -145,10 +145,10 @@ const Contact = () => {
                 style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm font-semibold" style={{ color: '#a7f3d0' }}>Available for new projects</span>
+                  <span className="text-sm font-semibold" style={{ color: 'var(--accent-green)' }}>Available for new projects</span>
                 </div>
                 <span className="px-2 py-0.5 rounded-full text-xs font-semibold"
-                  style={{ background: 'rgba(16,185,129,0.15)', color: '#34d399' }}>Open</span>
+                  style={{ background: 'rgba(16,185,129,0.1)', color: 'var(--accent-green)' }}>Open</span>
               </div>
 
               {/* Contact items */}
@@ -158,25 +158,24 @@ const Contact = () => {
                     key={i}
                     href={c.href}
                     className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group"
-                    style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+                    style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--border-glow)'; e.currentTarget.style.background = 'var(--bg-card-hover)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.background = 'var(--bg-card)'; }}
                   >
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ background: `${c.color}18`, border: `1px solid ${c.color}30`, color: c.color }}>
                       {c.icon}
                     </div>
                     <div>
-                      <div className="text-xs" style={{ color: '#475569' }}>{c.label}</div>
-                      <div className="text-sm font-medium mt-0.5" style={{ color: '#cbd5e1' }}>{c.value}</div>
+                      <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{c.label}</div>
+                      <div className="text-sm font-medium mt-0.5" style={{ color: 'var(--text-primary)' }}>{c.value}</div>
                     </div>
                   </a>
                 ))}
               </div>
 
-              {/* Social */}
-              <div className="p-5 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                <h4 className="text-sm font-semibold mb-3" style={{ color: '#94a3b8' }}>Connect on social</h4>
+              <div className="p-5 rounded-xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
+                <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--text-secondary)' }}>Connect on social</h4>
                 <div className="flex gap-3">
                   {socialLinks.map((s, i) => (
                     <a
@@ -186,7 +185,7 @@ const Contact = () => {
                       rel="noopener noreferrer"
                       aria-label={s.label}
                       className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b' }}
+                      style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}
                       onMouseEnter={e => {
                         e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
                         e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
@@ -194,9 +193,9 @@ const Contact = () => {
                         e.currentTarget.style.transform = 'translateY(-2px)';
                       }}
                       onMouseLeave={e => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
-                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                        e.currentTarget.style.color = '#64748b';
+                        e.currentTarget.style.background = 'var(--bg-card-hover)';
+                        e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                        e.currentTarget.style.color = 'var(--text-muted)';
                         e.currentTarget.style.transform = 'translateY(0)';
                       }}
                     >
@@ -207,8 +206,8 @@ const Contact = () => {
               </div>
 
               {/* What to expect */}
-              <div className="p-5 rounded-xl" style={{ background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.12)' }}>
-                <h4 className="text-sm font-semibold mb-4" style={{ color: '#94a3b8' }}>What to expect:</h4>
+              <div className="p-5 rounded-xl" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
+                <h4 className="text-sm font-semibold mb-4" style={{ color: 'var(--text-secondary)' }}>What to expect:</h4>
                 <div className="flex flex-col gap-3">
                   {[
                     { icon: <Clock size={15} />, title: '24-Hour Response', desc: 'Detailed quote within 24h' },
@@ -221,8 +220,8 @@ const Contact = () => {
                         {f.icon}
                       </div>
                       <div>
-                        <div className="text-xs font-semibold" style={{ color: '#c7d2fe' }}>{f.title}</div>
-                        <div className="text-xs mt-0.5" style={{ color: '#475569' }}>{f.desc}</div>
+                        <div className="text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>{f.title}</div>
+                        <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{f.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -233,10 +232,10 @@ const Contact = () => {
             {/* ── Right: Form ── */}
             <div className="lg:col-span-3">
               <div className="p-6 md:p-8 rounded-2xl"
-                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
 
-                <h3 className="text-xl font-bold mb-1" style={{ color: '#e2e8f0' }}>Get a Quote</h3>
-                <p className="text-sm mb-6" style={{ color: '#475569' }}>Fill out the form below to discuss your project</p>
+                <h3 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>Get a Quote</h3>
+                <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>Fill out the form below to discuss your project</p>
 
                 {errors.submit && (
                   <div className="flex items-center gap-2 p-3 rounded-lg mb-4 text-sm"
@@ -250,7 +249,7 @@ const Contact = () => {
                   {/* Name + Email */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>
                         <span className="flex items-center gap-1"><User size={12} /> Full Name *</span>
                       </label>
                       <input
@@ -261,7 +260,7 @@ const Contact = () => {
                       {errors.name && <p className="text-xs mt-1 flex items-center gap-1" style={{ color: '#f87171' }}><AlertCircle size={11} />{errors.name}</p>}
                     </div>
                     <div>
-                      <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>
                         <span className="flex items-center gap-1"><Mail size={12} /> Email *</span>
                       </label>
                       <input
@@ -275,7 +274,7 @@ const Contact = () => {
 
                   {/* Phone */}
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>
                       <span className="flex items-center gap-1"><Phone size={12} /> Phone (Optional)</span>
                     </label>
                     <input
@@ -292,7 +291,7 @@ const Contact = () => {
 
                   {/* Project Type */}
                   <div>
-                    <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Project Type</label>
+                    <label className="block text-xs font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>Project Type</label>
                     <div className="grid grid-cols-3 gap-2">
                       {projectTypes.map((t) => (
                         <button
@@ -300,9 +299,9 @@ const Contact = () => {
                           onClick={() => setFormData(p => ({ ...p, projectType: t.value }))}
                           className="flex flex-col items-center gap-1 p-3 rounded-lg text-xs font-medium transition-all duration-200"
                           style={{
-                            background: formData.projectType === t.value ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.03)',
-                            border: formData.projectType === t.value ? '1px solid rgba(99,102,241,0.4)' : '1px solid rgba(255,255,255,0.07)',
-                            color: formData.projectType === t.value ? '#a5b4fc' : '#64748b',
+                            background: formData.projectType === t.value ? 'rgba(99,102,241,0.15)' : 'var(--bg-card)',
+                            border: formData.projectType === t.value ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
+                            color: formData.projectType === t.value ? 'var(--accent-indigo)' : 'var(--text-muted)',
                           }}
                         >
                           <span>{t.icon}</span>
@@ -315,7 +314,7 @@ const Contact = () => {
                   {/* Budget + Timeline */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Budget</label>
+                      <label className="block text-xs font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>Budget</label>
                       <div className="grid grid-cols-2 gap-2">
                         {budgetOptions.map((b) => (
                           <button
@@ -323,9 +322,9 @@ const Contact = () => {
                             onClick={() => setFormData(p => ({ ...p, budget: b.value }))}
                             className="py-2 px-3 rounded-lg text-xs font-medium transition-all duration-200"
                             style={{
-                              background: formData.budget === b.value ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.03)',
-                              border: formData.budget === b.value ? '1px solid rgba(99,102,241,0.4)' : '1px solid rgba(255,255,255,0.07)',
-                              color: formData.budget === b.value ? '#a5b4fc' : '#64748b',
+                              background: formData.budget === b.value ? 'rgba(99,102,241,0.15)' : 'var(--bg-card)',
+                              border: formData.budget === b.value ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
+                              color: formData.budget === b.value ? 'var(--accent-indigo)' : 'var(--text-muted)',
                             }}
                           >
                             {b.label}
@@ -334,14 +333,14 @@ const Contact = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Timeline</label>
+                      <label className="block text-xs font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>Timeline</label>
                       <select
                         name="timeline" value={formData.timeline} onChange={handleChange}
                         className="input-dark"
                         style={{ cursor: 'pointer' }}
                       >
                         {timelineOptions.map((o) => (
-                          <option key={o.value} value={o.value} style={{ background: '#0d0d14' }}>
+                          <option key={o.value} value={o.value} style={{ background: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>
                             {o.label}
                           </option>
                         ))}
@@ -351,7 +350,7 @@ const Contact = () => {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>
                       <span className="flex items-center gap-1"><MessageSquare size={12} /> Project Description *</span>
                     </label>
                     <textarea
@@ -380,7 +379,7 @@ const Contact = () => {
                       </>
                     )}
                   </button>
-                  <p className="text-center text-xs" style={{ color: '#334155' }}>
+                  <p className="text-center text-xs" style={{ color: 'var(--text-muted)' }}>
                     By submitting, you agree to our privacy policy.
                   </p>
                 </form>
@@ -400,8 +399,8 @@ const Contact = () => {
                   key={i}
                   className="p-5 rounded-xl cursor-pointer transition-all duration-300"
                   style={{
-                    background: openFaq === i ? 'rgba(99,102,241,0.07)' : 'rgba(255,255,255,0.03)',
-                    border: openFaq === i ? '1px solid rgba(99,102,241,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                    background: openFaq === i ? 'rgba(99,102,241,0.07)' : 'var(--bg-card)',
+                    border: openFaq === i ? '1px solid var(--border-glow)' : '1px solid var(--border-subtle)',
                   }}
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
@@ -411,12 +410,12 @@ const Contact = () => {
                       {i + 1}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-sm font-semibold" style={{ color: '#e2e8f0' }}>{faq.q}</h4>
+                      <h4 className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{faq.q}</h4>
                       {openFaq === i && (
-                        <p className="text-xs mt-2 leading-relaxed" style={{ color: '#64748b' }}>{faq.a}</p>
+                        <p className="text-xs mt-2 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{faq.a}</p>
                       )}
                     </div>
-                    <span className="text-xs transition-transform duration-200" style={{ color: '#475569', transform: openFaq === i ? 'rotate(90deg)' : 'rotate(0)' }}>›</span>
+                    <span className="text-xs transition-transform duration-200" style={{ color: 'var(--text-muted)', transform: openFaq === i ? 'rotate(90deg)' : 'rotate(0)' }}>›</span>
                   </div>
                 </div>
               ))}

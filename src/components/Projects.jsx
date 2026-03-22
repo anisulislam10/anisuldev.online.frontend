@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-  ExternalLink, 
-  Github, 
+import {
+  ExternalLink,
+  Github,
   ArrowRight,
   Smartphone,
   Globe,
@@ -50,18 +50,18 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="projects" className="py-20" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-600 font-semibold mb-4">
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-500 font-semibold mb-4">
             <Code className="w-4 h-4 mr-2" />
             Featured Projects
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Work</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
+            My <span className="gradient-text animate-grad-shift">Work</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             Showcasing full-stack development expertise from concept to deployment.
           </p>
         </div>
@@ -71,7 +71,8 @@ const Projects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100"
+              className="group rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden">
@@ -96,14 +97,15 @@ const Projects = () => {
               {/* Project Content */}
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold text-gray-900">{project.name}</h3>
+                  <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{project.name}</h3>
                   <div className="flex space-x-2">
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300"
+                        className="p-2 rounded-lg transition-colors duration-300"
+                        style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}
                         title="View Code"
                       >
                         <Github className="w-4 h-4 text-gray-700" />
@@ -114,7 +116,8 @@ const Projects = () => {
                         href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors duration-300"
+                        className="p-2 rounded-lg transition-colors duration-300"
+                        style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)' }}
                         title="Live Demo"
                       >
                         <ExternalLink className="w-4 h-4 text-blue-600" />
@@ -123,7 +126,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <p className="text-gray-600 mb-4">
+                <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
                   {project.description}
                 </p>
 
@@ -133,7 +136,8 @@ const Projects = () => {
                     {project.techStack.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1 bg-gradient-to-r from-blue-50 to-purple-50 text-gray-700 text-sm rounded-full border border-blue-100"
+                        className="px-3 py-1 text-xs font-medium rounded-full transition-all duration-300"
+                        style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                       >
                         {tech}
                       </span>
@@ -148,7 +152,8 @@ const Projects = () => {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold text-center hover:shadow-lg transition-all duration-300"
+                      className="flex-1 text-white px-4 py-2.5 rounded-lg font-semibold text-center hover:shadow-lg transition-all duration-300"
+                      style={{ background: 'var(--gradient-brand)' }}
                     >
                       <span className="flex items-center justify-center space-x-2">
                         <Eye className="w-4 h-4" />
@@ -156,7 +161,8 @@ const Projects = () => {
                       </span>
                     </a>
                   ) : (
-                    <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold text-center hover:shadow-lg transition-all duration-300">
+                    <button className="flex-1 text-white px-4 py-2.5 rounded-lg font-semibold text-center transition-all duration-300"
+                      style={{ background: 'var(--gradient-brand)' }}>
                       <span className="flex items-center justify-center space-x-2">
                         <Smartphone className="w-4 h-4" />
                         <span>App Store</span>
@@ -167,7 +173,10 @@ const Projects = () => {
                     href={project.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-semibold text-center hover:bg-blue-50 transition-all duration-300"
+                    className="flex-1 border transition-all duration-300 px-4 py-2.5 rounded-lg font-semibold text-center"
+                    style={{ borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.08)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
                   >
                     <span className="flex items-center justify-center space-x-2">
                       <Code className="w-4 h-4" />
@@ -182,12 +191,13 @@ const Projects = () => {
 
         {/* More Projects CTA */}
         <div className="text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 shadow-lg border border-blue-100">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-6 rounded-2xl p-8 border"
+            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-left">
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
+              <h3 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
                 Want to See More?
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 Check my GitHub for complete source code
               </p>
             </div>
@@ -203,7 +213,10 @@ const Projects = () => {
               </a>
               <a
                 href="#contact"
-                className="border-2 border-blue-600 text-blue-600 px-6 py-2 rounded-full font-semibold flex items-center space-x-2 hover:bg-blue-50 transition-all duration-300"
+                className="border px-6 py-2 rounded-full font-semibold flex items-center space-x-2 transition-all duration-300"
+                style={{ borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.08)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
               >
                 <span>Case Study</span>
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
@@ -222,13 +235,14 @@ const Projects = () => {
           ].map((stat, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-4 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow duration-300 text-center"
+              className="rounded-xl p-4 transition-all duration-300 text-center"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
             >
               <div className={`inline-flex p-2 rounded-lg bg-gradient-to-br ${stat.color} text-white mb-3`}>
                 {stat.icon}
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
+              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{stat.value}</div>
+              <div className="text-sm" style={{ color: 'var(--text-muted)' }}>{stat.label}</div>
             </div>
           ))}
         </div>

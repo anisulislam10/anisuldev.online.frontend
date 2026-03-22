@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from './ThemeContext';
 import logo from './../../public/logo_anisuldev.online.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
   const location = useLocation();
 
   const navItems = [
@@ -33,15 +35,13 @@ const Navbar = () => {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled
-            ? 'rgba(5, 5, 8, 0.85)'
-            : 'rgba(5, 5, 8, 0.5)',
+          background: scrolled ? 'var(--bg-nav-scrolled)' : 'var(--bg-nav)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderBottom: scrolled
-            ? '1px solid rgba(255,255,255,0.08)'
+            ? '1px solid var(--border-subtle)'
             : '1px solid transparent',
-          boxShadow: scrolled ? '0 4px 32px rgba(0,0,0,0.4)' : 'none',
+          boxShadow: scrolled ? 'var(--shadow-card)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,6 +53,7 @@ const Navbar = () => {
                 src={logo}
                 alt="AnisulDev Logo"
                 className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ filter: theme === 'light' ? 'invert(1) brightness(0.2)' : 'none' }}
               />
             </Link>
 
@@ -64,30 +65,38 @@ const Navbar = () => {
                   to={item.to}
                   className="relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-lg group"
                   style={{
-                    color: isActive(item.to) ? '#a5b4fc' : '#94a3b8',
+                    color: isActive(item.to) ? 'var(--accent-indigo)' : 'var(--text-secondary)',
                   }}
                 >
-                  <span className="relative z-10 group-hover:text-indigo-300 transition-colors duration-200">
+                  <span className="relative z-10 group-hover:text-indigo-500 dark:group-hover:text-indigo-300 transition-colors duration-200">
                     {item.name}
                   </span>
                   {/* Active indicator */}
                   {isActive(item.to) && (
                     <span
                       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-                      style={{ background: 'linear-gradient(90deg, #6366f1, #22d3ee)' }}
+                      style={{ background: 'var(--gradient-brand)' }}
                     />
                   )}
                   {/* Hover bg */}
                   <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                    style={{ background: 'rgba(99,102,241,0.08)' }} />
+                    style={{ background: 'var(--bg-card-hover)' }} />
                 </Link>
               ))}
             </div>
 
-            {/* CTA */}
+            {/* Actions */}
             <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 rounded-xl transition-all duration-300 border border-transparent hover:border-indigo-500/20 bg-white/5 hover:bg-indigo-500/10 text-slate-400 hover:text-indigo-500"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={19} /> : <Moon size={19} />}
+              </button>
+
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
-                style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.25)', color: '#34d399' }}>
+                style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.25)', color: '#10b981' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Available
               </div>
@@ -95,26 +104,35 @@ const Navbar = () => {
                 to="/contact"
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-300"
                 style={{
-                  background: 'linear-gradient(135deg, #6366f1 0%, #22d3ee 100%)',
-                  boxShadow: '0 4px 20px rgba(99,102,241,0.35)',
+                  background: 'var(--gradient-brand)',
+                  boxShadow: 'var(--shadow-button)',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 8px 32px rgba(99,102,241,0.55)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-button)'; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <Zap size={14} />
                 Hire Me
               </Link>
             </div>
 
-            {/* Mobile menu toggle */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg transition-colors duration-200"
-              style={{ color: '#94a3b8', background: isMenuOpen ? 'rgba(255,255,255,0.06)' : 'transparent' }}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            {/* Mobile Actions */}
+            <div className="flex items-center gap-2 md:hidden">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-slate-400"
+                aria-label="Toggle theme"
+              >
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg transition-colors duration-200"
+                style={{ color: 'var(--text-secondary)', background: isMenuOpen ? 'var(--bg-card-hover)' : 'transparent' }}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -128,7 +146,7 @@ const Navbar = () => {
           }}
         >
           <div className="px-4 pb-6 pt-2"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.06)', background: 'rgba(5,5,8,0.95)' }}>
+            style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--bg-nav-mobile)' }}>
             <div className="flex flex-col gap-1 mb-4">
               {navItems.map((item) => (
                 <Link
@@ -136,8 +154,8 @@ const Navbar = () => {
                   to={item.to}
                   className="flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200"
                   style={{
-                    color: isActive(item.to) ? '#a5b4fc' : '#94a3b8',
-                    background: isActive(item.to) ? 'rgba(99,102,241,0.1)' : 'transparent',
+                    color: isActive(item.to) ? 'var(--accent-indigo)' : 'var(--text-secondary)',
+                    background: isActive(item.to) ? 'var(--bg-card-hover)' : 'transparent',
                   }}
                 >
                   {item.name}

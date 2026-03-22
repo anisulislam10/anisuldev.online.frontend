@@ -4,7 +4,7 @@ import Contact from '../components/Contact';
 
 const Home = () => {
   return (
-    <div style={{ background: '#050508', minHeight: '100vh' }}>
+    <div style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
       <main>
         <Hero />
         <Services />

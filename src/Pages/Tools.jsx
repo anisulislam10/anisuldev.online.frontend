@@ -391,7 +391,7 @@ export const Tools = () => {
   const [selectedCategory, setSelectedCategory] = React.useState('all');
   const [searchQuery, setSearchQuery] = React.useState('');
 
-  const allTools = toolCategories.flatMap(category => 
+  const allTools = toolCategories.flatMap(category =>
     category.tools.map(tool => ({
       ...tool,
       category: category.name,
@@ -399,36 +399,36 @@ export const Tools = () => {
     }))
   );
 
-  const filteredTools = selectedCategory === 'all' 
-    ? allTools 
+  const filteredTools = selectedCategory === 'all'
+    ? allTools
     : allTools.filter(tool => tool.categoryId === selectedCategory);
 
-  const searchedTools = searchQuery 
-    ? filteredTools.filter(tool => 
-        tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-      )
+  const searchedTools = searchQuery
+    ? filteredTools.filter(tool =>
+      tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+    )
     : filteredTools;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
+    <div className="min-h-screen py-12 transition-colors duration-300" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 mb-4 mt-10">
+          <div className="inline-flex items-center px-4 py-2 rounded-full mb-4 mt-10" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
             <Terminal className="w-4 h-4 mr-2 text-blue-600" />
             <span className="text-sm font-semibold text-blue-600">Developer Toolkit</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
             Essential <span className="text-blue-600">Developer Tools</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
             A curated collection of software tools, applications, and utilities that enhance development workflow and productivity.
           </p>
         </div>
 
-      
+
 
         {/* Search Bar */}
         <div className="mb-8">
@@ -437,7 +437,8 @@ export const Tools = () => {
             <input
               type="text"
               placeholder="Search tools by name, description, or tags..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
+              className="w-full pl-12 pr-4 py-3 rounded-xl border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -446,15 +447,15 @@ export const Tools = () => {
 
         {/* Category Filter */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Categories</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>Categories</h2>
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                selectedCategory === 'all'
+              className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === 'all'
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
-              }`}
+                  : 'hover:shadow-md'
+                }`}
+              style={selectedCategory === 'all' ? {} : { background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
             >
               <Layers className="w-5 h-5 mr-2" />
               All Tools
@@ -463,11 +464,11 @@ export const Tools = () => {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                  selectedCategory === category.id
+                className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id
                     ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
-                }`}
+                    : 'hover:shadow-md'
+                  }`}
+                style={selectedCategory === category.id ? {} : { background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
               >
                 <span className="mr-2">{category.icon}</span>
                 {category.name}
@@ -481,7 +482,10 @@ export const Tools = () => {
           {searchedTools.map((tool, index) => (
             <div
               key={`${tool.categoryId}-${index}`}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200"
+              className="group rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:-translate-y-2 border"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+              onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.borderColor = 'var(--accent-blue)'; }}
+              onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
             >
               <div className="p-6">
                 {/* Tool Header */}
@@ -489,17 +493,18 @@ export const Tools = () => {
                   <div className="flex items-center">
                     <div className="text-3xl mr-3">{tool.icon}</div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold group-hover:text-blue-600 transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                         {tool.name}
                       </h3>
-                      <span className="text-sm text-gray-500">{tool.category}</span>
+                      <span className="text-sm" style={{ color: 'var(--text-muted)' }}>{tool.category}</span>
                     </div>
                   </div>
                   <a
                     href={tool.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                    className="p-2 rounded-lg transition-colors"
+                    style={{ background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' }}
                     title="Visit Website"
                   >
                     <ExternalLink className="w-4 h-4" />
@@ -507,7 +512,7 @@ export const Tools = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-600 mb-6 line-clamp-3">
+                <p className="mb-6 line-clamp-3" style={{ color: 'var(--text-secondary)' }}>
                   {tool.description}
                 </p>
 
@@ -517,7 +522,8 @@ export const Tools = () => {
                     {tool.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium"
+                        className="px-3 py-1 text-xs rounded-full font-medium"
+                        style={{ background: 'var(--bg-card-hover)', color: 'var(--text-muted)' }}
                       >
                         {tag}
                       </span>
@@ -543,16 +549,16 @@ export const Tools = () => {
         {searchedTools.length === 0 && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">No tools found</h3>
-            <p className="text-gray-600 max-w-md mx-auto">
+            <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>No tools found</h3>
+            <p className="max-w-md mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Try a different search term or select another category to discover developer tools.
             </p>
           </div>
         )}
 
         {/* Recommendation Section */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">My Daily Drivers</h2>
+        <div className="mt-16 rounded-2xl p-8" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
+          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>My Daily Drivers</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               { name: 'VS Code', description: 'Primary code editor', icon: '💻', reason: 'Extensions & Speed' },
@@ -560,10 +566,10 @@ export const Tools = () => {
               { name: 'Postman', description: 'API development', icon: '📬', reason: 'Testing & Documentation' },
               { name: 'Docker', description: 'Containerization', icon: '🐳', reason: 'Consistency & Deployment' },
             ].map((tool, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl text-center hover:shadow-md transition-shadow">
+              <div key={index} className="p-6 rounded-xl text-center shadow-sm transition-shadow" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
                 <div className="text-4xl mb-4">{tool.icon}</div>
-                <div className="text-xl font-bold text-gray-900 mb-1">{tool.name}</div>
-                <div className="text-sm text-gray-600 mb-2">{tool.description}</div>
+                <div className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{tool.name}</div>
+                <div className="text-sm mb-2" style={{ color: 'var(--text-secondary)' }}>{tool.description}</div>
                 <div className="text-xs text-blue-600 font-semibold">{tool.reason}</div>
               </div>
             ))}
