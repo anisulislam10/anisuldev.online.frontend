@@ -1,549 +1,423 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { 
-  Send, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  CheckCircle,
-  MessageSquare,
-  User,
-  Clock,
-  Shield,
-  AlertCircle,
-  X
+import {
+  Send, Mail, Phone, MapPin, CheckCircle, MessageSquare,
+  User, Clock, Shield, AlertCircle, Github, Linkedin, Twitter,
+  ArrowRight, Zap
 } from 'lucide-react';
+
+const contactInfo = [
+  { icon: <Mail size={18} />, label: 'Email', value: 'info@anisuldev.online', href: 'mailto:info@anisuldev.online', color: '#6366f1' },
+  { icon: <Phone size={18} />, label: 'Phone', value: '+92 343 9275550', href: 'tel:+923439275550', color: '#22d3ee' },
+  { icon: <MapPin size={18} />, label: 'Location', value: 'Islamabad, Pakistan', href: '#', color: '#a855f7' },
+];
+
+const socialLinks = [
+  { icon: <Github size={18} />, href: 'https://github.com/anisulislam10', label: 'GitHub' },
+  { icon: <Linkedin size={18} />, href: 'https://linkedin.com/in/ianisulislam', label: 'LinkedIn' },
+  { icon: <Twitter size={18} />, href: 'https://twitter.com/ianisulislam', label: 'Twitter' },
+];
+
+const projectTypes = [
+  { value: 'web', label: 'Web App', icon: '🌐' },
+  { value: 'mobile', label: 'Mobile App', icon: '📱' },
+  { value: 'fullstack', label: 'Full Stack', icon: '⚡' },
+  { value: 'api', label: 'API Dev', icon: '🔌' },
+  { value: 'consulting', label: 'Consulting', icon: '💼' },
+  { value: 'other', label: 'Other', icon: '✨' },
+];
+
+const budgetOptions = [
+  { value: 'small', label: '$1k – $5k' },
+  { value: 'medium', label: '$5k – $20k' },
+  { value: 'large', label: '$20k+' },
+  { value: 'custom', label: 'Custom' },
+];
+
+const timelineOptions = [
+  { value: 'urgent', label: '< 1 Month' },
+  { value: '1-3 months', label: '1-3 Months' },
+  { value: '3-6 months', label: '3-6 Months' },
+  { value: 'flexible', label: 'Flexible' },
+];
+
+const faqs = [
+  { q: 'What happens after I submit the form?', a: "I'll review your project details within 24 hours and schedule a free 30-minute consultation call." },
+  { q: "What's included in your quote?", a: 'Detailed project scope, timeline, cost estimation, technology stack recommendation, and maintenance plan.' },
+  { q: 'Do you work with international clients?', a: 'Yes! I work with clients worldwide using modern remote collaboration tools.' },
+  { q: "What's your typical project timeline?", a: 'Small: 2-4 weeks · Medium: 1-3 months · Large: 3-6 months. Custom timelines available.' },
+];
 
 const Contact = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-    projectType: 'web',
-    budget: 'medium',
-    timeline: '1-3 months'
+    name: '', email: '', phone: '', subject: '', message: '',
+    projectType: 'web', budget: 'medium', timeline: '1-3 months',
   });
-
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
-  const projectTypes = [
-    { value: 'web', label: 'Web Application', icon: '🌐' },
-    { value: 'mobile', label: 'Mobile App', icon: '📱' },
-    { value: 'fullstack', label: 'Full Stack', icon: '⚡' },
-    { value: 'api', label: 'API Development', icon: '🔌' },
-    { value: 'consulting', label: 'Consulting', icon: '💼' },
-    { value: 'other', label: 'Other', icon: '✨' }
-  ];
-
-  const budgetOptions = [
-    { value: 'small', label: 'Small ($1k - $5k)', color: 'bg-green-100 text-green-800' },
-    { value: 'medium', label: 'Medium ($5k - $20k)', color: 'bg-blue-100 text-blue-800' },
-    { value: 'large', label: 'Large ($20k+)', color: 'bg-purple-100 text-purple-800' },
-    { value: 'custom', label: 'Custom Quote', color: 'bg-orange-100 text-orange-800' }
-  ];
-
-  const timelineOptions = [
-    { value: 'urgent', label: 'Urgent (< 1 month)' },
-    { value: '1-3 months', label: '1-3 Months' },
-    { value: '3-6 months', label: '3-6 Months' },
-    { value: 'flexible', label: 'Flexible' }
-  ];
-
-  // Auto-close success modal after 2 seconds
   useEffect(() => {
-    let timer;
-    if (showSuccessModal) {
-      timer = setTimeout(() => {
-        setShowSuccessModal(false);
-      }, 2000);
-    }
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [showSuccessModal]);
+    if (!showSuccess) return;
+    const t = setTimeout(() => setShowSuccess(false), 4000);
+    return () => clearTimeout(t);
+  }, [showSuccess]);
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
-    }
-    
-    if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message should be at least 10 characters';
-    }
-
-    return newErrors;
+  const validate = () => {
+    const e = {};
+    if (!formData.name.trim()) e.name = 'Name is required';
+    if (!formData.email.trim()) e.email = 'Email is required';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) e.email = 'Invalid email';
+    if (!formData.message.trim()) e.message = 'Message is required';
+    else if (formData.message.trim().length < 10) e.message = 'At least 10 characters';
+    return e;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
+    setFormData(p => ({ ...p, [name]: value }));
+    if (errors[name]) setErrors(p => ({ ...p, [name]: '' }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validateForm();
-    
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
     setIsSubmitting(true);
-    
     try {
-      await emailjs.sendForm(
-        'service_5jvvj5c',
-        'template_pga51qh',
-        form.current,
-        'rTovarWJC2HfQcEt-'
-      );
-      
-      setIsSubmitting(false);
-      setShowSuccessModal(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        projectType: 'web',
-        budget: 'medium',
-        timeline: '1-3 months'
-      });
-      
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      setErrors({ submit: 'Failed to send message. Please try again.' });
-      setIsSubmitting(false);
+      await emailjs.sendForm('service_5jvvj5c', 'template_pga51qh', form.current, 'rTovarWJC2HfQcEt-');
+      setShowSuccess(true);
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '', projectType: 'web', budget: 'medium', timeline: '1-3 months' });
+    } catch {
+      setErrors({ submit: 'Failed to send. Please try again.' });
     }
+    setIsSubmitting(false);
   };
-
-  const contactInfo = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
-      details: "info@aniduldev.online",
-      subtitle: "Response within 24 hours"
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      details: "(92 343 9275550)",
-      subtitle: "Mon-Fri, 9AM-6PM"
-    },
-    {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      details: "Islamabad, Pakistan",
-      subtitle: "Available for remote work worldwide"
-    }
-  ];
-
-  const quoteFeatures = [
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "24-Hour Response",
-      description: "Get a detailed quote within 24 hours"
-    },
-    {
-      icon: <Shield className="w-5 h-5" />,
-      title: "No-Spam Guarantee",
-      description: "Your information is safe with us"
-    },
-    {
-      icon: <CheckCircle className="w-5 h-5" />,
-      title: "Free Consultation",
-      description: "30-minute free project discussion"
-    }
-  ];
 
   return (
     <>
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 mx-4 max-w-md w-full transform transition-all duration-300 scale-100 animate-in fade-in zoom-in">
-            <div className="text-center">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 flex items-center justify-center mx-auto mb-6 animate-pulse">
-                <CheckCircle className="w-10 h-10 text-green-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Message Sent Successfully!</h3>
-              <p className="text-gray-600 mb-6">
-                Thank you for your inquiry. I'll review your project details and get back to you within 24 hours.
-              </p>
-              <div className="text-sm text-blue-500 animate-pulse">
-                Modal will close in 2 seconds...
-              </div>
-            </div>
+      {/* Success Toast */}
+      {showSuccess && (
+        <div className="fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl"
+          style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.3)', backdropFilter: 'blur(16px)' }}>
+          <CheckCircle size={20} style={{ color: '#10b981' }} />
+          <div>
+            <div className="text-sm font-semibold" style={{ color: '#a7f3d0' }}>Message Sent!</div>
+            <div className="text-xs" style={{ color: '#6ee7b7' }}>I'll get back to you within 24h</div>
           </div>
         </div>
       )}
 
-      {/* Main Content */}
-      <section id="contact" className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
+      <section id="contact" className="relative py-24 lg:py-32 overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, #050508 0%, #08080f 100%)' }}>
+
+        {/* Background */}
+        <div className="absolute inset-0 bg-grid opacity-25" />
+        <div className="orb orb-indigo w-[500px] h-[500px] top-0 right-0 opacity-15" />
+        <div className="orb orb-purple w-[400px] h-[400px] bottom-0 left-0 opacity-12" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 text-gray-800 font-semibold mb-4">
-              <MessageSquare className="w-4 h-4 mr-2" />
+            <span className="section-badge mb-4 inline-flex">
+              <MessageSquare size={13} />
               Get In Touch
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Let's Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Together</span>
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mt-4">
+              Let's Build{' '}
+              <span className="gradient-text animate-grad-shift">Together</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to start your project? Fill out the form below and I'll get back to you within 24 hours.
+            <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: '#64748b' }}>
+              Ready to start your project? Fill out the form and I'll get back to you within 24 hours.
             </p>
           </div>
 
-          {/* Error Message Display */}
-          {errors.submit && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-              <div className="flex items-center">
-                <AlertCircle className="w-5 h-5 text-red-600 mr-2" />
-                <span className="text-red-700">{errors.submit}</span>
-              </div>
-            </div>
-          )}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div>
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                
-                <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-600">
-                        {info.icon}
+            {/* ── Left: Info ── */}
+            <div className="lg:col-span-2 flex flex-col gap-5">
+
+              {/* Availability */}
+              <div className="flex items-center justify-between p-4 rounded-xl"
+                style={{ background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-sm font-semibold" style={{ color: '#a7f3d0' }}>Available for new projects</span>
+                </div>
+                <span className="px-2 py-0.5 rounded-full text-xs font-semibold"
+                  style={{ background: 'rgba(16,185,129,0.15)', color: '#34d399' }}>Open</span>
+              </div>
+
+              {/* Contact items */}
+              <div className="flex flex-col gap-3">
+                {contactInfo.map((c, i) => (
+                  <a
+                    key={i}
+                    href={c.href}
+                    className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group"
+                    style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
+                  >
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${c.color}18`, border: `1px solid ${c.color}30`, color: c.color }}>
+                      {c.icon}
+                    </div>
+                    <div>
+                      <div className="text-xs" style={{ color: '#475569' }}>{c.label}</div>
+                      <div className="text-sm font-medium mt-0.5" style={{ color: '#cbd5e1' }}>{c.value}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              {/* Social */}
+              <div className="p-5 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                <h4 className="text-sm font-semibold mb-3" style={{ color: '#94a3b8' }}>Connect on social</h4>
+                <div className="flex gap-3">
+                  {socialLinks.map((s, i) => (
+                    <a
+                      key={i}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
+                      style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: '#64748b' }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = 'rgba(99,102,241,0.15)';
+                        e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)';
+                        e.currentTarget.style.color = '#a5b4fc';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                        e.currentTarget.style.color = '#64748b';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      {s.icon}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              {/* What to expect */}
+              <div className="p-5 rounded-xl" style={{ background: 'rgba(99,102,241,0.05)', border: '1px solid rgba(99,102,241,0.12)' }}>
+                <h4 className="text-sm font-semibold mb-4" style={{ color: '#94a3b8' }}>What to expect:</h4>
+                <div className="flex flex-col gap-3">
+                  {[
+                    { icon: <Clock size={15} />, title: '24-Hour Response', desc: 'Detailed quote within 24h' },
+                    { icon: <Shield size={15} />, title: 'No-Spam Guarantee', desc: 'Your info stays private' },
+                    { icon: <CheckCircle size={15} />, title: 'Free Consultation', desc: '30-min free project talk' },
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8' }}>
+                        {f.icon}
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900">{info.title}</h4>
-                        <p className="text-gray-700 text-lg font-semibold">{info.details}</p>
-                        <p className="text-gray-500 text-sm">{info.subtitle}</p>
+                        <div className="text-xs font-semibold" style={{ color: '#c7d2fe' }}>{f.title}</div>
+                        <div className="text-xs mt-0.5" style={{ color: '#475569' }}>{f.desc}</div>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                {/* Quote Features */}
-                <div className="mt-10 pt-8 border-t border-blue-100">
-                  <h4 className="font-bold text-gray-900 mb-4">What to expect:</h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {quoteFeatures.map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <div className="w-10 h-10 rounded-lg bg-white border border-blue-100 flex items-center justify-center text-blue-600">
-                          {feature.icon}
-                        </div>
-                        <div>
-                          <div className="font-semibold text-gray-900">{feature.title}</div>
-                          <div className="text-sm text-gray-600">{feature.description}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Availability Status */}
-              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse mr-2"></div>
-                    <span className="font-semibold text-gray-900">Available for new projects</span>
-                  </div>
-                  <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
-                    Open
-                  </span>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  Currently accepting 2-3 new projects for Q1 2025. Let's discuss your requirements!
-                </p>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Get a Quote</h3>
-              <p className="text-gray-600 mb-8">Fill out the form below to discuss your project</p>
+            {/* ── Right: Form ── */}
+            <div className="lg:col-span-3">
+              <div className="p-6 md:p-8 rounded-2xl"
+                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
 
-              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <div className="flex items-center">
-                        <User className="w-4 h-4 mr-1" />
-                        Full Name *
-                      </div>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border ${
-                        errors.name ? 'border-red-300' : 'border-gray-300'
-                      } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300`}
-                      placeholder="John Doe"
-                    />
-                    {errors.name && (
-                      <div className="flex items-center text-red-600 text-sm mt-1">
-                        <AlertCircle className="w-4 h-4 mr-1" />
-                        {errors.name}
-                      </div>
-                    )}
+                <h3 className="text-xl font-bold mb-1" style={{ color: '#e2e8f0' }}>Get a Quote</h3>
+                <p className="text-sm mb-6" style={{ color: '#475569' }}>Fill out the form below to discuss your project</p>
+
+                {errors.submit && (
+                  <div className="flex items-center gap-2 p-3 rounded-lg mb-4 text-sm"
+                    style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', color: '#fca5a5' }}>
+                    <AlertCircle size={15} />
+                    {errors.submit}
                   </div>
+                )}
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      <div className="flex items-center">
-                        <Mail className="w-4 h-4 mr-1" />
-                        Email Address *
-                      </div>
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg border ${
-                        errors.email ? 'border-red-300' : 'border-gray-300'
-                      } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300`}
-                      placeholder="john@example.com"
-                    />
-                    {errors.email && (
-                      <div className="flex items-center text-red-600 text-sm mt-1">
-                        <AlertCircle className="w-4 h-4 mr-1" />
-                        {errors.email}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    <div className="flex items-center">
-                      <Phone className="w-4 h-4 mr-1" />
-                      Phone Number (Optional)
+                <form ref={form} onSubmit={handleSubmit} className="space-y-5">
+                  {/* Name + Email */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                        <span className="flex items-center gap-1"><User size={12} /> Full Name *</span>
+                      </label>
+                      <input
+                        type="text" name="name" value={formData.name} onChange={handleChange}
+                        placeholder="John Doe"
+                        className={`input-dark ${errors.name ? 'error' : ''}`}
+                      />
+                      {errors.name && <p className="text-xs mt-1 flex items-center gap-1" style={{ color: '#f87171' }}><AlertCircle size={11} />{errors.name}</p>}
                     </div>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300"
-                    placeholder="+880 1234 567890"
-                  />
-                </div>
+                    <div>
+                      <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                        <span className="flex items-center gap-1"><Mail size={12} /> Email *</span>
+                      </label>
+                      <input
+                        type="email" name="email" value={formData.email} onChange={handleChange}
+                        placeholder="john@example.com"
+                        className={`input-dark ${errors.email ? 'error' : ''}`}
+                      />
+                      {errors.email && <p className="text-xs mt-1 flex items-center gap-1" style={{ color: '#f87171' }}><AlertCircle size={11} />{errors.email}</p>}
+                    </div>
+                  </div>
 
-                {/* Project Details - Added hidden inputs for form submission */}
-                <div className="pt-6 border-t border-gray-200">
+                  {/* Phone */}
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                      <span className="flex items-center gap-1"><Phone size={12} /> Phone (Optional)</span>
+                    </label>
+                    <input
+                      type="tel" name="phone" value={formData.phone} onChange={handleChange}
+                      placeholder="+1 234 567 8900"
+                      className="input-dark"
+                    />
+                  </div>
+
+                  {/* Hidden fields */}
                   <input type="hidden" name="projectType" value={formData.projectType} />
                   <input type="hidden" name="budget" value={formData.budget} />
                   <input type="hidden" name="timeline" value={formData.timeline} />
-                  
-                  <h4 className="font-bold text-gray-900 mb-4">Project Details</h4>
-                  
-                  <div className="mb-6">
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      Project Type
-                    </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {projectTypes.map((type) => (
+
+                  {/* Project Type */}
+                  <div>
+                    <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Project Type</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {projectTypes.map((t) => (
                         <button
-                          key={type.value}
-                          type="button"
-                          onClick={() => setFormData(prev => ({ ...prev, projectType: type.value }))}
-                          className={`flex flex-col items-center justify-center p-3 rounded-lg border-2 transition-all duration-300 ${
-                            formData.projectType === type.value
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-gray-300'
-                          }`}
+                          key={t.value} type="button"
+                          onClick={() => setFormData(p => ({ ...p, projectType: t.value }))}
+                          className="flex flex-col items-center gap-1 p-3 rounded-lg text-xs font-medium transition-all duration-200"
+                          style={{
+                            background: formData.projectType === t.value ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.03)',
+                            border: formData.projectType === t.value ? '1px solid rgba(99,102,241,0.4)' : '1px solid rgba(255,255,255,0.07)',
+                            color: formData.projectType === t.value ? '#a5b4fc' : '#64748b',
+                          }}
                         >
-                          <span className="text-xl mb-1">{type.icon}</span>
-                          <span className="text-xs font-medium text-gray-700">{type.label}</span>
+                          <span>{t.icon}</span>
+                          {t.label}
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Budget + Timeline */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-3">
-                        Estimated Budget
-                      </label>
-                      <div className="space-y-2">
-                        {budgetOptions.map((option) => (
-                          <label
-                            key={option.value}
-                            className={`flex items-center p-3 rounded-lg border-2 cursor-pointer transition-all duration-300 ${
-                              formData.budget === option.value
-                                ? 'border-blue-500 bg-blue-50'
-                                : 'border-gray-200 hover:border-gray-300'
-                            }`}
+                      <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Budget</label>
+                      <div className="grid grid-cols-2 gap-2">
+                        {budgetOptions.map((b) => (
+                          <button
+                            key={b.value} type="button"
+                            onClick={() => setFormData(p => ({ ...p, budget: b.value }))}
+                            className="py-2 px-3 rounded-lg text-xs font-medium transition-all duration-200"
+                            style={{
+                              background: formData.budget === b.value ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.03)',
+                              border: formData.budget === b.value ? '1px solid rgba(99,102,241,0.4)' : '1px solid rgba(255,255,255,0.07)',
+                              color: formData.budget === b.value ? '#a5b4fc' : '#64748b',
+                            }}
                           >
-                            <input
-                              type="radio"
-                              name="budget"
-                              value={option.value}
-                              checked={formData.budget === option.value}
-                              onChange={handleChange}
-                              className="sr-only"
-                            />
-                            <div className={`w-4 h-4 rounded-full border-2 mr-3 flex items-center justify-center ${
-                              formData.budget === option.value
-                                ? 'border-blue-500'
-                                : 'border-gray-300'
-                            }`}>
-                              {formData.budget === option.value && (
-                                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                              )}
-                            </div>
-                            <span className={`text-sm font-medium ${option.color.split(' ')[1]}`}>
-                              {option.label}
-                            </span>
-                          </label>
+                            {b.label}
+                          </button>
                         ))}
                       </div>
                     </div>
-
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-3">
-                        Project Timeline
-                      </label>
+                      <label className="block text-xs font-medium mb-2" style={{ color: '#94a3b8' }}>Timeline</label>
                       <select
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300 bg-white"
+                        name="timeline" value={formData.timeline} onChange={handleChange}
+                        className="input-dark"
+                        style={{ cursor: 'pointer' }}
                       >
-                        {timelineOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
+                        {timelineOptions.map((o) => (
+                          <option key={o.value} value={o.value} style={{ background: '#0d0d14' }}>
+                            {o.label}
                           </option>
                         ))}
                       </select>
                     </div>
                   </div>
-                </div>
 
-                {/* Message */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    <div className="flex items-center">
-                      <MessageSquare className="w-4 h-4 mr-1" />
-                      Project Description *
-                    </div>
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={6}
-                    className={`w-full px-4 py-3 rounded-lg border ${
-                      errors.message ? 'border-red-300' : 'border-gray-300'
-                    } focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all duration-300 resize-none`}
-                    placeholder="Please describe your project requirements, goals, and any specific features you need..."
-                  />
-                  {errors.message && (
-                    <div className="flex items-center text-red-600 text-sm mt-1">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.message}
-                    </div>
-                  )}
-                </div>
+                  {/* Message */}
+                  <div>
+                    <label className="block text-xs font-medium mb-1.5" style={{ color: '#94a3b8' }}>
+                      <span className="flex items-center gap-1"><MessageSquare size={12} /> Project Description *</span>
+                    </label>
+                    <textarea
+                      name="message" value={formData.message} onChange={handleChange} rows={5}
+                      placeholder="Describe your project requirements, goals, and any specific features you need..."
+                      className={`input-dark resize-none ${errors.message ? 'error' : ''}`}
+                    />
+                    {errors.message && <p className="text-xs mt-1 flex items-center gap-1" style={{ color: '#f87171' }}><AlertCircle size={11} />{errors.message}</p>}
+                  </div>
 
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
-                    isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Processing...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      <span>Send Message & Get Quote</span>
-                    </>
-                  )}
-                </button>
-
-                <p className="text-center text-sm text-gray-500">
-                  By submitting this form, you agree to our privacy policy.
-                </p>
-              </form>
+                  {/* Submit */}
+                  <button
+                    type="submit" disabled={isSubmitting}
+                    className="btn-primary w-full justify-center py-3.5 text-sm rounded-xl"
+                    style={{ borderRadius: '12px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        Send Message &amp; Get Quote
+                      </>
+                    )}
+                  </button>
+                  <p className="text-center text-xs" style={{ color: '#334155' }}>
+                    By submitting, you agree to our privacy policy.
+                  </p>
+                </form>
+              </div>
             </div>
           </div>
 
-          {/* FAQ Section */}
+          {/* ── FAQ ── */}
           <div className="mt-20">
-            <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Questions</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+              Frequently Asked{' '}
+              <span className="gradient-text">Questions</span>
             </h3>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[
-                {
-                  question: "What happens after I submit the form?",
-                  answer: "I'll review your project details within 24 hours and schedule a free 30-minute consultation call to discuss requirements, timeline, and budget."
-                },
-                {
-                  question: "What's included in your quote?",
-                  answer: "Detailed project scope, timeline breakdown, cost estimation, technology stack recommendation, and maintenance plan."
-                },
-                {
-                  question: "Do you work with international clients?",
-                  answer: "Yes! I work with clients worldwide. All communication and project management is done remotely using modern collaboration tools."
-                },
-                {
-                  question: "What's your typical project timeline?",
-                  answer: "Small projects: 2-4 weeks, Medium projects: 1-3 months, Large projects: 3-6 months. Custom timelines available based on requirements."
-                }
-              ].map((faq, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-300">
-                  <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3">
-                      {index + 1}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="p-5 rounded-xl cursor-pointer transition-all duration-300"
+                  style={{
+                    background: openFaq === i ? 'rgba(99,102,241,0.07)' : 'rgba(255,255,255,0.03)',
+                    border: openFaq === i ? '1px solid rgba(99,102,241,0.2)' : '1px solid rgba(255,255,255,0.06)',
+                  }}
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold"
+                      style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8' }}>
+                      {i + 1}
                     </div>
-                    {faq.question}
-                  </h4>
-                  <p className="text-gray-600">{faq.answer}</p>
+                    <div className="flex-1">
+                      <h4 className="text-sm font-semibold" style={{ color: '#e2e8f0' }}>{faq.q}</h4>
+                      {openFaq === i && (
+                        <p className="text-xs mt-2 leading-relaxed" style={{ color: '#64748b' }}>{faq.a}</p>
+                      )}
+                    </div>
+                    <span className="text-xs transition-transform duration-200" style={{ color: '#475569', transform: openFaq === i ? 'rotate(90deg)' : 'rotate(0)' }}>›</span>
+                  </div>
                 </div>
               ))}
             </div>
