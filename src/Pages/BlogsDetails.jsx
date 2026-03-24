@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -31,6 +32,7 @@ import { Helmet } from 'react-helmet-async'; // Install: npm install react-helme
 import { getBlogBySlug, blogs } from '../data/blogs';
 
 const BlogDetail = () => {
+  const { t } = useTranslation();
   const { slug } = useParams();
   const navigate = useNavigate();
   const article = getBlogBySlug(slug);
