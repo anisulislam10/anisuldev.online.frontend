@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ExternalLink,
   Github,
@@ -22,17 +23,19 @@ import {
 import SEOHead from '../components/SEOHead';
 
 const AllProjects = () => {
+  const { t } = useTranslation();
+
   // SEO Metadata
-  const seoTitle = ' Projects Portfolio | Full Stack Developer';
-  const seoDescription = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
-  const seoKeywords = 'React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack';
+  const seoTitle = t('projects.meta.title');
+  const seoDescription = t('projects.meta.description');
+  const seoKeywords = t('projects.meta.description'); // reusing description as keywords for now or could add more
   const seoImage = '/blogs-og-image.jpg';
 
   const projects = [
     {
       id: 1,
-      name: 'Al Waqas Inventory App',
-      description: 'Complete inventory management solution for paint & hardware businesses with barcode scanning and real-time stock updates',
+      name: t('projects.list.waqasInventory.name'),
+      description: t('projects.list.waqasInventory.description'),
       techStack: ['React Native', 'Redux', 'Firebase', 'Barcode Scanner'],
       platform: 'Mobile',
       category: 'Inventory Management',
@@ -49,8 +52,8 @@ const AllProjects = () => {
     },
     {
       id: 2,
-      name: 'Price Signal',
-      description: 'Real-time price tracking and alert application for financial markets with advanced charting capabilities',
+      name: t('projects.list.priceSignal.name'),
+      description: t('projects.list.priceSignal.description'),
       techStack: ['React Native', 'WebSocket', 'Chart.js', 'Node.js'],
       platform: 'Mobile',
       category: 'Finance',
@@ -63,8 +66,8 @@ const AllProjects = () => {
     },
     {
       id: 3,
-      name: 'Allsmosis App',
-      description: 'Educational platform for language learning with interactive lessons and progress tracking',
+      name: t('projects.list.allsmosis.name'),
+      description: t('projects.list.allsmosis.description'),
       techStack: ['React Native', 'GraphQL', 'MongoDB', 'AWS'],
       platform: 'Mobile',
       category: 'Education',
@@ -77,8 +80,8 @@ const AllProjects = () => {
     },
     {
       id: 4,
-      name: 'Saborly.es',
-      description: 'Full-featured e-commerce platform for gourmet foods with payment integration and inventory management',
+      name: t('projects.list.saborly.name'),
+      description: t('projects.list.saborly.description'),
       techStack: ['Node.js', 'Express', 'MongoDB', 'Stripe', 'Redis'],
       platform: 'Web',
       category: 'E-commerce',
@@ -91,8 +94,8 @@ const AllProjects = () => {
     },
     {
       id: 5,
-      name: 'Al Waqas Business Suite',
-      description: 'Comprehensive business management suite including POS, Inventory, and Accounting systems',
+      name: t('projects.list.waqasSuite.name'),
+      description: t('projects.list.waqasSuite.description'),
       techStack: ['MERN Stack', 'Redux', 'JWT', 'Socket.io', 'PDFKit'],
       platform: 'Web',
       category: 'Business Suite',
@@ -119,8 +122,8 @@ const AllProjects = () => {
     },
     {
       id: 6,
-      name: 'Taxara Admin Panel',
-      description: 'Administrative dashboard for tax consulting services with client management and document processing',
+      name: t('projects.list.taxara.name'),
+      description: t('projects.list.taxara.description'),
       techStack: ['Node.js', 'Express', 'React', 'MySQL', 'AWS S3'],
       platform: 'Web',
       category: 'Admin Panel',
@@ -133,8 +136,8 @@ const AllProjects = () => {
     },
     {
       id: 7,
-      name: 'Brain Bank Dashboard',
-      description: 'Interactive dashboard for educational content management with analytics and user progress tracking',
+      name: t('projects.list.brainBank.name'),
+      description: t('projects.list.brainBank.description'),
       techStack: ['MERN Stack', 'Chart.js', 'WebSocket', 'AWS'],
       platform: 'Web',
       category: 'Education',
@@ -147,8 +150,8 @@ const AllProjects = () => {
     },
     {
       id: 8,
-      name: 'Sharplogicians Website',
-      description: 'Professional services website with portfolio showcase, client management, and service booking',
+      name: t('projects.list.sharplogicians.name'),
+      description: t('projects.list.sharplogicians.description'),
       techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Sanity CMS'],
       platform: 'Web',
       category: 'Professional Services',
@@ -161,8 +164,8 @@ const AllProjects = () => {
     },
     {
       id: 9,
-      name: 'Laraib Online Academy',
-      description: 'Online Quran learning platform with video lessons, progress tracking, and teacher-student communication',
+      name: t('projects.list.laraib.name'),
+      description: t('projects.list.laraib.description'),
       techStack: ['React.js', 'Node.js', 'Socket.io', 'MongoDB', 'JWT'],
       platform: 'Web',
       category: 'Education',
@@ -175,8 +178,8 @@ const AllProjects = () => {
     },
     {
       id: 10,
-      name: 'Digidaal',
-      description: 'Digital agency platform with project management, client portal, and portfolio showcase',
+      name: t('projects.list.digidaal.name'),
+      description: t('projects.list.digidaal.description'),
       techStack: ['MERN Stack', 'Redux', 'Stripe', 'AWS', 'Docker'],
       platform: 'Web',
       category: 'Digital Agency',
@@ -190,12 +193,12 @@ const AllProjects = () => {
   ];
 
   const categories = [
-    { id: 'all', name: 'All Projects', icon: <Layers className="w-5 h-5" /> },
-    { id: 'mobile', name: 'Mobile Apps', icon: <Smartphone className="w-5 h-5" /> },
-    { id: 'web', name: 'Web Applications', icon: <Globe className="w-5 h-5" /> },
-    { id: 'ecommerce', name: 'E-commerce', icon: <ShoppingCart className="w-5 h-5" /> },
-    { id: 'education', name: 'Education', icon: <BookOpen className="w-5 h-5" /> },
-    { id: 'business', name: 'Business Suite', icon: <Package className="w-5 h-5" /> }
+    { id: 'all', name: t('projects.categories.all'), icon: <Layers className="w-5 h-5" /> },
+    { id: 'mobile', name: t('projects.categories.mobile'), icon: <Smartphone className="w-5 h-5" /> },
+    { id: 'web', name: t('projects.categories.web'), icon: <Globe className="w-5 h-5" /> },
+    { id: 'ecommerce', name: t('projects.categories.ecommerce'), icon: <ShoppingCart className="w-5 h-5" /> },
+    { id: 'education', name: t('projects.categories.education'), icon: <BookOpen className="w-5 h-5" /> },
+    { id: 'business', name: t('projects.categories.business'), icon: <Package className="w-5 h-5" /> }
   ];
 
   const [selectedCategory, setSelectedCategory] = React.useState('all');
@@ -268,14 +271,13 @@ const AllProjects = () => {
             <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
               style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
               <Code className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
-              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Professional Portfolio</span>
+              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t('projects.badge')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-              My <span className="gradient-text animate-grad-shift">Projects</span>
+              {t('projects.heading')} <span className="gradient-text animate-grad-shift">{t('projects.headingHighlight')}</span>
             </h1>
             <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              A showcase of production-grade applications built with modern technologies.
-              From mobile apps to enterprise web solutions.
+              {t('projects.subheading')}
             </p>
           </div>
         </div>
@@ -286,28 +288,28 @@ const AllProjects = () => {
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-indigo)' }}>{projects.length}</div>
-            <div style={{ color: 'var(--text-secondary)' }}>Total Projects</div>
+            <div style={{ color: 'var(--text-secondary)' }}>{t('projects.stats.total')}</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-cyan)' }}>
               {projects.filter(p => p.platform === 'Mobile').length}
             </div>
-            <div style={{ color: 'var(--text-secondary)' }}>Mobile Apps</div>
+            <div style={{ color: 'var(--text-secondary)' }}>{t('projects.stats.mobile')}</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-purple)' }}>
               {projects.filter(p => p.platform === 'Web').length}
             </div>
-            <div style={{ color: 'var(--text-secondary)' }}>Web Applications</div>
+            <div style={{ color: 'var(--text-secondary)' }}>{t('projects.stats.web')}</div>
           </div>
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-green)' }}>
               {projects.filter(p => p.featured).length}
             </div>
-            <div style={{ color: 'var(--text-secondary)' }}>Featured Projects</div>
+            <div style={{ color: 'var(--text-secondary)' }}>{t('projects.stats.featured')}</div>
           </div>
         </div>
       </div>
@@ -315,7 +317,7 @@ const AllProjects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Categories Filter */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>Filter by Category</h2>
+          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>{t('projects.filterTitle')}</h2>
           <div className="flex flex-wrap gap-3">
             {categories.map((category) => (
               <button
@@ -354,7 +356,7 @@ const AllProjects = () => {
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
                     style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }}>
                     <Star className="w-3 h-3 mr-1" />
-                    Featured
+                    {t('projects.card.featured')}
                   </span>
                 </div>
               )}
@@ -366,7 +368,7 @@ const AllProjects = () => {
                     ? { background: 'var(--bg-card)', border: '1px solid var(--accent-cyan)', color: 'var(--accent-cyan)', backdropFilter: 'blur(8px)' }
                     : { background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }
                   }>
-                  ● {project.status}
+                  ● {project.status === 'Live' ? t('projects.card.live') : project.status}
                 </span>
               </div>
 
@@ -405,7 +407,7 @@ const AllProjects = () => {
                 </p>
 
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Tech Stack</h4>
+                  <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{t('projects.card.techStack')}</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.techStack.slice(0, 4).map((tech, index) => (
                       <span
@@ -420,7 +422,7 @@ const AllProjects = () => {
                     {project.techStack.length > 4 && (
                       <span className="px-3 py-1 text-xs rounded-full border"
                         style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}>
-                        +{project.techStack.length - 4} more
+                        +{project.techStack.length - 4} {t('projects.card.more')}
                       </span>
                     )}
                   </div>
@@ -428,7 +430,7 @@ const AllProjects = () => {
 
                 {project.subProjects && (
                   <div className="mb-6">
-                    <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>Components</h4>
+                    <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>{t('projects.card.components')}</h4>
                     <div className="space-y-2">
                       {project.subProjects.map((sub, idx) => (
                         <a
@@ -509,7 +511,7 @@ const AllProjects = () => {
 
         {/* Stats Section */}
         <div className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }}>
-          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>Technology Stack Summary</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>{t('projects.techSummary.title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
               { name: 'React Native', count: 3, icon: <Smartphone className="w-8 h-8" /> },
@@ -525,7 +527,7 @@ const AllProjects = () => {
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                 <div className="mb-3 flex justify-center" style={{ color: 'var(--accent-indigo)' }}>{tech.icon}</div>
                 <div className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{tech.count}</div>
-                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{tech.name} Projects</div>
+                <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{tech.name} {t('projects.techSummary.suffix')}</div>
               </div>
             ))}
           </div>
@@ -534,9 +536,9 @@ const AllProjects = () => {
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <div className="rounded-2xl p-12 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>Interested in Working Together?</h2>
+            <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>{t('projects.cta.title')}</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Have a project in mind? Let's discuss how we can build something amazing together.
+              {t('projects.cta.description')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
@@ -544,7 +546,7 @@ const AllProjects = () => {
                 className="px-8 py-3 text-white font-semibold rounded-lg hover:shadow-lg transition-all duration-300"
                 style={{ background: 'var(--gradient-hero)' }}
               >
-                Contact Me
+                {t('projects.cta.contact')}
               </a>
               <a
                 href="/blogs"
@@ -553,7 +555,7 @@ const AllProjects = () => {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
               >
-                View My Blogs
+                {t('projects.cta.blogs')}
               </a>
             </div>
           </div>

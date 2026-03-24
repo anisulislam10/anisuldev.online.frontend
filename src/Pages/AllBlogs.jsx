@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Calendar,
@@ -27,6 +28,7 @@ import { WebsiteStructuredData, BreadcrumbStructuredData } from '../components/S
 
 const AllBlogs = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
@@ -37,30 +39,30 @@ const AllBlogs = () => {
   const [sortBy, setSortBy] = useState('latest');
 
   // SEO Metadata
-  const seoTitle = ' Blogs | Tech News | Interview Preparation Guides';
-  const seoDescription = 'Comprehensive Node.js and Express.js interview questions and answers for junior to mid-level backend developers. Master backend development concepts.';
-  const seoKeywords = 'Node.js interview questions, Express.js interview, backend developer interview, JavaScript interview, system design interview, software engineering interview';
+  const seoTitle = t('blogs_page.meta.title');
+  const seoDescription = t('blogs_page.meta.description');
+  const seoKeywords = t('blogs_page.meta.keywords');
   const seoImage = '/blogs-og-image.jpg';
 
   const categories = [
-    { id: 'all', name: 'All Topics', color: 'bg-gray-100 text-gray-600' },
-    { id: 'Fundamentals', name: 'Fundamentals', color: 'bg-blue-100 text-blue-600' },
-    { id: 'Advanced', name: 'Advanced', color: 'bg-green-100 text-green-600' },
-    { id: 'System Design', name: 'System Design', color: 'bg-purple-100 text-purple-600' },
+    { id: 'all', name: t('blogs_page.filters.categories.all'), color: 'bg-gray-100 text-gray-600' },
+    { id: 'Fundamentals', name: t('blogs_page.filters.categories.fundamentals'), color: 'bg-blue-100 text-blue-600' },
+    { id: 'Advanced', name: t('blogs_page.filters.categories.advanced'), color: 'bg-green-100 text-green-600' },
+    { id: 'System Design', name: t('blogs_page.filters.categories.systemDesign'), color: 'bg-purple-100 text-purple-600' },
   ];
 
   const difficulties = [
-    { id: 'all', name: 'All Levels' },
-    { id: 'Beginner', name: 'Beginner' },
-    { id: 'Intermediate', name: 'Intermediate' },
-    { id: 'Advanced', name: 'Advanced' },
+    { id: 'all', name: t('blogs_page.filters.difficulties.all') },
+    { id: 'Beginner', name: t('blogs_page.filters.difficulties.beginner') },
+    { id: 'Intermediate', name: t('blogs_page.filters.difficulties.intermediate') },
+    { id: 'Advanced', name: t('blogs_page.filters.difficulties.advanced') },
   ];
 
   const sortOptions = [
-    { id: 'latest', name: 'Latest First' },
-    { id: 'popular', name: 'Most Popular' },
-    { id: 'views', name: 'Most Viewed' },
-    { id: 'readingTime', name: 'Reading Time' },
+    { id: 'latest', name: t('blogs_page.filters.sortOptions.latest') },
+    { id: 'popular', name: t('blogs_page.filters.sortOptions.popular') },
+    { id: 'views', name: t('blogs_page.filters.sortOptions.views') },
+    { id: 'readingTime', name: t('blogs_page.filters.sortOptions.readingTime') },
   ];
 
   useEffect(() => {
@@ -167,13 +169,13 @@ const AllBlogs = () => {
             <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
               style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
               <BookOpen className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
-              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Backend Development</span>
+              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t('blogs_page.badge')}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-              Latest Tech <span className="gradient-text animate-grad-shift">Blogs</span>
+              {t('blogs_page.heading')} <span className="gradient-text animate-grad-shift">{t('blogs_page.headingHighlight')}</span>
             </h1>
             <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Comprehensive Node.js & Express.js interview preparation guides for junior to mid-level backend developers
+              {t('blogs_page.subheading')}
             </p>
 
             {/* Search Schema */}
@@ -197,7 +199,7 @@ const AllBlogs = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search articles, topics, or questions..."
+              placeholder={t('blogs_page.searchPlaceholder')}
               className="w-full pl-12 pr-4 py-4 rounded-xl border outline-none transition-all duration-300"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
               aria-label="Search blog articles"
@@ -207,7 +209,7 @@ const AllBlogs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div>
               <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
-                Category
+                {t('blogs_page.filters.category')}
               </label>
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat) => (
@@ -229,7 +231,7 @@ const AllBlogs = () => {
 
             <div>
               <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
-                Difficulty Level
+                {t('blogs_page.filters.difficulty')}
               </label>
               <div className="flex flex-wrap gap-2">
                 {difficulties.map((diff) => (
@@ -251,7 +253,7 @@ const AllBlogs = () => {
 
             <div>
               <label htmlFor="sort-select" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
-                Sort By
+                {t('blogs_page.filters.sort')}
               </label>
               <select
                 id="sort-select"
@@ -275,13 +277,13 @@ const AllBlogs = () => {
         {loading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2" style={{ borderColor: 'var(--accent-indigo)' }} aria-label="Loading"></div>
-            <p className="mt-4" style={{ color: 'var(--text-secondary)' }}>Loading articles...</p>
+            <p className="mt-4" style={{ color: 'var(--text-secondary)' }}>{t('blogs_page.status.loading')}</p>
           </div>
         ) : filteredArticles.length === 0 ? (
           <div className="text-center py-12">
             <AlertCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>No articles found</h3>
-            <p style={{ color: 'var(--text-secondary)' }}>Try a different search term or filter</p>
+            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{t('blogs_page.status.noResults')}</h3>
+            <p style={{ color: 'var(--text-secondary)' }}>{t('blogs_page.status.tryDifferent')}</p>
           </div>
         ) : (
           <>
@@ -301,7 +303,7 @@ const AllBlogs = () => {
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
                           style={{ background: 'var(--bg-card)', border: '1px solid var(--accent-indigo)', color: 'var(--accent-indigo)', backdropFilter: 'blur(8px)' }}>
                           <Star className="w-3 h-3 mr-1" />
-                          Featured
+                          {t('blogs_page.card.featured')}
                         </span>
                       </div>
                     )}
@@ -338,7 +340,7 @@ const AllBlogs = () => {
                         </div>
                         <div className="flex items-center">
                           <Eye className="w-4 h-4 mr-1" />
-                          {article.content.metadata.views.toLocaleString()} views
+                          {article.content.metadata.views.toLocaleString()} {t('blogs_page.card.views')}
                         </div>
                       </div>
 
@@ -390,7 +392,7 @@ const AllBlogs = () => {
                           aria-label={`Read more about ${article.title}`}
                           itemProp="url"
                         >
-                          Read Guide
+                          {t('blogs_page.card.readGuide')}
                           <ExternalLink className="w-4 h-4 ml-2" />
                         </Link>
                       </div>
@@ -402,8 +404,8 @@ const AllBlogs = () => {
 
             <div className="mt-12 text-center text-gray-600">
               <p>
-                Showing {filteredArticles.length} of {blogs.length} articles
-                {searchQuery && ` for "${searchQuery}"`}
+                {t('blogs_page.status.showing')} {filteredArticles.length} {t('blogs_page.status.of')} {blogs.length} {t('blogs_page.status.articles')}
+                {searchQuery && ` ${t('blogs_page.status.for')} "${searchQuery}"`}
               </p>
             </div>
           </>
@@ -422,9 +424,9 @@ const AllBlogs = () => {
             </div>
             <div className="flex-1 text-center md:text-left">
               <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }} itemProp="name">Anisul Islam</h3>
-              <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }} itemProp="jobTitle">Full Stack Software Engineer</p>
+              <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }} itemProp="jobTitle">{t('blogs_page.author.role')}</p>
               <p style={{ color: 'var(--text-secondary)' }} itemProp="description">
-                I craft beautiful, performant web applications using modern technologies. Passionate about React.js, Node.js, Next.js, Express.js, MongoDB and the entire JavaScript ecosystem. Turning complex problems into simple, beautiful designs.
+                {t('blogs_page.author.description')}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">React.js</span>

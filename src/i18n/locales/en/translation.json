@@ -1,0 +1,484 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "blogs": "Blogs",
+        "tools": "Tools",
+        "contact": "Contact",
+        "available": "Available",
+        "hireMe": "Hire Me",
+        "getInTouch": "Get In Touch"
+    },
+    "lang": {
+        "en": "EN",
+        "ur": "اردو",
+        "ar": "عربي"
+    },
+    "hero": {
+        "badge": "Full Stack Developer",
+        "greeting": "Hi, I'm",
+        "meta": {
+            "title": "About Anisul Islam | Full Stack Software Engineer",
+            "description": "Anisul Islam is a Full Stack Developer from Chitral, Pakistan specializing in MERN Stack, React Native, API Development. BS Software Engineering graduate with certifications from Coursera and Cisco."
+        },
+        "subtitle": "JavaScript Lover & Full Stack Software Engineer",
+        "description": "I craft beautiful, performant web & mobile applications using modern JavaScript — from pixel-perfect UIs to scalable backend systems.",
+        "viewProjects": "View Projects",
+        "getQuote": "Get a Quote",
+        "connect": "Connect:",
+        "openToWork": "Open to work",
+        "hire": "Hire",
+        "stats": {
+            "projects": "Projects",
+            "yearsExp": "Years Exp",
+            "satisfaction": "Satisfaction"
+        }
+    },
+    "services": {
+        "badge": "Services & Expertise",
+        "heading": "What I",
+        "headingHighlight": "Build",
+        "description": "Full-stack solutions tailored to your needs — from sleek mobile apps to complex web platforms and scalable backends.",
+        "learnMore": "Learn more",
+        "techStack": "Tech Stack",
+        "processHeading": "Development",
+        "processHeadingHighlight": "Process",
+        "processDescription": "A structured approach to deliver high-quality software",
+        "ctaHeading": "Ready to Start Your Project?",
+        "ctaDescription": "Let's discuss how I can bring your ideas to life",
+        "ctaButton": "Get a Quote Now",
+        "process": {
+            "discovery": {
+                "title": "Discovery",
+                "desc": "Understanding requirements and planning architecture"
+            },
+            "design": {
+                "title": "Design",
+                "desc": "UI/UX wireframes and interactive prototypes"
+            },
+            "development": {
+                "title": "Development",
+                "desc": "Agile sprints with regular progress updates"
+            },
+            "launch": {
+                "title": "Launch",
+                "desc": "Deploying, monitoring, and ongoing support"
+            }
+        },
+        "cards": {
+            "reactNative": {
+                "title": "React Native Mobile Apps",
+                "description": "Cross-platform mobile apps with native performance and seamless UX for iOS & Android.",
+                "features": [
+                    "iOS & Android Development",
+                    "Native Modules Integration",
+                    "Offline Capabilities",
+                    "Push Notifications",
+                    "App Store Deployment"
+                ]
+            },
+            "webApps": {
+                "title": "Web Applications",
+                "description": "Modern, fast web apps with React.js & Next.js — SSR, SSG, and everything in between.",
+                "features": [
+                    "React.js SPA/MPA",
+                    "Next.js SSR/SSG",
+                    "Progressive Web Apps",
+                    "SEO Optimization",
+                    "Performance Tuning"
+                ]
+            },
+            "backend": {
+                "title": "Backend & Databases",
+                "description": "Scalable server-side systems with RESTful/GraphQL APIs and robust database design.",
+                "features": [
+                    "REST & GraphQL APIs",
+                    "MongoDB & SQL Databases",
+                    "Auth & Security",
+                    "Vercel & VPS Deploy",
+                    "API Documentation"
+                ]
+            }
+        }
+    },
+    "contact": {
+        "badge": "Get In Touch",
+        "heading": "Let's Build",
+        "headingHighlight": "Together",
+        "description": "Ready to start your project? Fill out the form and I'll get back to you within 24 hours.",
+        "available": "Available for new projects",
+        "open": "Open",
+        "connectSocial": "Connect on social",
+        "whatToExpect": "What to expect:",
+        "response24h": "24-Hour Response",
+        "response24hDesc": "Detailed quote within 24h",
+        "noSpam": "No-Spam Guarantee",
+        "noSpamDesc": "Your info stays private",
+        "freeConsult": "Free Consultation",
+        "freeConsultDesc": "30-min free project talk",
+        "form": {
+            "heading": "Get a Quote",
+            "subheading": "Fill out the form below to discuss your project",
+            "fullName": "Full Name",
+            "email": "Email",
+            "phone": "Phone (Optional)",
+            "projectType": "Project Type",
+            "budget": "Budget",
+            "timeline": "Timeline",
+            "message": "Project Description",
+            "messagePlaceholder": "Describe your project requirements, goals, and any specific features you need...",
+            "namePlaceholder": "John Doe",
+            "emailPlaceholder": "john@example.com",
+            "phonePlaceholder": "+1 234 567 8900",
+            "submit": "Send Message & Get Quote",
+            "sending": "Sending...",
+            "privacy": "By submitting, you agree to our privacy policy.",
+            "errorRequired": "Name is required",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email",
+            "messageRequired": "Message is required",
+            "messageTooShort": "At least 10 characters",
+            "sendFailed": "Failed to send. Please try again.",
+            "successTitle": "Message Sent!",
+            "successDesc": "I'll get back to you within 24h"
+        },
+        "projectTypes": {
+            "web": "Web App",
+            "mobile": "Mobile App",
+            "fullstack": "Full Stack",
+            "api": "API Dev",
+            "consulting": "Consulting",
+            "other": "Other"
+        },
+        "faq": {
+            "heading": "Frequently Asked",
+            "headingHighlight": "Questions",
+            "q1": "What happens after I submit the form?",
+            "a1": "I'll review your project details within 24 hours and schedule a free 30-minute consultation call.",
+            "q2": "What's included in your quote?",
+            "a2": "Detailed project scope, timeline, cost estimation, technology stack recommendation, and maintenance plan.",
+            "q3": "Do you work with international clients?",
+            "a3": "Yes! I work with clients worldwide using modern remote collaboration tools.",
+            "q4": "What's your typical project timeline?",
+            "a4": "Small: 2-4 weeks · Medium: 1-3 months · Large: 3-6 months. Custom timelines available."
+        }
+    },
+    "footer": {
+        "tagline": "Full Stack Software Engineer passionate about crafting digital experiences with modern JavaScript technologies.",
+        "navigation": "Navigation",
+        "services": "Services",
+        "contact": "Contact",
+        "newsletter": "Newsletter",
+        "newsletterDesc": "Subscribe for tech insights",
+        "techWorkWith": "Technologies I work with",
+        "ctaHeading": "Ready to work together?",
+        "ctaSubtitle": "Let's build something amazing",
+        "getQuote": "Get a Quote",
+        "builtWith": "Built with React, Vite & Tailwind CSS",
+        "madeWith": "Made with",
+        "by": "by Anisul Islam",
+        "bottom": "© 2024 Anisul Islam. All rights reserved. Made with ❤️ in Pakistan",
+        "services_list": {
+            "reactNativeApps": "React Native Apps",
+            "webApplications": "Web Applications",
+            "backendAPIs": "Backend APIs",
+            "databaseDesign": "Database Design",
+            "vpsDeployment": "VPS Deployment",
+            "vercelDeployment": "Vercel Deployment"
+        }
+    },
+    "blog": {
+        "backToBlogs": "Back to All Blogs",
+        "articleOverview": "Article Overview",
+        "codeExample": "Code Example",
+        "copyCode": "Copy Code",
+        "tableOfContents": "Table of Contents",
+        "conclusion": "Conclusion",
+        "shareArticle": "Share this article",
+        "relatedArticles": "Related Articles",
+        "readArticle": "Read Article →",
+        "likeArticle": "Like Article",
+        "addComment": "Add Comment",
+        "views": "views",
+        "featuredLabel": "Featured",
+        "bookmark": "Bookmark this article",
+        "copyLink": "Copy link",
+        "print": "Print this article",
+        "copied": "Copied!"
+    },
+    "about": {
+        "badge": "About Me",
+        "heading": "Full Stack",
+        "headingHighlight": "Developer",
+        "subheading": "Building modern web & mobile applications with a passion for the JavaScript ecosystem.",
+        "profile": {
+            "role": "Full Stack Developer (MERN)",
+            "from": "From: KPK, Chitral",
+            "livesIn": "Lives in: Islamabad, Pakistan",
+            "downloadCv": "Download CV"
+        },
+        "expertise": {
+            "title": "Expertise",
+            "web": "Full Stack Web Development",
+            "mobile": "Mobile App Development",
+            "api": "REST API Development",
+            "integration": "Third-party API Integration"
+        },
+        "journey": {
+            "title": "My Journey",
+            "p1": "I am a passionate Full Stack Developer from the beautiful mountains of Chitral, KPK, currently based in Islamabad, Pakistan. My journey in technology started with a diploma in IT and transitioned into a BS in Software Engineering, which laid the foundation for my career in software development.",
+            "p2": "I specialize in the MERN stack (MongoDB, Express.js, React, Node.js) and React Native to build responsive web applications and cross-platform mobile apps. I have extensive experience in API development and integrating third-party APIs to create seamless user experiences.",
+            "p3": "Through various certifications from platforms like Coursera and Cisco, I have expanded my knowledge to include web development, networking, and the fundamentals of machine learning. I believe in writing clean, efficient code and following best practices to build scalable applications.",
+            "p4": "When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and sharing my knowledge through tutorials and blog posts to help others in their development journey."
+        },
+        "techStack": "Technical Stack",
+        "certifications": {
+            "title": "Certifications & Training",
+            "mobile": "Mobile App Development",
+            "networking": "Networking Essentials",
+            "programming": "Programming Essentials",
+            "web": "Web Development Specialization",
+            "ml": "Machine Learning Specialization"
+        },
+        "education": {
+            "title": "Educational Background",
+            "bs": "BS Software Engineering",
+            "bsDetails": "Specialized in Software Development, Web Technologies, and Mobile App Development",
+            "diploma": "Diploma in Information Technology",
+            "diplomaDetails": "Focused on IT fundamentals, programming basics, and computer systems",
+            "location": "Pakistan"
+        },
+        "meta": {
+            "title": "About Anisul Islam | Full Stack Software Engineer",
+            "description": "Anisul Islam is a Full Stack Developer from Chitral, Pakistan specializing in MERN Stack, React Native, API Development. BS Software Engineering graduate with certifications from Coursera and Cisco."
+        }
+    },
+    "projects": {
+        "meta": {
+            "title": "Projects Portfolio | Full Stack Developer",
+            "description": "React Native, React.js, Node.js, Full Stack Developer, Portfolio Projects, Mobile Apps, Web Applications, E-commerce, MERN Stack"
+        },
+        "badge": "Professional Portfolio",
+        "heading": "My",
+        "headingHighlight": "Projects",
+        "subheading": "A showcase of production-grade applications built with modern technologies. From mobile apps to enterprise web solutions.",
+        "stats": {
+            "total": "Total Projects",
+            "mobile": "Mobile Apps",
+            "web": "Web Applications",
+            "featured": "Featured Projects"
+        },
+        "filterTitle": "Filter by Category",
+        "categories": {
+            "all": "All Projects",
+            "mobile": "Mobile Apps",
+            "web": "Web Applications",
+            "ecommerce": "E-commerce",
+            "education": "Education",
+            "business": "Business Suite"
+        },
+        "card": {
+            "featured": "Featured",
+            "live": "Live",
+            "techStack": "Tech Stack",
+            "components": "Components",
+            "more": "more",
+            "tagPlatform": "Platform",
+            "tagCategory": "Category"
+        },
+        "techSummary": {
+            "title": "Technology Stack Summary",
+            "suffix": "Projects"
+        },
+        "cta": {
+            "title": "Interested in Working Together?",
+            "description": "Have a project in mind? Let's discuss how we can build something amazing together.",
+            "contact": "Contact Me",
+            "blogs": "View My Blogs"
+        },
+        "list": {
+            "waqasInventory": {
+                "name": "Al Waqas Inventory App",
+                "description": "Complete inventory management solution for paint & hardware businesses with barcode scanning and real-time stock updates"
+            },
+            "priceSignal": {
+                "name": "Price Signal",
+                "description": "Real-time price tracking and alert application for financial markets with advanced charting capabilities"
+            },
+            "allsmosis": {
+                "name": "Allsmosis App",
+                "description": "Educational platform for language learning with interactive lessons and progress tracking"
+            },
+            "saborly": {
+                "name": "Saborly.es",
+                "description": "Full-featured e-commerce platform for gourmet foods with payment integration and inventory management"
+            },
+            "waqasSuite": {
+                "name": "Al Waqas Business Suite",
+                "description": "Comprehensive business management suite including POS, Inventory, and Accounting systems"
+            },
+            "taxara": {
+                "name": "Taxara Admin Panel",
+                "description": "Administrative dashboard for tax consulting services with client management and document processing"
+            },
+            "brainBank": {
+                "name": "Brain Bank Dashboard",
+                "description": "Interactive dashboard for educational content management with analytics and user progress tracking"
+            },
+            "sharplogicians": {
+                "name": "Sharplogicians Website",
+                "description": "Professional services website with portfolio showcase, client management, and service booking"
+            },
+            "laraib": {
+                "name": "Laraib Online Academy",
+                "description": "Online Quran learning platform with video lessons, progress tracking, and teacher-student communication"
+            },
+            "digidaal": {
+                "name": "Digidaal",
+                "description": "Digital agency platform with project management, client portal, and portfolio showcase"
+            }
+        }
+    },
+    "tools": {
+        "badge": "Developer Toolkit",
+        "heading": "Essential",
+        "headingHighlight": "Developer Tools",
+        "subheading": "A curated collection of software tools, applications, and utilities that enhance development workflow and productivity.",
+        "searchPlaceholder": "Search tools by name, description, or tags...",
+        "filterTitle": "Categories",
+        "categories": {
+            "all": "All Tools",
+            "code-editors": "Code Editors & IDEs",
+            "version-control": "Version Control",
+            "databases": "Databases",
+            "api-testing": "API Testing",
+            "containerization": "Containerization",
+            "design": "Design & Prototyping",
+            "monitoring": "Monitoring & Analytics",
+            "security": "Security Tools",
+            "productivity": "Productivity",
+            "terminal": "Terminal & CLI"
+        },
+        "card": {
+            "visit": "Visit Website"
+        },
+        "empty": {
+            "title": "No tools found",
+            "description": "Try a different search term or select another category to discover developer tools."
+        },
+        "drivers": {
+            "title": "My Daily Drivers",
+            "vscode": "Primary code editor",
+            "github": "Version control & CI/CD",
+            "postman": "API development",
+            "docker": "Containerization",
+            "reasons": {
+                "vscode": "Extensions & Speed",
+                "github": "Integration & Community",
+                "postman": "Testing & Documentation",
+                "docker": "Consistency & Deployment"
+            }
+        },
+        "cta": {
+            "title": "Missing a Tool?",
+            "description": "Have a favorite developer tool that's not on the list? Let me know and I'll add it!",
+            "button": "Suggest a Tool"
+        },
+        "descriptions": {
+            "vscode": "Free, open-source code editor with extensive extensions",
+            "webstorm": "Powerful IDE for JavaScript and TypeScript development",
+            "intellij": "Java IDE with excellent JavaScript/TypeScript support",
+            "sublime": "Lightweight, fast text editor with powerful features",
+            "git": "Distributed version control system",
+            "github": "Cloud-based Git repository hosting",
+            "gitlab": "Complete DevOps platform with Git repository",
+            "sourcetree": "Free Git GUI client for Windows and Mac",
+            "compass": "GUI for MongoDB with visual query building",
+            "mysql": "Visual tool for database design and administration",
+            "postgres": "Powerful open-source relational database",
+            "redis": "Command-line interface for Redis",
+            "postman": "Complete API development environment",
+            "insomnia": "Open-source API client for REST and GraphQL",
+            "swagger": "Interactive API documentation",
+            "thunder": "Lightweight REST API client for VS Code",
+            "docker": "Platform for developing, shipping, running applications",
+            "compose": "Tool for defining and running multi-container apps",
+            "k8s": "Container orchestration platform",
+            "podman": "Daemonless container engine",
+            "figma": "Collaborative interface design tool",
+            "xd": "Vector-based UI/UX design tool",
+            "zeplin": "Handoff designs and styleguides",
+            "invision": "Digital product design platform",
+            "ga": "Web analytics service",
+            "sentry": "Application monitoring and error tracking",
+            "datadog": "Cloud monitoring and security platform",
+            "newrelic": "Observability platform",
+            "zap": "Open-source web application security scanner",
+            "burp": "Web vulnerability scanner",
+            "letsencrypt": "Free SSL/TLS certificates",
+            "nmap": "Network discovery and security auditing",
+            "notion": "All-in-one workspace",
+            "obsidian": "Knowledge base on local Markdown files",
+            "slack": "Team communication platform",
+            "trello": "Visual project management",
+            "wt": "Modern terminal application for Windows",
+            "iterm": "Terminal emulator for macOS",
+            "zsh": "Framework for managing Zsh configuration",
+            "powershell": "Cross-platform automation and configuration tool"
+        }
+    },
+    "blogs_page": {
+        "meta": {
+            "title": "Blogs | Tech News | Interview Preparation Guides",
+            "description": "Comprehensive Node.js and Express.js interview questions and answers for junior to mid-level backend developers. Master backend development concepts.",
+            "keywords": "Node.js interview questions, Express.js interview, backend developer interview, JavaScript interview, system design interview, software engineering interview"
+        },
+        "badge": "Backend Development",
+        "heading": "Latest Tech",
+        "headingHighlight": "Blogs",
+        "subheading": "Comprehensive Node.js & Express.js interview preparation guides for junior to mid-level backend developers",
+        "searchPlaceholder": "Search articles, topics, or questions...",
+        "filters": {
+            "category": "Category",
+            "difficulty": "Difficulty Level",
+            "sort": "Sort By",
+            "categories": {
+                "all": "All Topics",
+                "fundamentals": "Fundamentals",
+                "advanced": "Advanced",
+                "systemDesign": "System Design"
+            },
+            "difficulties": {
+                "all": "All Levels",
+                "beginner": "Beginner",
+                "intermediate": "Intermediate",
+                "advanced": "Advanced"
+            },
+            "sortOptions": {
+                "latest": "Latest First",
+                "popular": "Most Popular",
+                "views": "Most Viewed",
+                "readingTime": "Reading Time"
+            }
+        },
+        "status": {
+            "loading": "Loading articles...",
+            "noResults": "No articles found",
+            "tryDifferent": "Try a different search term or filter",
+            "showing": "Showing",
+            "of": "of",
+            "articles": "articles",
+            "for": "for"
+        },
+        "card": {
+            "featured": "Featured",
+            "views": "views",
+            "readGuide": "Read Guide"
+        },
+        "author": {
+            "role": "Full Stack Software Engineer",
+            "description": "I craft beautiful, performant web applications using modern technologies. Passionate about React.js, Node.js, Next.js, Express.js, MongoDB and the entire JavaScript ecosystem. Turning complex problems into simple, beautiful designs."
+        }
+    }
+}

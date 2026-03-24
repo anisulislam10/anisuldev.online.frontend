@@ -5,36 +5,7 @@ import {
   ChevronLeft, ChevronRight, Shield, ShieldCheck, HardDrive,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const services = [
-  {
-    icon: <Smartphone className="w-7 h-7" />,
-    title: 'React Native Mobile Apps',
-    description: 'Cross-platform mobile apps with native performance and seamless UX for iOS & Android.',
-    features: ['iOS & Android Development', 'Native Modules Integration', 'Offline Capabilities', 'Push Notifications', 'App Store Deployment'],
-    gradient: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)',
-    glow: 'rgba(99, 102, 241, 0.3)',
-    link: '/services/react-native-development',
-  },
-  {
-    icon: <Globe className="w-7 h-7" />,
-    title: 'Web Applications',
-    description: 'Modern, fast web apps with React.js & Next.js — SSR, SSG, and everything in between.',
-    features: ['React.js SPA/MPA', 'Next.js SSR/SSG', 'Progressive Web Apps', 'SEO Optimization', 'Performance Tuning'],
-    gradient: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-    glow: 'rgba(168, 85, 247, 0.3)',
-    link: '/services/web-app-development',
-  },
-  {
-    icon: <Server className="w-7 h-7" />,
-    title: 'Backend & Databases',
-    description: 'Scalable server-side systems with RESTful/GraphQL APIs and robust database design.',
-    features: ['REST & GraphQL APIs', 'MongoDB & SQL Databases', 'Auth & Security', 'Vercel & VPS Deploy', 'API Documentation'],
-    gradient: 'linear-gradient(135deg, #10b981 0%, #22d3ee 100%)',
-    glow: 'rgba(16, 185, 129, 0.3)',
-    link: '/services/backend-development',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const technologies = [
   { name: 'React Native', icon: <Smartphone />, category: 'Mobile' },
@@ -57,16 +28,47 @@ const technologies = [
 
 const duplicated = [...technologies, ...technologies];
 
-const processSteps = [
-  { step: '01', title: 'Discovery', desc: 'Understanding requirements and planning architecture' },
-  { step: '02', title: 'Design', desc: 'UI/UX wireframes and interactive prototypes' },
-  { step: '03', title: 'Development', desc: 'Agile sprints with regular progress updates' },
-  { step: '04', title: 'Launch', desc: 'Deploying, monitoring, and ongoing support' },
-];
-
 const Services = () => {
+  const { t } = useTranslation();
   const [isPaused, setIsPaused] = useState(false);
   const [direction, setDirection] = useState('right');
+
+  const services = [
+    {
+      icon: <Smartphone className="w-7 h-7" />,
+      title: t('services.cards.reactNative.title'),
+      description: t('services.cards.reactNative.description'),
+      features: t('services.cards.reactNative.features', { returnObjects: true }),
+      gradient: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)',
+      glow: 'rgba(99, 102, 241, 0.3)',
+      link: '/services/react-native-development',
+    },
+    {
+      icon: <Globe className="w-7 h-7" />,
+      title: t('services.cards.webApps.title'),
+      description: t('services.cards.webApps.description'),
+      features: t('services.cards.webApps.features', { returnObjects: true }),
+      gradient: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
+      glow: 'rgba(168, 85, 247, 0.3)',
+      link: '/services/web-app-development',
+    },
+    {
+      icon: <Server className="w-7 h-7" />,
+      title: t('services.cards.backend.title'),
+      description: t('services.cards.backend.description'),
+      features: t('services.cards.backend.features', { returnObjects: true }),
+      gradient: 'linear-gradient(135deg, #10b981 0%, #22d3ee 100%)',
+      glow: 'rgba(16, 185, 129, 0.3)',
+      link: '/services/backend-development',
+    },
+  ];
+
+  const processSteps = [
+    { step: '01', title: t('services.process.discovery.title'), desc: t('services.process.discovery.desc') },
+    { step: '02', title: t('services.process.design.title'), desc: t('services.process.design.desc') },
+    { step: '03', title: t('services.process.development.title'), desc: t('services.process.development.desc') },
+    { step: '04', title: t('services.process.launch.title'), desc: t('services.process.launch.desc') },
+  ];
 
   return (
     <section id="services" className="relative py-24 lg:py-32 overflow-hidden"
@@ -85,14 +87,14 @@ const Services = () => {
         <div className="text-center mb-16 lg:mb-20">
           <span className="section-badge mb-4 inline-flex">
             <Zap size={13} />
-            Services &amp; Expertise
+            {t('services.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mt-4">
-            What I{' '}
-            <span className="gradient-text animate-grad-shift">Build</span>
+            {t('services.heading')}{' '}
+            <span className="gradient-text animate-grad-shift">{t('services.headingHighlight')}</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            Full-stack solutions tailored to your needs — from sleek mobile apps to complex web platforms and scalable backends.
+            {t('services.description')}
           </p>
         </div>
 
@@ -134,7 +136,7 @@ const Services = () => {
               <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>{svc.description}</p>
 
               <ul className="space-y-2.5 mb-6 flex-1">
-                {svc.features.map((f, fi) => (
+                {Array.isArray(svc.features) && svc.features.map((f, fi) => (
                   <li key={fi} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
                     <CheckCircle size={14} className="flex-shrink-0" style={{ color: '#10b981' }} />
                     {f}
@@ -147,7 +149,7 @@ const Services = () => {
                 className="flex items-center gap-1.5 text-sm font-semibold group/link"
                 style={{ color: 'var(--accent-indigo)' }}
               >
-                Learn more
+                {t('services.learnMore')}
                 <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform duration-200" />
               </Link>
             </div>
@@ -157,7 +159,7 @@ const Services = () => {
         {/* ── Tech Stack Scroll ── */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Tech Stack</h3>
+            <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{t('services.techStack')}</h3>
             <div className="flex gap-1 p-1 rounded-lg" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
               {(['left', 'right']).map((dir) => (
                 <button
@@ -218,11 +220,11 @@ const Services = () => {
         >
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold">
-              Development{' '}
-              <span className="gradient-text">Process</span>
+              {t('services.processHeading')}{' '}
+              <span className="gradient-text">{t('services.processHeadingHighlight')}</span>
             </h3>
             <p className="mt-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              A structured approach to deliver high-quality software
+              {t('services.processDescription')}
             </p>
           </div>
 
@@ -259,14 +261,14 @@ const Services = () => {
         >
           <div>
             <h3 className="text-xl sm:text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-              Ready to Start Your Project?
+              {t('services.ctaHeading')}
             </h3>
             <p className="mt-1 text-sm" style={{ color: 'var(--text-secondary)' }}>
-              Let's discuss how I can bring your ideas to life
+              {t('services.ctaDescription')}
             </p>
           </div>
           <Link to="/contact" className="btn-primary flex-shrink-0">
-            Get a Quote Now
+            {t('services.ctaButton')}
             <ArrowRight size={16} />
           </Link>
         </div>

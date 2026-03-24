@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from './../../public/anisuldev.online_logo_light.png';
 import {
   Heart, Github, Linkedin, Twitter, Mail, ArrowUp,
@@ -7,25 +8,26 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const currentYear = new Date().getFullYear();
 
   const navLinks = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
-    { name: 'Projects', to: '/projects' },
-    { name: 'Blogs', to: '/blogs' },
-    { name: 'Tools', to: '/tools' },
-    { name: 'Contact', to: '/contact' },
+    { name: t('nav.home'), to: '/' },
+    { name: t('nav.about'), to: '/about' },
+    { name: t('nav.projects'), to: '/projects' },
+    { name: t('nav.blogs'), to: '/blogs' },
+    { name: t('nav.tools'), to: '/tools' },
+    { name: t('nav.contact'), to: '/contact' },
   ];
 
   const services = [
-    { name: 'React Native Apps', emoji: '📱' },
-    { name: 'Web Applications', emoji: '🌐' },
-    { name: 'Backend APIs', emoji: '⚙️' },
-    { name: 'Database Design', emoji: '🗃️' },
-    { name: 'VPS Deployment', emoji: '🚀' },
-    { name: 'Vercel Deployment', emoji: '▲' },
+    { name: t('footer.services_list.reactNativeApps'), emoji: '📱' },
+    { name: t('footer.services_list.webApplications'), emoji: '🌐' },
+    { name: t('footer.services_list.backendAPIs'), emoji: '⚙️' },
+    { name: t('footer.services_list.databaseDesign'), emoji: '🗃️' },
+    { name: t('footer.services_list.vpsDeployment'), emoji: '🚀' },
+    { name: t('footer.services_list.vercelDeployment'), emoji: '▲' },
   ];
 
   const contactItems = [
@@ -69,7 +71,7 @@ const Footer = () => {
               <img src={logo} alt="AnisulDev" className="h-8 w-auto opacity-85 hover:opacity-100 transition-opacity" />
             </Link>
             <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Full Stack Software Engineer passionate about crafting digital experiences with modern JavaScript technologies.
+              {t('footer.tagline')}
             </p>
             <div className="flex gap-2.5">
               {socialLinks.map((s, i) => (
@@ -104,7 +106,7 @@ const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-indigo)' }} />
-              Navigation
+              {t('footer.navigation')}
             </h3>
             <ul className="space-y-2.5">
               {navLinks.map((link, i) => (
@@ -127,7 +129,7 @@ const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold mb-5 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-cyan)' }} />
-              Services
+              {t('footer.services')}
             </h3>
             <ul className="space-y-2.5">
               {services.map((svc, i) => (
@@ -150,7 +152,7 @@ const Footer = () => {
             <div>
               <h3 className="text-sm font-semibold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent-green)' }} />
-                Contact
+                {t('footer.contact')}
               </h3>
               <div className="space-y-2.5">
                 {contactItems.map((c, i) => (
@@ -170,8 +172,8 @@ const Footer = () => {
 
             {/* Newsletter */}
             <div>
-              <h4 className="text-xs font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Newsletter</h4>
-              <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>Subscribe for tech insights</p>
+              <h4 className="text-xs font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>{t('footer.newsletter')}</h4>
+              <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>{t('footer.newsletterDesc')}</p>
               <form className="flex gap-0" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="email"
@@ -193,7 +195,7 @@ const Footer = () => {
 
         {/* ── Tech Tags ── */}
         <div className="py-8" style={{ borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
-          <p className="text-xs text-center mb-4" style={{ color: 'var(--text-muted)' }}>Technologies I work with</p>
+          <p className="text-xs text-center mb-4" style={{ color: 'var(--text-muted)' }}>{t('footer.techWorkWith')}</p>
           <div className="flex flex-wrap justify-center gap-2">
             {technologies.map((t, i) => (
               <span
@@ -221,8 +223,8 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-8"
           style={{ borderBottom: '1px solid var(--border-subtle)' }}>
           <div>
-            <h4 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>Ready to work together?</h4>
-            <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>Let's build something amazing</p>
+            <h4 className="text-base font-semibold" style={{ color: 'var(--text-primary)' }}>{t('footer.ctaHeading')}</h4>
+            <p className="text-sm mt-0.5" style={{ color: 'var(--text-secondary)' }}>{t('footer.ctaSubtitle')}</p>
           </div>
           <Link
             to="/contact"
@@ -232,7 +234,7 @@ const Footer = () => {
             onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.3)'; e.currentTarget.style.transform = 'translateY(0)'; }}
           >
             <Zap size={14} />
-            Get a Quote
+            {t('footer.getQuote')}
           </Link>
         </div>
 
@@ -240,18 +242,18 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
           <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-muted)' }}>
             <Code size={13} />
-            Built with React, Vite &amp; Tailwind CSS
+            {t('footer.builtWith')}
           </div>
 
           <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-muted)' }}>
-            Made with
+            {t('footer.madeWith')}
             <Heart size={12} className="animate-pulse" style={{ color: '#ec4899', marginLeft: '3px', marginRight: '3px' }} />
-            by Anisul Islam
+            {t('footer.by')}
           </div>
 
           <div className="flex items-center gap-4">
             <span className="text-xs" style={{ color: 'var(--text-muted)' }}>
-              © {currentYear} Anisul Islam. All rights reserved.
+              {t('footer.rights', { year: currentYear })}
             </span>
             <button
               onClick={scrollToTop}
@@ -261,7 +263,7 @@ const Footer = () => {
               onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; }}
             >
               <ArrowUp size={13} className="hover:-translate-y-0.5 transition-transform" />
-              Top
+              {t('footer.top')}
             </button>
           </div>
         </div>

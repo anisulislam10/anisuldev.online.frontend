@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Twitter, ArrowRight, ExternalLink, Sparkles, Terminal } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const codeLines = [
   { indent: 0, tokens: [{ t: 'keyword', v: 'const ' }, { t: 'var', v: 'developer' }, { t: 'bracket', v: ' = {' }] },
@@ -37,15 +38,16 @@ const techStack = [
   { name: 'React Native', emoji: '📱' },
 ];
 
-const stats = [
-  { value: '50+', label: 'Projects' },
-  { value: '3+', label: 'Years Exp' },
-  { value: '100%', label: 'Satisfaction' },
-];
-
 const Hero = () => {
+  const { t } = useTranslation();
   const [typedLine, setTypedLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
+
+  const stats = [
+    { value: '50+', label: t('hero.stats.projects') },
+    { value: '3+', label: t('hero.stats.yearsExp') },
+    { value: '100%', label: t('hero.stats.satisfaction') },
+  ];
 
   useEffect(() => {
     if (typedLine < codeLines.length) {
@@ -87,14 +89,14 @@ const Hero = () => {
               <span className="section-badge">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <Sparkles size={12} />
-                Full Stack Developer
+                {t('hero.badge')}
               </span>
             </div>
 
             {/* Heading */}
             <div className="animate-fade-up delay-100" style={{ animationFillMode: 'both' }}>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight" itemProp="name">
-                <span style={{ color: 'var(--text-primary)' }}>Hi, I'm</span>{' '}
+                <span style={{ color: 'var(--text-primary)' }}>{t('hero.greeting')}</span>{' '}
                 <span className="gradient-text animate-grad-shift">
                   Anisul Islam
                 </span>
@@ -104,7 +106,7 @@ const Hero = () => {
                 style={{ color: 'var(--text-secondary)' }}
                 itemProp="jobTitle"
               >
-                JavaScript Lover &amp; Full Stack Software Engineer
+                {t('hero.subtitle')}
               </h2>
             </div>
 
@@ -114,8 +116,7 @@ const Hero = () => {
               style={{ color: 'var(--text-secondary)', animationFillMode: 'both' }}
               itemProp="description"
             >
-              I craft beautiful, performant web &amp; mobile applications using modern
-              JavaScript — from pixel-perfect UIs to scalable backend systems.
+              {t('hero.description')}
             </p>
 
             {/* Tech Stack Pills */}
@@ -131,18 +132,18 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="animate-fade-up delay-400 flex flex-col sm:flex-row gap-3" style={{ animationFillMode: 'both' }}>
               <Link to="/projects" className="btn-primary text-sm sm:text-base">
-                View Projects
+                {t('hero.viewProjects')}
                 <ArrowRight size={16} />
               </Link>
               <Link to="/contact" className="btn-ghost text-sm sm:text-base">
-                Get a Quote
+                {t('hero.getQuote')}
                 <ExternalLink size={15} />
               </Link>
             </div>
 
             {/* Social Links */}
             <div className="animate-fade-up delay-500 flex items-center gap-4 pt-2" style={{ animationFillMode: 'both' }}>
-              <span className="text-sm" style={{ color: 'var(--text-muted)' }}>Connect:</span>
+              <span className="text-sm" style={{ color: 'var(--text-muted)' }}>{t('hero.connect')}</span>
               <div className="flex gap-3" itemProp="sameAs">
                 {[
                   { href: 'https://github.com/anisulislam10', icon: <Github size={17} />, label: 'GitHub' },
@@ -270,7 +271,7 @@ const Hero = () => {
                 <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>Full Stack Software Engineer</div>
                 <div className="flex items-center gap-1.5 mt-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs" style={{ color: '#34d399' }}>Open to work</span>
+                  <span className="text-xs" style={{ color: '#34d399' }}>{t('hero.openToWork')}</span>
                 </div>
               </div>
               <Link
@@ -278,7 +279,7 @@ const Hero = () => {
                 className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold text-white"
                 style={{ background: 'linear-gradient(135deg, #6366f1, #22d3ee)' }}
               >
-                Hire
+                {t('hero.hire')}
               </Link>
             </div>
           </div>

@@ -220,40 +220,40 @@ const BlogDetail = () => {
                 onClick={() => navigate('/blogs')}
                 className="inline-flex items-center px-4 py-2 transition-colors"
                 style={{ color: 'var(--text-primary)' }}
-                aria-label="Go back to all blogs"
+                aria-label={t('blogDetail.ariaLabelBackToBlogs')}
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
-                Back to All Blogs
+                {t('blogDetail.backToBlogs')}
               </button>
               <div className="flex items-center space-x-4">
                 <button
                   className="p-2 transition-colors"
                   style={{ color: 'var(--text-muted)' }}
-                  title="Bookmark this article"
-                  aria-label="Bookmark article"
+                  title={t('blogDetail.bookmarkArticle')}
+                  aria-label={t('blogDetail.bookmarkArticle')}
                 >
                   <Bookmark className="w-5 h-5" />
                 </button>
                 <button
                   className="p-2 transition-colors relative"
                   style={{ color: 'var(--text-muted)' }}
-                  title="Copy link"
-                  aria-label="Copy article link"
+                  title={t('blogDetail.copyLink')}
+                  aria-label={t('blogDetail.ariaLabelCopyLink')}
                   onClick={copyToClipboard}
                 >
                   {isCopied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                   {isCopied && (
                     <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs whitespace-nowrap"
                       style={{ background: 'var(--bg-card-hover)', color: 'var(--text-primary)', border: '1px solid var(--border-subtle)' }}>
-                      Copied!
+                      {t('blogDetail.copied')}
                     </span>
                   )}
                 </button>
                 <button
                   className="p-2 transition-colors"
                   style={{ color: 'var(--text-muted)' }}
-                  title="Print this article"
-                  aria-label="Print article"
+                  title={t('blogDetail.printArticle')}
+                  aria-label={t('blogDetail.printArticle')}
                   onClick={() => window.print()}
                 >
                   <Printer className="w-5 h-5" />
@@ -272,13 +272,13 @@ const BlogDetail = () => {
                 {article.category}
               </span>
               <span className={`inline-flex items-center px-3 py-1 rounded-full border ${getDifficultyColor(article.difficulty)}`}>
-                {article.difficulty} Level
+                {article.difficulty} {t('blogDetail.level')}
               </span>
               {article.featured && (
                 <span className="inline-flex items-center px-3 py-1 rounded-full border"
                   style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-indigo)', color: 'var(--accent-indigo)' }}>
                   <Star className="w-3 h-3 mr-1" />
-                  Featured
+                  {t('blogDetail.featured')}
                 </span>
               )}
             </div>
@@ -299,7 +299,7 @@ const BlogDetail = () => {
                 </time>
                 {article.updatedDate && (
                   <span className="text-sm ml-2" style={{ color: 'var(--text-muted)' }}>
-                    (Updated: <time dateTime={article.updatedDate}>{article.updatedDate}</time>)
+                    ({t('blogDetail.updated')}: <time dateTime={article.updatedDate}>{article.updatedDate}</time>)
                   </span>
                 )}
               </div>
@@ -309,7 +309,7 @@ const BlogDetail = () => {
               </div>
               <div className="flex items-center">
                 <Eye className="w-5 h-5 mr-2" />
-                <span>{article.content.metadata.views.toLocaleString()} views</span>
+                <span>{article.content.metadata.views.toLocaleString()} {t('blogDetail.views')}</span>
               </div>
             </div>
 
@@ -342,7 +342,7 @@ const BlogDetail = () => {
               <div className="rounded-2xl p-8 mb-12 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }}>
                 <h2 className="text-2xl font-bold mb-4 flex items-center" style={{ color: 'var(--text-primary)' }}>
                   <BookOpen className="w-6 h-6 mr-3" style={{ color: 'var(--accent-indigo)' }} />
-                  Article Overview
+                  {t('blogDetail.articleOverview')}
                 </h2>
                 <div className="space-y-4" style={{ color: 'var(--text-secondary)' }}>
                   {article.content.introduction.split('\n').map((para, index) => (
@@ -395,14 +395,14 @@ const BlogDetail = () => {
                   {section.codeExample && (
                     <div className="rounded-2xl p-8 mb-6 border" style={{ background: 'var(--bg-secondary)', borderColor: 'var(--border-subtle)' }}>
                       <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Code Example</h3>
+                        <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{t('blogDetail.codeExample')}</h3>
                         <button
                           className="px-4 py-2 rounded-lg transition-colors border"
                           style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-secondary)' }}
                           onClick={() => navigator.clipboard.writeText(section.codeExample)}
                           onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; }}
                           onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
-                          aria-label="Copy code to clipboard"
+                          aria-label={t('blogDetail.ariaLabelCopyCode')}
                         >
                           <Download className="w-4 h-4 mr-2 inline" />
                           Copy Code
