@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Smartphone, Globe, Server, Database, Zap, Cloud,
+  Smartphone, Server, Database, Zap, Cloud,
   Code, CheckCircle, GitBranch, Cpu, Layout,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -26,28 +26,31 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Globe className="w-7 h-7" />,
       title: t('services.cards.webApps.title'),
       description: t('services.cards.webApps.description'),
       features: t('services.cards.webApps.features', { returnObjects: true }),
       gradient: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
       glow: 'rgba(168, 85, 247, 0.3)',
+      image: '/services-web-laptop.png',
+      imageAlt: 'Open laptop displaying a modern web application dashboard',
     },
     {
-      icon: <Smartphone className="w-7 h-7" />,
       title: t('services.cards.reactNative.title'),
       description: t('services.cards.reactNative.description'),
       features: t('services.cards.reactNative.features', { returnObjects: true }),
       gradient: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)',
       glow: 'rgba(99, 102, 241, 0.3)',
+      image: '/services-react-native-mobile.png',
+      imageAlt: 'Smartphone displaying a polished React Native mobile application',
     },
     {
-      icon: <Server className="w-7 h-7" />,
       title: t('services.cards.backend.title'),
       description: t('services.cards.backend.description'),
       features: t('services.cards.backend.features', { returnObjects: true }),
       gradient: 'linear-gradient(135deg, #10b981 0%, #22d3ee 100%)',
       glow: 'rgba(16, 185, 129, 0.3)',
+      image: '/services-backend-server.png',
+      imageAlt: 'Open server rack connected to cloud, database, API, and security systems',
     },
   ];
 
@@ -104,12 +107,15 @@ const Services = () => {
               <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: svc.gradient }} />
 
-              {/* Icon */}
-              <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 text-white"
-                style={{ background: svc.gradient, boxShadow: `0 8px 24px ${svc.glow}` }}
-              >
-                {svc.icon}
+              <div className="service-card-visual -mx-6 -mt-6 mb-6">
+                <img
+                  src={svc.image}
+                  alt={svc.imageAlt}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="service-card-visual-shade" aria-hidden="true" />
               </div>
 
               <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{svc.title}</h3>

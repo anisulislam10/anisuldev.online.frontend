@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useLayoutEffect } from 'react';
 
 const ThemeContext = createContext();
 
@@ -6,10 +6,10 @@ export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) return savedTheme;
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return 'dark';
     });
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
@@ -24,7 +24,7 @@ export const ThemeProvider = ({ children }) => {
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme, isDark: theme === 'dark' }}>
             {children}
         </ThemeContext.Provider>
     );

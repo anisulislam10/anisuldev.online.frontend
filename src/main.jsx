@@ -6,14 +6,17 @@ import './index.css'
 import App from './App.jsx'
 
 import { LanguageProvider } from './i18n/LanguageContext';
+import { ThemeProvider } from './components/ThemeContext';
 import './i18n/i18n';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
-      <LanguageProvider>
-        <App />
-      </LanguageProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <App />
+        </LanguageProvider>
+      </ThemeProvider>
     </HelmetProvider>
   </StrictMode>,
 )

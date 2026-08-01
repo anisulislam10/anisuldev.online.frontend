@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X, Zap, Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from './ThemeContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t } = useTranslation();
   const location = useLocation();
+  const { isDark, toggleTheme } = useTheme();
 
   const navItems = [
     { name: t('nav.home'), to: '/' },
@@ -48,7 +50,7 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-              <span className="text-xl sm:text-2xl font-black tracking-[-0.06em] text-slate-950 transition-colors duration-300 group-hover:text-indigo-600" aria-label="anisuldev.">
+              <span className="text-xl sm:text-2xl font-black tracking-[-0.06em] transition-colors duration-300 group-hover:text-indigo-500" style={{ color: 'var(--text-primary)' }} aria-label="anisuldev.">
                 <span className="text-indigo-600">&#x7B;</span>anisuldev.<span className="text-cyan-500">&#x7D;</span>
               </span>
             </Link>
@@ -82,6 +84,18 @@ const Navbar = () => {
             {/* Actions */}
             <div className="hidden md:flex items-center gap-3">
 
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="theme-toggle"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                title={isDark ? 'Light mode' : 'Dark mode'}
+              >
+                <span className="theme-toggle-icon" aria-hidden="true">
+                  {isDark ? <Sun size={17} /> : <Moon size={17} />}
+                </span>
+              </button>
+
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
                 style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.25)', color: '#10b981' }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -104,6 +118,17 @@ const Navbar = () => {
 
             {/* Mobile Actions */}
             <div className="flex items-center gap-2 md:hidden">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="theme-toggle"
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                title={isDark ? 'Light mode' : 'Dark mode'}
+              >
+                <span className="theme-toggle-icon" aria-hidden="true">
+                  {isDark ? <Sun size={17} /> : <Moon size={17} />}
+                </span>
+              </button>
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-lg transition-colors duration-200"
