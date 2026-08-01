@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import {
-  Mail, Phone, MapPin, Send, MessageSquare,
-  Clock, ShieldCheck, Sparkles, CheckCircle,
-  HelpCircle, ChevronDown, Github, Linkedin, Twitter,
+  Mail, Phone, Send, MessageSquare,
+  Clock, Github, Linkedin, Twitter, CheckCircle
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [activeFaq, setActiveFaq] = useState(0);
   const [formStatus, setFormStatus] = useState('idle'); // idle | sending | success | error
-
-  const faqs = [
-    { q: t('contact.faq.q1'), a: t('contact.faq.a1') },
-    { q: t('contact.faq.q2'), a: t('contact.faq.a2') },
-    { q: t('contact.faq.q3'), a: t('contact.faq.a3') },
-    { q: t('contact.faq.q4'), a: t('contact.faq.a4') },
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +30,7 @@ const Contact = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Section Header ── */}
-        <div className="max-w-3xl mb-16 lg:mb-20">
+        <div className="max-w-3xl mb-16 lg:mb-20 animate-fade-up">
           <span className="section-badge mb-4 flex w-fit">
             <MessageSquare size={13} />
             {t('contact.badge')}
@@ -55,12 +46,12 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* ── Left: Info & FAQ ── */}
-          <div className="lg:col-span-5 space-y-12">
+          {/* ── Left Column: Quick Info & Socials ── */}
+          <div className="lg:col-span-5 space-y-8 animate-fade-up">
 
             {/* Availability card */}
             <div
-              className="p-6 rounded-2xl flex items-center gap-5 transition-transform duration-300 hover:-translate-y-1"
+              className="p-6 rounded-2xl flex items-center gap-5"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
             >
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -79,8 +70,8 @@ const Contact = () => {
             {/* Quick Contact Links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { icon: <Mail size={18} />, label: t('contact.form.email'), val: 'info@anisuldev.online', href: 'mailto:info@anisuldev.online', color: 'indigo' },
-                { icon: <Phone size={18} />, label: t('contact.form.phone'), val: '+92 343 9275550', href: 'tel:+923439275550', color: 'cyan' },
+                { icon: <Mail size={18} />, label: t('contact.form.email'), val: 'info@anisuldev.online', href: 'mailto:info@anisuldev.online' },
+                { icon: <Phone size={18} />, label: t('contact.form.phone'), val: '+92 343 9275550', href: 'tel:+923439275550' },
               ].map((item, i) => (
                 <a
                   key={i}
@@ -90,7 +81,7 @@ const Contact = () => {
                   onMouseEnter={e => { e.currentTarget.style.borderColor = `var(--accent-indigo)`; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
                 >
-                  <div className={`mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6`}
+                  <div className="mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
                     style={{ color: 'var(--accent-indigo)' }}>
                     {item.icon}
                   </div>
@@ -100,55 +91,8 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* FAQ Accordion */}
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <HelpCircle size={18} className="text-indigo-500" />
-                <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>
-                  {t('contact.faq.heading')}{' '}
-                  <span className="gradient-text">{t('contact.faq.headingHighlight')}</span>
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {faqs.map((faq, i) => (
-                  <div
-                    key={i}
-                    className="rounded-xl overflow-hidden transition-all duration-300"
-                    style={{
-                      background: 'var(--bg-card)',
-                      border: '1px solid',
-                      borderColor: activeFaq === i ? 'var(--accent-indigo)' : 'var(--border-subtle)',
-                    }}
-                  >
-                    <button
-                      onClick={() => setActiveFaq(activeFaq === i ? -1 : i)}
-                      className="w-full flex items-center justify-between p-4 text-left group"
-                    >
-                      <span className="text-sm font-semibold pr-4"
-                        style={{ color: activeFaq === i ? 'var(--accent-indigo)' : 'var(--text-primary)' }}>
-                        {faq.q}
-                      </span>
-                      <ChevronDown
-                        size={16}
-                        className={`flex-shrink-0 transition-transform duration-300 ${activeFaq === i ? 'rotate-180' : ''}`}
-                        style={{ color: activeFaq === i ? 'var(--accent-indigo)' : 'var(--text-muted)' }}
-                      />
-                    </button>
-                    <div
-                      className="transition-all duration-300 overflow-hidden"
-                      style={{ maxHeight: activeFaq === i ? '200px' : '0' }}
-                    >
-                      <div className="p-4 pt-0 text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                        {faq.a}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             {/* Social Connect */}
-            <div>
+            <div className="pt-4">
               <h4 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>{t('contact.connectSocial')}</h4>
               <div className="flex gap-3">
                 {[
@@ -172,8 +116,8 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* ── Right: Multi-step Contact Form ── */}
-          <div className="lg:col-span-12 xl:col-span-7 lg:mt-0 mt-8">
+          {/* ── Right Column: Clean Simple Form ── */}
+          <div className="lg:col-span-7 lg:mt-0 mt-8 animate-fade-up">
             <div
               className="rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden h-full"
               style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
@@ -223,26 +167,15 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>{t('contact.form.projectType')}</label>
-                      <select className="input-dark appearance-none">
-                        <option value="web">{t('contact.projectTypes.web')}</option>
-                        <option value="mobile">{t('contact.projectTypes.mobile')}</option>
-                        <option value="fullstack">{t('contact.projectTypes.fullstack')}</option>
-                        <option value="consulting">{t('contact.projectTypes.consulting')}</option>
-                        <option value="other">{t('contact.projectTypes.other')}</option>
-                      </select>
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>{t('contact.form.budget')}</label>
-                      <select className="input-dark appearance-none">
-                        <option>&lt; $1k</option>
-                        <option>$1k - $3k</option>
-                        <option>$3k - $10k</option>
-                        <option>$10k+</option>
-                      </select>
-                    </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>Subject</label>
+                    <input
+                      required
+                      type="text"
+                      name="subject"
+                      placeholder="Project details, inquiries, etc."
+                      className="input-dark"
+                    />
                   </div>
 
                   <div className="space-y-2">
@@ -272,20 +205,6 @@ const Contact = () => {
                 </form>
               )}
 
-              {/* Sidebar perks inside card */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t" style={{ borderColor: 'var(--border-subtle)' }}>
-                {[
-                  { icon: <Clock size={16} />, title: t('contact.response24h'), desc: t('contact.response24hDesc') },
-                  { icon: <ShieldCheck size={16} />, title: t('contact.noSpam'), desc: t('contact.noSpamDesc') },
-                  { icon: <Sparkles size={16} />, title: t('contact.freeConsult'), desc: t('contact.freeConsultDesc') },
-                ].map((perk, i) => (
-                  <div key={i} className="flex flex-col gap-2">
-                    <div className="text-indigo-500">{perk.icon}</div>
-                    <div className="text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{perk.title}</div>
-                    <div className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{perk.desc}</div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 

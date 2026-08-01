@@ -2,21 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from './ThemeContext';
-import { useLanguage } from '../i18n/LanguageContext';
 import { useTranslation } from 'react-i18next';
 import logo from './../../public/logo_anisuldev.online.png';
-
-const LANGUAGES = [
-  { code: 'en', label: 'EN' },
-  { code: 'ur', label: 'اردو' },
-  { code: 'ar', label: 'عربي' },
-];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const { language, changeLanguage } = useLanguage();
   const { t } = useTranslation();
   const location = useLocation();
 
@@ -25,7 +17,7 @@ const Navbar = () => {
     { name: t('nav.about'), to: '/about' },
     { name: t('nav.projects'), to: '/projects' },
     { name: t('nav.blogs'), to: '/blogs' },
-    { name: t('nav.tools'), to: '/tools' },
+    { name: t('nav.contact'), to: '/contact' },
   ];
 
   useEffect(() => {
@@ -95,24 +87,6 @@ const Navbar = () => {
 
             {/* Actions */}
             <div className="hidden md:flex items-center gap-3">
-              {/* Language Switcher */}
-              <div className="flex items-center gap-0.5 p-1 rounded-lg" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
-                    className="px-2.5 py-1 rounded-md text-xs font-semibold transition-all duration-200"
-                    style={{
-                      background: language === lang.code ? 'var(--accent-indigo)' : 'transparent',
-                      color: language === lang.code ? '#fff' : 'var(--text-muted)',
-                    }}
-                    aria-label={`Switch to ${lang.label}`}
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </div>
-
               <button
                 onClick={toggleTheme}
                 className="p-2.5 rounded-xl transition-all duration-300 border border-transparent hover:border-indigo-500/20 bg-gray-100/10 dark:bg-white/5 hover:bg-indigo-500/10 text-gray-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 shadow-sm dark:shadow-none"
@@ -166,7 +140,7 @@ const Navbar = () => {
         <div
           className="md:hidden overflow-hidden transition-all duration-400"
           style={{
-            maxHeight: isMenuOpen ? '500px' : '0px',
+            maxHeight: isMenuOpen ? '400px' : '0px',
             opacity: isMenuOpen ? 1 : 0,
             transition: 'max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease',
           }}
@@ -186,23 +160,6 @@ const Navbar = () => {
                 >
                   {item.name}
                 </Link>
-              ))}
-            </div>
-
-            {/* Mobile Language Switcher */}
-            <div className="flex items-center gap-1.5 mb-4 p-1 rounded-lg w-fit" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
-              {LANGUAGES.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => changeLanguage(lang.code)}
-                  className="px-3 py-1.5 rounded-md text-xs font-semibold transition-all duration-200"
-                  style={{
-                    background: language === lang.code ? 'var(--accent-indigo)' : 'transparent',
-                    color: language === lang.code ? '#fff' : 'var(--text-muted)',
-                  }}
-                >
-                  {lang.label}
-                </button>
               ))}
             </div>
 

@@ -1,34 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Github, Linkedin, Twitter, ArrowRight, ExternalLink, Sparkles, Terminal } from 'lucide-react';
+import React from 'react';
+import { Github, Linkedin, Twitter, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-const codeLines = [
-  { indent: 0, tokens: [{ t: 'keyword', v: 'const ' }, { t: 'var', v: 'developer' }, { t: 'bracket', v: ' = {' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  name' }, { t: 'bracket', v: ': ' }, { t: 'string', v: '"Anisul Islam"' }, { t: 'default', v: ',' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  role' }, { t: 'bracket', v: ': ' }, { t: 'string', v: '"Full Stack Engineer"' }, { t: 'default', v: ',' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  stack' }, { t: 'bracket', v: ': [' }] },
-  { indent: 2, tokens: [{ t: 'string', v: '    "React.js"' }, { t: 'default', v: ', ' }, { t: 'string', v: '"Next.js"' }, { t: 'default', v: ',' }] },
-  { indent: 2, tokens: [{ t: 'string', v: '    "Node.js"' }, { t: 'default', v: ', ' }, { t: 'string', v: '"MongoDB"' }, { t: 'default', v: ',' }] },
-  { indent: 2, tokens: [{ t: 'string', v: '    "React Native"' }] },
-  { indent: 1, tokens: [{ t: 'bracket', v: '  ],' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  experience' }, { t: 'bracket', v: ': ' }, { t: 'number', v: '3' }, { t: 'default', v: '+ years,' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  projects' }, { t: 'bracket', v: ': ' }, { t: 'number', v: '50' }, { t: 'default', v: '+,' }] },
-  { indent: 1, tokens: [{ t: 'property', v: '  available' }, { t: 'bracket', v: ': ' }, { t: 'keyword', v: 'true' }] },
-  { indent: 0, tokens: [{ t: 'bracket', v: '};' }] },
-];
-
-const colorMap = {
-  keyword: '#c792ea',
-  var: '#82aaff',
-  string: '#c3e88d',
-  number: '#f78c6c',
-  property: '#80cbc4',
-  bracket: '#89ddff',
-  comment: '#546e7a',
-  func: '#82aaff',
-  default: '#cdd5e0',
-};
 
 const techStack = [
   { name: 'React.js', emoji: '⚛️' },
@@ -40,62 +13,41 @@ const techStack = [
 
 const Hero = () => {
   const { t } = useTranslation();
-  const [typedLine, setTypedLine] = useState(0);
-  const [showCursor, setShowCursor] = useState(true);
-
-  const stats = [
-    { value: '50+', label: t('hero.stats.projects') },
-    { value: '3+', label: t('hero.stats.yearsExp') },
-    { value: '100%', label: t('hero.stats.satisfaction') },
-  ];
-
-  useEffect(() => {
-    if (typedLine < codeLines.length) {
-      const timer = setTimeout(() => setTypedLine(t => t + 1), 120);
-      return () => clearTimeout(timer);
-    }
-  }, [typedLine]);
-
-  useEffect(() => {
-    const cursorTimer = setInterval(() => setShowCursor(c => !c), 550);
-    return () => clearInterval(cursorTimer);
-  }, []);
 
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center pt-16 pb-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 overflow-hidden"
       itemScope
       itemType="https://schema.org/Person"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-60" />
+      {/* Background grid */}
+      <div className="absolute inset-0 bg-grid opacity-40" />
 
       {/* Orbs */}
-      <div className="orb orb-indigo w-[600px] h-[600px] -top-32 -left-32 opacity-40" />
-      <div className="orb orb-cyan w-[400px] h-[400px] top-1/4 right-0 opacity-30" />
-      <div className="orb orb-purple w-[350px] h-[350px] bottom-0 left-1/3 opacity-25" />
+      <div className="orb orb-indigo w-[500px] h-[500px] -top-32 -left-32 opacity-30" />
+      <div className="orb orb-cyan w-[400px] h-[400px] top-1/4 right-0 opacity-20" />
 
       <meta itemProp="name" content="Anisul Islam" />
       <meta itemProp="jobTitle" content="Full Stack Software Engineer" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-80px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-          {/* ── Left: Text Content ── */}
-          <div className="flex flex-col justify-center gap-6 order-2 lg:order-1">
-
+          {/* ── Left Column: Introduction ── */}
+          <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1">
+            
             {/* Badge */}
-            <div className="animate-fade-up" style={{ animationFillMode: 'both' }}>
-              <span className="section-badge">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="animate-fade-up">
+              <span className="section-badge inline-flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <Sparkles size={12} />
                 {t('hero.badge')}
               </span>
             </div>
 
-            {/* Heading */}
-            <div className="animate-fade-up delay-100" style={{ animationFillMode: 'both' }}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.05] tracking-tight" itemProp="name">
+            {/* Title / Heading */}
+            <div className="animate-fade-up delay-100">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] tracking-tight">
                 <span style={{ color: 'var(--text-primary)' }}>{t('hero.greeting')}</span>{' '}
                 <span className="gradient-text animate-grad-shift">
                   Anisul Islam
@@ -110,17 +62,17 @@ const Hero = () => {
               </h2>
             </div>
 
-            {/* Description */}
+            {/* Short Bio */}
             <p
               className="animate-fade-up delay-200 text-base sm:text-lg leading-relaxed max-w-xl"
-              style={{ color: 'var(--text-secondary)', animationFillMode: 'both' }}
+              style={{ color: 'var(--text-secondary)' }}
               itemProp="description"
             >
               {t('hero.description')}
             </p>
 
-            {/* Tech Stack Pills */}
-            <div className="animate-fade-up delay-300 flex flex-wrap gap-2" style={{ animationFillMode: 'both' }}>
+            {/* Core Tech Stack */}
+            <div className="animate-fade-up delay-300 flex flex-wrap gap-2">
               {techStack.map((tech) => (
                 <span key={tech.name} className="tech-pill">
                   <span>{tech.emoji}</span>
@@ -130,19 +82,19 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="animate-fade-up delay-400 flex flex-col sm:flex-row gap-3" style={{ animationFillMode: 'both' }}>
-              <Link to="/projects" className="btn-primary text-sm sm:text-base">
+            <div className="animate-fade-up delay-400 flex flex-col sm:flex-row gap-4 pt-2">
+              <Link to="/projects" className="btn-primary text-sm sm:text-base justify-center">
                 {t('hero.viewProjects')}
                 <ArrowRight size={16} />
               </Link>
-              <Link to="/contact" className="btn-ghost text-sm sm:text-base">
+              <Link to="/contact" className="btn-ghost text-sm sm:text-base justify-center">
                 {t('hero.getQuote')}
                 <ExternalLink size={15} />
               </Link>
             </div>
 
-            {/* Social Links */}
-            <div className="animate-fade-up delay-500 flex items-center gap-4 pt-2" style={{ animationFillMode: 'both' }}>
+            {/* Social Connections */}
+            <div className="animate-fade-up delay-500 flex items-center gap-4 pt-4 border-t border-dashed" style={{ borderColor: 'var(--border-subtle)' }}>
               <span className="text-sm" style={{ color: 'var(--text-muted)' }}>{t('hero.connect')}</span>
               <div className="flex gap-3" itemProp="sameAs">
                 {[
@@ -176,113 +128,36 @@ const Hero = () => {
                 ))}
               </div>
             </div>
+
           </div>
 
-          {/* ── Right: Terminal Card ── */}
-          <div className="order-1 lg:order-2 flex flex-col gap-5 animate-fade-right delay-200" style={{ animationFillMode: 'both' }}>
+          {/* ── Right Column: Premium Personal Photo Frame ── */}
+          <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-right">
+            <div className="relative group">
+              {/* Animated decorative gradient borders behind photo */}
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-spin-slow" />
+              
+              {/* Photo Card container */}
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden bg-slate-900 border-2" style={{ borderColor: 'var(--border-subtle)' }}>
+                <img
+                  src="/Anisul_Islam_Software_Developer_Chitral.png"
+                  alt="Anisul Islam"
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+                  itemProp="image"
+                />
 
-            {/* Terminal window */}
-            <div
-              className="rounded-2xl overflow-hidden"
-              style={{
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border-subtle)',
-                boxShadow: 'var(--shadow-card)',
-                backdropFilter: 'blur(16px)',
-              }}
-            >
-              {/* Title bar */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b" style={{ borderColor: 'var(--border-subtle)', background: 'var(--bg-card-hover)' }}>
-                <div className="flex gap-1.5">
-                  <span className="w-3 h-3 rounded-full" style={{ background: '#ff5f57' }} />
-                  <span className="w-3 h-3 rounded-full" style={{ background: '#febc2e' }} />
-                  <span className="w-3 h-3 rounded-full" style={{ background: '#28c840' }} />
-                </div>
-                <div className="flex items-center gap-1.5 ml-2">
-                  <Terminal size={12} style={{ color: '#475569' }} />
-                  <span className="text-xs" style={{ color: '#475569', fontFamily: 'JetBrains Mono, monospace' }}>developer.js</span>
-                </div>
-              </div>
-
-              {/* Code body */}
-              <div className="p-5 code-block" style={{ minHeight: '280px' }}>
-                {codeLines.slice(0, typedLine).map((line, li) => (
-                  <div key={li} className="flex items-start leading-7">
-                    <span className="select-none mr-4 text-xs w-4 text-right flex-shrink-0" style={{ color: 'var(--text-muted)', lineHeight: '1.75rem' }}>
-                      {li + 1}
-                    </span>
-                    <span>
-                      {line.tokens.map((tok, ti) => (
-                        <span key={ti} style={{ color: colorMap[tok.t] || '#cdd5e0' }}>{tok.v}</span>
-                      ))}
-                      {li === typedLine - 1 && typedLine < codeLines.length && (
-                        <span style={{ color: '#6366f1', opacity: showCursor ? 1 : 0 }}>▋</span>
-                      )}
-                    </span>
+                {/* Status Overlay */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl backdrop-blur-md bg-black/60 border border-white/10 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs font-semibold text-white">{t('hero.openToWork')}</span>
                   </div>
-                ))}
-                {typedLine >= codeLines.length && (
-                  <div className="flex items-center mt-1">
-                    <span className="select-none mr-4 text-xs w-4 text-right" style={{ color: 'var(--text-muted)' }}>{codeLines.length + 1}</span>
-                    <span style={{ color: '#6366f1', opacity: showCursor ? 1 : 0 }}>▋</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-3">
-              {stats.map((s) => (
-                <div
-                  key={s.label}
-                  className="card text-center py-4 px-2 rounded-xl"
-                  style={{ background: 'var(--bg-card-hover)' }}
-                >
-                  <div
-                    className="text-2xl sm:text-3xl font-black gradient-text"
-                    style={{ lineHeight: 1.2 }}
-                  >
-                    {s.value}
-                  </div>
-                  <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Profile card */}
-            <div
-              className="flex items-center gap-4 p-4 rounded-xl border"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}
-            >
-              <div className="flex-shrink-0">
-                <div className="relative w-14 h-14 rounded-xl overflow-hidden"
-                  style={{ border: '2px solid rgba(99,102,241,0.4)' }}>
-                  <img
-                    src="/Anisul_Islam_Software_Developer_Chitral.png"
-                    alt="Anisul Islam"
-                    className="w-full h-full object-cover"
-                    itemProp="image"
-                    loading="lazy"
-                  />
+                  <span className="text-[10px] text-slate-300 font-medium">PKT Zone</span>
                 </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>Anisul Islam</div>
-                <div className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>Full Stack Software Engineer</div>
-                <div className="flex items-center gap-1.5 mt-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-xs" style={{ color: '#34d399' }}>{t('hero.openToWork')}</span>
-                </div>
-              </div>
-              <Link
-                to="/contact"
-                className="flex-shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold text-white"
-                style={{ background: 'linear-gradient(135deg, #6366f1, #22d3ee)' }}
-              >
-                {t('hero.hire')}
-              </Link>
             </div>
           </div>
+
         </div>
       </div>
 
