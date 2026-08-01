@@ -146,10 +146,10 @@ const Hero = () => {
           <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-right">
             <div className="hero-portrait-wrap relative group">
               {/* Photo Card container */}
-              <div className="hero-portrait-card relative w-72 h-80 sm:w-80 sm:h-96 overflow-visible">
+              <div className="hero-portrait-card relative w-[min(100%,34rem)] aspect-[4/3] overflow-visible">
                 <img
-                  src="/anisul-programming-blue-lamp.png"
-                  alt="Anisul Islam programming under a blue desk lamp"
+                  src="/0379a6ed-eb8f-4a06-9b77-abf7e533e767.png"
+                  alt="Anisul Islam working at his software development desk"
                   className="hero-portrait-image w-full h-full object-cover object-center grayscale-[5%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
                   itemProp="image"
                 />
@@ -179,7 +179,7 @@ const Hero = () => {
             "name": "Anisul Islam",
             "jobTitle": "Full Stack Software Engineer",
             "url": "https://www.anisuldev.online",
-            "image": "https://www.anisuldev.online/Anisul_Islam_Software_Developer_Chitral.png",
+            "image": "https://www.anisuldev.online/0379a6ed-eb8f-4a06-9b77-abf7e533e767.png",
             "sameAs": [
               "https://github.com/anisulislam10",
               "https://linkedin.com/in/ianisulislam",

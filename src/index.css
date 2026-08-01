@@ -648,7 +648,29 @@ pre,
 }
 
 .hero-section {
-  background: radial-gradient(circle at 78% 24%, rgba(34, 211, 238, 0.11), transparent 28%), radial-gradient(circle at 14% 12%, rgba(99, 102, 241, 0.1), transparent 32%);
+  background:
+    radial-gradient(circle at 78% 30%, rgba(34, 211, 238, 0.11), transparent 30%),
+    radial-gradient(circle at 14% 12%, rgba(99, 102, 241, 0.1), transparent 32%),
+    var(--bg-primary);
+}
+
+[data-theme="dark"] .hero-section {
+  background:
+    radial-gradient(ellipse 30% 48% at 82% 39%, rgba(10, 112, 188, 0.24), transparent 68%),
+    radial-gradient(circle at 15% 16%, rgba(79, 70, 229, 0.11), transparent 34%),
+    #030817;
+}
+
+[data-theme="dark"] .hero-wave-one {
+  fill: rgba(37, 64, 112, 0.16);
+}
+
+[data-theme="dark"] .hero-wave-two {
+  fill: rgba(18, 76, 108, 0.13);
+}
+
+[data-theme="dark"] .hero-wave-three {
+  fill: rgba(49, 46, 129, 0.09);
 }
 
 .theme-toggle {
@@ -749,10 +771,10 @@ pre,
 }
 
 .hero-portrait-image {
-  border-radius: 2rem;
-  filter: drop-shadow(0 24px 35px rgba(15, 23, 42, 0.22));
-  -webkit-mask-image: radial-gradient(ellipse 92% 94% at 50% 49%, #000 68%, rgba(0, 0, 0, 0.9) 78%, transparent 100%);
-  mask-image: radial-gradient(ellipse 92% 94% at 50% 49%, #000 68%, rgba(0, 0, 0, 0.9) 78%, transparent 100%);
+  border-radius: 0;
+  filter: drop-shadow(0 20px 32px rgba(15, 23, 42, 0.14));
+  -webkit-mask-image: radial-gradient(ellipse 76% 82% at 51% 49%, #000 48%, rgba(0, 0, 0, 0.96) 61%, rgba(0, 0, 0, 0.58) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 76% 82% at 51% 49%, #000 48%, rgba(0, 0, 0, 0.96) 61%, rgba(0, 0, 0, 0.58) 78%, transparent 100%);
 }
 
 .hero-wave-background {
