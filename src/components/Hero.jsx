@@ -16,7 +16,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center pt-24 pb-12 overflow-hidden"
+      className="hero-section relative min-h-screen flex flex-col justify-center pt-28 pb-16 overflow-hidden"
       itemScope
       itemType="https://schema.org/Person"
     >
@@ -31,7 +31,7 @@ const Hero = () => {
       <meta itemProp="jobTitle" content="Full Stack Software Engineer" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
 
           {/* ── Left Column: Introduction ── */}
           <div className="lg:col-span-7 flex flex-col gap-6 order-2 lg:order-1">
@@ -133,16 +133,16 @@ const Hero = () => {
 
           {/* ── Right Column: Premium Personal Photo Frame ── */}
           <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-right">
-            <div className="relative group">
+            <div className="hero-portrait-wrap relative group">
               {/* Animated decorative gradient borders behind photo */}
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-spin-slow" />
               
               {/* Photo Card container */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden bg-slate-900 border-2" style={{ borderColor: 'var(--border-subtle)' }}>
+              <div className="relative w-72 h-[25rem] sm:w-80 sm:h-[29rem] rounded-[2rem] overflow-hidden bg-slate-900 border-2 shadow-2xl" style={{ borderColor: 'var(--border-subtle)' }}>
                 <img
                   src="/Anisul_Islam_Software_Developer_Chitral.png"
                   alt="Anisul Islam"
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
                   itemProp="image"
                 />
 

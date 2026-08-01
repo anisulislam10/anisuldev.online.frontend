@@ -4,7 +4,7 @@ import Contact from '../components/Contact';
 
 const Home = () => {
   return (
-    <div style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
+    <div className="home-page">
       <main>
         <Hero />
         <Services />
