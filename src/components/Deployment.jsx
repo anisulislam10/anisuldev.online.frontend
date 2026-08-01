@@ -30,7 +30,7 @@ const Deployment = () => {
         "Auto-scaling & Load Balancing"
       ],
       color: "from-green-500 to-emerald-600",
-      bgColor: "bg-gradient-to-br from-green-50 to-emerald-50",
+      accent: "#10b981",
       tech: ["Ubuntu", "Docker", "NGINX", "PM2", "SSL", "CI/CD"]
     },
     {
@@ -46,7 +46,7 @@ const Deployment = () => {
         "Global CDN Distribution"
       ],
       color: "from-blue-500 to-cyan-600",
-      bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
+      accent: "#3b82f6",
       tech: ["Next.js", "React", "Vercel CLI", "Edge Functions", "Git Integration"]
     },
     {
@@ -62,7 +62,7 @@ const Deployment = () => {
         "Monitoring & Logging"
       ],
       color: "from-purple-500 to-pink-600",
-      bgColor: "bg-gradient-to-br from-purple-50 to-pink-50",
+      accent: "#d946ef",
       tech: ["MongoDB", "Redis", "WebSocket", "Microservices", "Docker", "Kubernetes"]
     }
   ];
@@ -150,7 +150,8 @@ const Deployment = () => {
           {deploymentServices.map((service, index) => (
             <div
               key={index}
-              className={`group ${service.bgColor} rounded-2xl p-8 border border-gray-200 hover:border-transparent transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2`}
+              className="deployment-service-card group rounded-2xl p-8 border transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2"
+              style={{ '--deployment-accent': service.accent }}
             >
               {/* Icon */}
               <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-6`}>
@@ -166,7 +167,7 @@ const Deployment = () => {
               {/* Features */}
               <ul className="space-y-3 mb-6">
                 {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-gray-700">
+                  <li key={idx} className="flex items-start" style={{ color: 'var(--text-secondary)' }}>
                     <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">{feature}</span>
                   </li>
@@ -191,7 +192,7 @@ const Deployment = () => {
 
         {/* Deployment Process */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h3 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text-primary)' }}>
             Deployment <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Process</span>
           </h3>
 

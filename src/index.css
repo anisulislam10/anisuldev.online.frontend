@@ -261,6 +261,24 @@ pre,
     radial-gradient(circle at 50% 50%, transparent 55%, rgba(7, 11, 20, 0.2) 100%);
 }
 
+.deployment-service-card {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--deployment-accent) 10%, var(--bg-card)), var(--bg-card) 68%);
+  border-color: color-mix(in srgb, var(--deployment-accent) 22%, var(--border-subtle));
+  box-shadow: var(--shadow-card);
+}
+
+.deployment-service-card:hover {
+  border-color: color-mix(in srgb, var(--deployment-accent) 65%, transparent);
+  box-shadow: 0 20px 55px color-mix(in srgb, var(--deployment-accent) 18%, transparent);
+}
+
+[data-theme="dark"] .deployment-service-card {
+  background:
+    radial-gradient(circle at 85% 0%, color-mix(in srgb, var(--deployment-accent) 14%, transparent), transparent 42%),
+    linear-gradient(145deg, color-mix(in srgb, var(--deployment-accent) 6%, var(--bg-card)), var(--bg-card) 70%);
+}
+
 @media (max-width: 767px) {
   .service-card-visual {
     height: 13rem;

@@ -145,9 +145,6 @@ const Hero = () => {
           {/* ── Right Column: Premium Personal Photo Frame ── */}
           <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-right">
             <div className="hero-portrait-wrap relative group">
-              {/* Animated decorative gradient borders behind photo */}
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-spin-slow" />
-              
               {/* Photo Card container */}
               <div className="hero-portrait-card relative w-72 h-80 sm:w-80 sm:h-96 overflow-visible">
                 <img
