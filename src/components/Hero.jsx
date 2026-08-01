@@ -138,11 +138,11 @@ const Hero = () => {
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 opacity-75 blur-md group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-spin-slow" />
               
               {/* Photo Card container */}
-              <div className="relative w-72 h-[25rem] sm:w-80 sm:h-[29rem] rounded-[2rem] overflow-hidden bg-slate-900 border-2 shadow-2xl" style={{ borderColor: 'var(--border-subtle)' }}>
+              <div className="relative w-72 h-80 sm:w-80 sm:h-96 rounded-[2rem] overflow-hidden bg-gradient-to-br from-slate-100 via-indigo-50 to-cyan-50 border-2 shadow-2xl" style={{ borderColor: 'var(--border-subtle)' }}>
                 <img
                   src="/Anisul_Islam_Software_Developer_Chitral.png"
                   alt="Anisul Islam"
-                  className="w-full h-full object-cover object-top grayscale-[10%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-full object-contain object-center grayscale-[5%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
                   itemProp="image"
                 />
 

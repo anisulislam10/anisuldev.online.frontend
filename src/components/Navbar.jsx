@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Zap } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from './../../public/logo_anisuldev.online.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,12 +48,9 @@ const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
-              <img
-                src={logo}
-                alt="AnisulDev Logo"
-                className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ filter: 'invert(1) brightness(0.2)' }}
-              />
+              <span className="text-xl sm:text-2xl font-black tracking-[-0.06em] text-slate-950 transition-colors duration-300 group-hover:text-indigo-600" aria-label="anisuldev.">
+                <span className="text-indigo-600">&#x7B;</span>anisuldev.<span className="text-cyan-500">&#x7D;</span>
+              </span>
             </Link>
 
             {/* Desktop Nav */}
