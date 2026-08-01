@@ -52,7 +52,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="relative py-24 lg:py-32 overflow-hidden"
+    <section id="services" className="relative py-16 lg:py-20 overflow-hidden"
       style={{ background: 'var(--bg-primary)' }}>
 
       {/* Background grid */}

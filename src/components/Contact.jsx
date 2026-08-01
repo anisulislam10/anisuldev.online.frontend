@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
   Mail, Phone, Send, MessageSquare,
-  Clock, Github, Linkedin, Twitter, CheckCircle
+  Clock, Github, Linkedin, Twitter, CheckCircle, MessageCircle
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +19,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 overflow-hidden"
+    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden"
       style={{ background: 'var(--bg-primary)' }}>
 
       {/* Background patterns */}
@@ -70,8 +70,9 @@ const Contact = () => {
             {/* Quick Contact Links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { icon: <Mail size={18} />, label: t('contact.form.email'), val: 'info@anisuldev.online', href: 'mailto:info@anisuldev.online' },
+                { icon: <Mail size={18} />, label: t('contact.form.email'), val: 'anisuldev@gmail.com', href: 'mailto:anisuldev@gmail.com' },
                 { icon: <Phone size={18} />, label: t('contact.form.phone'), val: '+92 343 9275550', href: 'tel:+923439275550' },
+                { icon: <MessageCircle size={18} />, label: 'WhatsApp', val: '+92 343 9275550', href: 'https://wa.me/923439275550?text=Hi%20Anisul%21%20%F0%9F%91%8B%20I%20found%20you%20through%20anisuldev.online%20and%20would%20love%20to%20connect.%20I%20have%20an%20idea%20or%20project%20I%27d%20like%20to%20discuss%20with%20you.%20Are%20you%20available%20for%20a%20quick%20chat%3F' },
               ].map((item, i) => (
                 <a
                   key={i}

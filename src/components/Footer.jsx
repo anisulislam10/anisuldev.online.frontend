@@ -24,7 +24,7 @@ const Footer = () => {
     { icon: <Github size={17} />, href: 'https://github.com/anisulislam10', label: 'GitHub' },
     { icon: <Linkedin size={17} />, href: 'https://linkedin.com/in/ianisulislam', label: 'LinkedIn' },
     { icon: <Twitter size={17} />, href: 'https://twitter.com/ianisulislam', label: 'Twitter' },
-    { icon: <Mail size={17} />, href: 'mailto:info@anisuldev.online', label: 'Email' },
+    { icon: <Mail size={17} />, href: 'mailto:anisuldev@gmail.com', label: 'Email' },
   ];
 
   return (

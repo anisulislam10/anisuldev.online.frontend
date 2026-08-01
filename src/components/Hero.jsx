@@ -9,6 +9,9 @@ const techStack = [
   { name: 'Next.js', emoji: '▲' },
   { name: 'MongoDB', emoji: '🍃' },
   { name: 'React Native', emoji: '📱' },
+  { name: 'PostgreSQL', emoji: '🐘' },
+  { name: 'CI/CD', emoji: '🔄' },
+  { name: 'Docker', emoji: '🐳' },
 ];
 
 const Hero = () => {
@@ -16,10 +19,18 @@ const Hero = () => {
 
   return (
     <section
-      className="hero-section relative min-h-screen flex flex-col justify-center pt-28 pb-16 overflow-hidden"
+      className="hero-section relative min-h-screen flex flex-col justify-center pt-28 pb-10 overflow-hidden"
       itemScope
       itemType="https://schema.org/Person"
     >
+      <div className="hero-wave-background" aria-hidden="true">
+        <svg viewBox="0 0 1440 720" preserveAspectRatio="none">
+          <path className="hero-wave hero-wave-one" d="M-180 300 C 80 170, 300 430, 570 300 S 1060 150, 1620 320 L 1620 760 L -180 760 Z" />
+          <path className="hero-wave hero-wave-two" d="M-200 420 C 120 250, 360 560, 680 390 S 1150 260, 1640 440 L 1640 760 L -200 760 Z" />
+          <path className="hero-wave hero-wave-three" d="M-220 520 C 100 390, 390 650, 730 500 S 1220 390, 1660 540 L 1660 760 L -220 760 Z" />
+        </svg>
+      </div>
+
       {/* Background grid */}
       <div className="absolute inset-0 bg-grid opacity-40" />
 
@@ -72,9 +83,9 @@ const Hero = () => {
             </p>
 
             {/* Core Tech Stack */}
-            <div className="animate-fade-up delay-300 flex flex-wrap gap-2">
+            <div className="animate-fade-up delay-300 grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-2xl">
               {techStack.map((tech) => (
-                <span key={tech.name} className="tech-pill">
+                <span key={tech.name} className="tech-pill justify-center">
                   <span>{tech.emoji}</span>
                   {tech.name}
                 </span>

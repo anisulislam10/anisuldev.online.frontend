@@ -171,7 +171,7 @@ const About = () => {
                                         </div>
                                         <div className="flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>
                                             <Mail className="w-4 h-4 mr-2" />
-                                            <span>info@anisuldev.online</span>
+                                            <span>anisuldev@gmail.com</span>
                                         </div>
                                         <div className="flex items-center justify-center" style={{ color: 'var(--text-secondary)' }}>
                                             <Phone className="w-4 h-4 mr-2" />
