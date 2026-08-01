@@ -577,6 +577,17 @@ pre,
   background-size: 12px 12px;
 }
 
+.hero-portrait-card {
+  isolation: isolate;
+}
+
+.hero-portrait-image {
+  border-radius: 2rem;
+  filter: drop-shadow(0 24px 35px rgba(15, 23, 42, 0.22));
+  -webkit-mask-image: radial-gradient(ellipse 92% 94% at 50% 49%, #000 68%, rgba(0, 0, 0, 0.9) 78%, transparent 100%);
+  mask-image: radial-gradient(ellipse 92% 94% at 50% 49%, #000 68%, rgba(0, 0, 0, 0.9) 78%, transparent 100%);
+}
+
 .hero-wave-background {
   position: absolute;
   inset: 0;
