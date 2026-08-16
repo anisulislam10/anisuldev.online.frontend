@@ -142,25 +142,81 @@ const Hero = () => {
 
           </div>
 
-          {/* ── Right Column: Premium Personal Photo Frame ── */}
-          <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-right">
-            <div className="hero-portrait-wrap relative group">
-              {/* Photo Card container */}
-              <div className="hero-portrait-card relative w-[min(100%,34rem)] aspect-[4/3] overflow-visible">
-                <img
-                  src="/0379a6ed-eb8f-4a06-9b77-abf7e533e767.png"
-                  alt="Anisul Islam working at his software development desk"
-                  className="hero-portrait-image w-full h-full object-cover object-center grayscale-[5%] group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
-                  itemProp="image"
-                />
+          {/* ── Right Column: Premium Employee ID Card Frame ── */}
+          <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="id-card-lanyard-wrap relative">
+              {/* Lanyard Strap */}
+              <div className="id-card-strap" />
+              
+              {/* Metal Badge Hook / Clip */}
+              <div className="id-card-hook">
+                <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Metal Ring */}
+                  <path d="M12 2C9.79086 2 8 3.79086 8 6V10C8 10.5523 8.44772 11 9 11C9.55228 11 10 10.5523 10 10V6C10 4.89543 10.8954 4 12 4C13.1046 4 14 4.89543 14 6V10C14 10.5523 14.4477 11 15 11C15.5523 11 16 10.5523 16 10V6C16 3.79086 14.2091 2 12 2Z" fill="var(--accent-indigo)" opacity="0.8"/>
+                  {/* Clip Body */}
+                  <rect x="9" y="10" width="6" height="12" rx="1.5" fill="#94a3b8" />
+                  {/* Claw Hook */}
+                  <path d="M8 20C8 17.7909 9.79086 16 12 16C14.2091 16 16 17.7909 16 20V26C16 28.2091 14.2091 30 12 30C9.79086 30 8 28.2091 8 26V20Z" stroke="#64748b" strokeWidth="2" />
+                  {/* Pin/Hinge */}
+                  <circle cx="12" cy="22" r="2" fill="#475569" />
+                </svg>
+              </div>
 
-                {/* Status Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl backdrop-blur-md bg-black/60 border border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs font-semibold text-white">{t('hero.openToWork')}</span>
+              {/* ID Card container */}
+              <div className="id-card-container">
+                {/* Lanyard slot */}
+                <div className="id-card-slot" />
+                
+                <div className="id-card-inner">
+                  {/* Header */}
+                  <div className="id-card-header">
+                    <span className="id-card-logo">⚡ ANISULDEV</span>
+                    <span className="id-card-header-tag">ENG #10</span>
                   </div>
-                  <span className="text-[10px] text-slate-300 font-medium">PKT Zone</span>
+
+                  {/* Photo container */}
+                  <div className="id-card-image-container">
+                    <img
+                      src="/anisul-passport.png"
+                      alt="Anisul Islam"
+                      className="id-card-image"
+                      itemProp="image"
+                    />
+
+                    {/* Status Overlay */}
+                    <div className="id-card-status">
+                      <span className="status-dot" />
+                      <span className="status-text">{t('hero.openToWork')}</span>
+                    </div>
+                  </div>
+
+                  {/* Card Info details */}
+                  <div className="id-card-info">
+                    <div className="id-card-name" itemProp="name">Anisul Islam</div>
+                    <div className="id-card-designation" itemProp="jobTitle">{t('hero.badge')}</div>
+                  </div>
+
+                  {/* Footer with barcode and EMV chip */}
+                  <div className="id-card-footer">
+                    <div className="id-card-chip">
+                      <div className="chip-line" />
+                      <div className="chip-line" />
+                      <div className="chip-line" />
+                    </div>
+
+                    <div className="id-card-barcode">
+                      <div className="barcode-line w-[2px] h-full" />
+                      <div className="barcode-line w-[4px] h-[80%]" />
+                      <div className="barcode-line w-[1px] h-full" />
+                      <div className="barcode-line w-[3px] h-[90%]" />
+                      <div className="barcode-line w-[2px] h-[75%]" />
+                      <div className="barcode-line w-[1px] h-full" />
+                      <div className="barcode-line w-[5px] h-[85%]" />
+                      <div className="barcode-line w-[2px] h-full" />
+                      <div className="barcode-line w-[3px] h-[70%]" />
+                      <div className="barcode-line w-[1px] h-full" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -179,7 +235,7 @@ const Hero = () => {
             "name": "Anisul Islam",
             "jobTitle": "Full Stack Software Engineer",
             "url": "https://www.anisuldev.online",
-            "image": "https://www.anisuldev.online/0379a6ed-eb8f-4a06-9b77-abf7e533e767.png",
+            "image": "https://www.anisuldev.online/anisul-passport.png",
             "sameAs": [
               "https://github.com/anisulislam10",
               "https://linkedin.com/in/ianisulislam",
