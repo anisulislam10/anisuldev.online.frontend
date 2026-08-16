@@ -16,6 +16,7 @@ const techStack = [
 
 const Hero = () => {
   const { t } = useTranslation();
+  const [isFlipped, setIsFlipped] = React.useState(false);
 
   return (
     <section
@@ -163,58 +164,107 @@ const Hero = () => {
               </div>
 
               {/* ID Card container */}
-              <div className="id-card-container">
-                {/* Lanyard slot */}
-                <div className="id-card-slot" />
-                
-                <div className="id-card-inner">
-                  {/* Header */}
-                  <div className="id-card-header">
-                    <span className="id-card-logo">⚡ ANISULDEV</span>
-                    <span className="id-card-header-tag">ENG #10</span>
+              <div 
+                className={`id-card-container ${isFlipped ? 'flipped' : ''}`}
+                onClick={() => setIsFlipped(!isFlipped)}
+                title="Click to flip card"
+              >
+                {/* Front Face */}
+                <div className="id-card-face id-card-front">
+                  <div className="id-card-slot" />
+                  <div className="id-card-inner">
+                    {/* Header */}
+                    <div className="id-card-header">
+                      <span className="id-card-logo">⚡ ANISULDEV</span>
+                      <span className="id-card-header-tag">ENG #10</span>
+                    </div>
+
+                    {/* Photo container */}
+                    <div className="id-card-image-container">
+                      <img
+                        src="/anisul-passport.png"
+                        alt="Anisul Islam"
+                        className="id-card-image"
+                        itemProp="image"
+                      />
+
+                      {/* Status Overlay */}
+                      <div className="id-card-status">
+                        <span className="status-dot" />
+                        <span className="status-text">{t('hero.openToWork')}</span>
+                      </div>
+                    </div>
+
+                    {/* Card Info details */}
+                    <div className="id-card-info">
+                      <div className="id-card-name" itemProp="name">Anisul Islam</div>
+                      <div className="id-card-designation" itemProp="jobTitle">{t('hero.badge')}</div>
+                    </div>
+
+                    {/* Footer with barcode and EMV chip */}
+                    <div className="id-card-footer">
+                      <div className="id-card-chip">
+                        <div className="chip-line" />
+                        <div className="chip-line" />
+                        <div className="chip-line" />
+                      </div>
+
+                      <div className="id-card-barcode">
+                        <div className="barcode-line w-[2px] h-full" />
+                        <div className="barcode-line w-[4px] h-[80%]" />
+                        <div className="barcode-line w-[1px] h-full" />
+                        <div className="barcode-line w-[3px] h-[90%]" />
+                        <div className="barcode-line w-[2px] h-[75%]" />
+                        <div className="barcode-line w-[1px] h-full" />
+                        <div className="barcode-line w-[5px] h-[85%]" />
+                        <div className="barcode-line w-[2px] h-full" />
+                        <div className="barcode-line w-[3px] h-[70%]" />
+                        <div className="barcode-line w-[1px] h-full" />
+                      </div>
+                    </div>
                   </div>
+                </div>
 
-                  {/* Photo container */}
-                  <div className="id-card-image-container">
-                    <img
-                      src="/anisul-passport.png"
-                      alt="Anisul Islam"
-                      className="id-card-image"
-                      itemProp="image"
-                    />
+                {/* Back Face */}
+                <div className="id-card-face id-card-back">
+                  <div className="id-card-slot" />
+                  <div className="id-card-back-stripe" />
+                  
+                  <div className="id-card-back-body">
+                    {/* Signature block */}
+                    <div className="id-card-signature-section">
+                      <span className="id-card-signature-label">Authorized Signature</span>
+                      <div className="id-card-signature-box">
+                        <svg width="120" height="30" viewBox="0 0 100 30" fill="none" className="id-card-signature-svg">
+                          <path d="M10 22c5-3 12-8 18-9 10-1 15 15 22 9s8-15 12-4 10 3 15-2" stroke="var(--accent-indigo)" strokeWidth="1.5" strokeLinecap="round" />
+                          <path d="M25 18c3-2 8-5 12-5" stroke="var(--accent-indigo)" strokeWidth="1.2" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                    </div>
 
-                    {/* Status Overlay */}
-                    <div className="id-card-status">
-                      <span className="status-dot" />
-                      <span className="status-text">{t('hero.openToWork')}</span>
+                    {/* Terms */}
+                    <div className="id-card-terms">
+                      <p className="font-semibold text-[0.58rem] mb-1" style={{ color: 'var(--text-primary)' }}>SECURITY ACCESS PASS</p>
+                      <p>This card is the property of anisuldev.online. If found, please return to the administrator.</p>
                     </div>
                   </div>
 
-                  {/* Card Info details */}
-                  <div className="id-card-info">
-                    <div className="id-card-name" itemProp="name">Anisul Islam</div>
-                    <div className="id-card-designation" itemProp="jobTitle">{t('hero.badge')}</div>
-                  </div>
-
-                  {/* Footer with barcode and EMV chip */}
-                  <div className="id-card-footer">
-                    <div className="id-card-chip">
-                      <div className="chip-line" />
-                      <div className="chip-line" />
-                      <div className="chip-line" />
+                  {/* Back Footer */}
+                  <div className="id-card-back-footer">
+                    <div className="id-card-qrcode-wrap">
+                      <svg width="52" height="52" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="29" height="29" fill="transparent"/>
+                        <path d="M0 0h7v7H0zm1 1v5h5V1zm1 1h3v3H2z" fill="currentColor"/>
+                        <path d="M22 0h7v7h-7zm1 1v5h5V1zm1 1h3v3H2z" fill="currentColor"/>
+                        <path d="M0 22h7v7H0zm1 1v5h5V1zm1 1h3v3H2z" fill="currentColor"/>
+                        <path d="M9 0h2v2H9zm4 0h1v1h-1zm2 0h2v1h-2zm5 0h1v2h-1zm-11 3h1v2H9zm3 0h2v1h-2zm3 0h1v1h-1zm1 0h2v2h-2zm-5 3h1v1H9zm2 0h1v2h-1zm5 0h2v1h-2zm1 0h1v1h-1zm-9 3h3v1H9zm4 0h1v2h-1zm2 0h3v1h-3zm4 0h1v1h-1zm-9 3h1v2H9zm2 0h2v1h-2zm4 0h1v1h-1zm1 0h2v1h-2zm-5 3h3v1H9zm5 0h1v2h-1zm2 0h1v1h-1zm1 0h2v2h-2zm-9 3h1v1H9zm2 0h2v2h-2zm3 0h1v1h-1zm4 0h3v1h-3z" fill="currentColor"/>
+                      </svg>
                     </div>
 
-                    <div className="id-card-barcode">
-                      <div className="barcode-line w-[2px] h-full" />
-                      <div className="barcode-line w-[4px] h-[80%]" />
-                      <div className="barcode-line w-[1px] h-full" />
-                      <div className="barcode-line w-[3px] h-[90%]" />
-                      <div className="barcode-line w-[2px] h-[75%]" />
-                      <div className="barcode-line w-[1px] h-full" />
-                      <div className="barcode-line w-[5px] h-[85%]" />
-                      <div className="barcode-line w-[2px] h-full" />
-                      <div className="barcode-line w-[3px] h-[70%]" />
-                      <div className="barcode-line w-[1px] h-full" />
+                    <div className="id-card-back-meta">
+                      <span className="id-card-meta-title">Developer Hub</span>
+                      <span className="id-card-meta-value">www.anisuldev.online</span>
+                      <span className="id-card-meta-value">ianisulislam@gmail.com</span>
                     </div>
                   </div>
                 </div>
