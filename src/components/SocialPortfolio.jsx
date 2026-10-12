@@ -1,6 +1,6 @@
 import { createElement, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Grid3X3, Code2, Quote, Smartphone, Globe, Server, X, Github, Linkedin, Twitter, Mail, MapPin, ArrowRight, BadgeCheck, Heart, Atom, Triangle, Hexagon, Route, Leaf, Database, Zap, Flame, Terminal, Container, Gauge, Braces } from 'lucide-react';
+import { ArrowUpRight, Grid3X3, Code2, Quote, Smartphone, Globe, Server, X, Github, Linkedin, Twitter, Mail, MapPin, ArrowRight, BadgeCheck, Heart, Atom, Triangle, Hexagon, Route, Leaf, Database, Zap, Flame, Terminal, Container, Gauge, Braces, Maximize2, Eye } from 'lucide-react';
 import { projects } from '../data/projects';
 import './SocialPortfolio.css';
 import ServiceStories from './ServiceStories';
@@ -59,7 +59,38 @@ const projectPosts = projects.map((p, index) => ({ ...p, id: `project-${p.id}`, 
 const posts = [projectPosts[0], services[0], quotes[0], quotes[1], projectPosts[4], services[1], projectPosts[1], services[2], projectPosts[5], quotes[2], ...projectPosts.filter((_, i) => ![0, 4, 1, 5].includes(i))];
 const filters = [{ id: 'all', label: 'All posts', Icon: Grid3X3 }, { id: 'projects', label: 'Projects', Icon: Code2 }, { id: 'services', label: 'Services', Icon: Globe }, { id: 'quotes', label: 'Notes & quotes', Icon: Quote }];
 
+// Fake social proof per post. Seeded from the post id so the numbers look
+// random but never change between renders or reloads, and both counts start
+// from a 1.5K floor. Post ids are near-identical ("project-1", "project-2"),
+// so the seed is avalanched and salted per counter to keep the values apart.
+const seedFrom = (value) => {
+  let hash = 2166136261;
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  let mixed = hash >>> 0;
+  mixed ^= mixed >>> 16;
+  mixed = Math.imul(mixed, 0x7feb352d);
+  mixed ^= mixed >>> 15;
+  mixed = Math.imul(mixed, 0x846ca68b);
+  mixed ^= mixed >>> 16;
+  return mixed >>> 0;
+};
+
+const socialProof = (id) => ({
+  likes: 1500 + (seedFrom(`${id}#likes`) % 43500),
+  views: 1500 + (seedFrom(`${id}#views`) % 148500),
+});
+
+const formatCount = (value) => {
+  if (value >= 1000000) return `${(value / 1000000).toFixed(1).replace(/\.0$/, '')}M`;
+  if (value >= 1000) return `${(value / 1000).toFixed(1).replace(/\.0$/, '')}K`;
+  return String(value);
+};
+
 function PostVisual({ post }) {
+  const { likes, views } = socialProof(post.id);
   return <div className={`post-art post-art-${post.kind} tone-${post.tone ?? 0}`}>
     {post.kind === 'services' && <img src={post.image} alt="" loading="lazy" />}
     <span className="post-category">{post.subtitle}</span>
@@ -67,6 +98,10 @@ function PostVisual({ post }) {
     {post.kind === 'projects' && <div className="post-project-symbol" aria-hidden="true">{post.platform === 'Mobile' ? <Smartphone size={54} strokeWidth={1} /> : <Code2 size={54} strokeWidth={1} />}</div>}
     <h3>{post.title}</h3>
     <div className="post-art-footer"><span>{post.kind === 'projects' ? post.tags.slice(0, 2).join(' + ') : post.kind === 'services' ? 'Let’s build together' : 'Ideas worth keeping'}</span><ArrowUpRight size={18} /></div>
+    <div className="post-stats">
+      <span><Heart size={13} aria-hidden="true" /><span className="sr-only">Likes</span>{formatCount(likes)}</span>
+      <span><Eye size={13} aria-hidden="true" /><span className="sr-only">Views</span>{formatCount(views)}</span>
+    </div>
   </div>;
 }
 
@@ -137,6 +172,53 @@ export default function SocialPortfolio() {
   const feedRef = useRef(null);
   const visiblePosts = filter === 'all' ? posts : posts.filter(post => post.kind === filter);
 
+  // Holding the profile photo opens it full screen; a plain tap opens the stories.
+  const [showPhoto, setShowPhoto] = useState(false);
+  const photoDialogRef = useRef(null);
+  const pressTimer = useRef(null);
+  // Set while a hold opens the photo, so the click fired on release is ignored.
+  const pressOpenedPhoto = useRef(false);
+
+  useEffect(() => () => clearTimeout(pressTimer.current), []);
+
+  useEffect(() => {
+    if (!showPhoto) return;
+    const dialog = photoDialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    if (!dialog.open) dialog.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => { dialog.close(); document.body.style.overflow = previousOverflow; };
+  }, [showPhoto]);
+
+  const startAvatarPress = () => {
+    clearTimeout(pressTimer.current);
+    pressOpenedPhoto.current = false;
+    pressTimer.current = setTimeout(() => {
+      pressTimer.current = null;
+      pressOpenedPhoto.current = true;
+      setShowPhoto(true);
+    }, 1000);
+  };
+
+  const cancelAvatarPress = () => {
+    clearTimeout(pressTimer.current);
+    pressTimer.current = null;
+  };
+
+  const handleAvatarTap = () => {
+    if (pressOpenedPhoto.current) { pressOpenedPhoto.current = false; return; }
+    setStoryIndex(0);
+  };
+
+  // Long press on Android also fires contextmenu; offer the photo there too and
+  // keep right click on the desktop working the same way.
+  const openPhoto = (event) => {
+    event.preventDefault();
+    cancelAvatarPress();
+    pressOpenedPhoto.current = false;
+    setShowPhoto(true);
+  };
+
   useEffect(() => {
     if (!selected) return;
     const dialog = dialogRef.current;
@@ -153,7 +235,22 @@ export default function SocialPortfolio() {
 
   return <div className="social-portfolio">
     <header className="creator-profile">
-      <button className="creator-avatar-ring" onClick={() => setStoryIndex(0)} aria-label="View Anisul’s service stories" aria-haspopup="dialog"><img src={profileImage} alt="Anisul Islam" /></button>
+      <div className="creator-avatar">
+        <button
+          className="creator-avatar-ring"
+          onClick={handleAvatarTap}
+          onPointerDown={startAvatarPress}
+          onPointerUp={cancelAvatarPress}
+          onPointerLeave={cancelAvatarPress}
+          onPointerCancel={cancelAvatarPress}
+          onContextMenu={openPhoto}
+          aria-label="View Anisul’s stories. Press and hold to open the full profile photo."
+          aria-haspopup="dialog"
+        >
+          <img src={profileImage} alt="Anisul Islam" />
+        </button>
+        <button type="button" className="creator-photo-button" onClick={() => setShowPhoto(true)} aria-label="Open profile photo full screen"><Maximize2 size={16} /></button>
+      </div>
       <div className="creator-info">
         <div className="creator-topline"><span className="creator-handle">anisul.dev <BadgeCheck className="creator-verified" size={22} aria-label="Verified profile" role="img" /></span><Link className="creator-message" to="/contact">Let’s talk <ArrowUpRight size={15} /></Link><span className="creator-socials">{socialLinks.map((social) => { const Icon = social.Icon; return <a key={social.label} className="creator-icon-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><Icon size={20} /></a>; })}</span></div>
         <div className="creator-stats"><span><strong>{posts.length}</strong> posts</span><span><strong>{projects.length}</strong> projects</span><span><strong>{services.length}</strong> services</span></div>
@@ -187,6 +284,11 @@ export default function SocialPortfolio() {
 
     <dialog ref={dialogRef} className="post-dialog" onCancel={() => setSelected(null)} onClose={() => setSelected(null)} onClick={event => { if (event.target === event.currentTarget) setSelected(null); }} aria-labelledby="post-title">
       {selected && <div className="post-dialog-content"><button className="post-close" onClick={() => setSelected(null)} aria-label="Close post" autoFocus><X size={20} /></button><InteractivePost post={selected} liked={likedPosts.includes(selected.id)} onLike={likePost} onToggleLike={toggleLike} /><div className="post-details"><div className="post-author"><img src={profileImage} alt="" /><span><strong className="post-author-handle">anisul.dev <BadgeCheck className="creator-verified" size={15} aria-label="Verified profile" role="img" /></strong><small>Anisul Islam · {selected.kind === 'quotes' ? 'Notes & quotes' : selected.kind}</small></span></div><span className="detail-category">{selected.subtitle}</span><h2 id="post-title">{selected.title}</h2><p>{selected.description}</p>{selected.tags && <div className="post-tags">{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div>}<div className="post-detail-actions">{selected.liveUrl && <a href={selected.liveUrl} target="_blank" rel="noopener noreferrer">Explore project <ArrowUpRight size={16} /></a>}<Link to="/contact">{selected.kind === 'services' ? 'Discuss your project' : 'Let’s talk'} <Mail size={16} /></Link></div><a className="post-linkedin" href="https://linkedin.com/in/ianisulislam" target="_blank" rel="noopener noreferrer"><Linkedin size={15} /> Connect on LinkedIn</a></div></div>}
+    </dialog>
+
+    <dialog ref={photoDialogRef} className="profile-photo-dialog" onCancel={() => setShowPhoto(false)} onClose={() => setShowPhoto(false)} onClick={event => { if (event.target === event.currentTarget) setShowPhoto(false); }} aria-label="Profile photo">
+      <button className="profile-photo-close" onClick={() => setShowPhoto(false)} aria-label="Close profile photo" autoFocus><X size={20} /></button>
+      <img src={profileImage} alt="Anisul Islam" />
     </dialog>
   </div>;
 }
