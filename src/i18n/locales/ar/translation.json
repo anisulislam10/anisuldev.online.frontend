@@ -1,5 +1,6 @@
 {
     "nav": {
+        "back": "رجوع",
         "home": "الرئيسية",
         "about": "عنّي",
         "projects": "المشاريع",
@@ -188,6 +189,22 @@
             "vpsDeployment": "نشر VPS",
             "vercelDeployment": "نشر Vercel"
         }
+    },
+    "blogDetail": {
+        "backToBlogs": "العودة إلى جميع المدونات",
+        "ariaLabelBackToBlogs": "العودة إلى جميع المدونات",
+        "articleOverview": "نظرة عامة على المقال",
+        "codeExample": "مثال برمجي",
+        "ariaLabelCopyCode": "نسخ الكود",
+        "copyLink": "نسخ الرابط",
+        "ariaLabelCopyLink": "نسخ رابط المقال",
+        "copied": "تم النسخ!",
+        "bookmarkArticle": "احفظ هذا المقال",
+        "printArticle": "اطبع هذا المقال",
+        "featured": "مميز",
+        "level": "المستوى",
+        "updated": "محدَّث",
+        "views": "مشاهدات"
     },
     "blog": {
         "backToBlogs": "العودة إلى جميع المدونات",

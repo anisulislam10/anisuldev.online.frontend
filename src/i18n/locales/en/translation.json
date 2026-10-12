@@ -1,5 +1,6 @@
 {
     "nav": {
+        "back": "Back",
         "home": "Home",
         "about": "About",
         "projects": "Projects",
@@ -187,6 +188,22 @@
             "vpsDeployment": "VPS Deployment",
             "vercelDeployment": "Vercel Deployment"
         }
+    },
+    "blogDetail": {
+        "backToBlogs": "Back to All Blogs",
+        "ariaLabelBackToBlogs": "Go back to all blogs",
+        "articleOverview": "Article Overview",
+        "codeExample": "Code Example",
+        "ariaLabelCopyCode": "Copy code",
+        "copyLink": "Copy link",
+        "ariaLabelCopyLink": "Copy link to this article",
+        "copied": "Copied!",
+        "bookmarkArticle": "Bookmark this article",
+        "printArticle": "Print this article",
+        "featured": "Featured",
+        "level": "Level",
+        "updated": "Updated",
+        "views": "views"
     },
     "blog": {
         "backToBlogs": "Back to All Blogs",

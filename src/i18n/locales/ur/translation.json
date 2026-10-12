@@ -1,5 +1,6 @@
 {
     "nav": {
+        "back": "واپس",
         "home": "ہوم",
         "about": "میرے بارے میں",
         "projects": "پروجیکٹس",
@@ -184,6 +185,22 @@
             "vpsDeployment": "VPS تعیناتی",
             "vercelDeployment": "Vercel تعیناتی"
         }
+    },
+    "blogDetail": {
+        "backToBlogs": "تمام بلاگز پر واپس",
+        "ariaLabelBackToBlogs": "تمام بلاگز پر واپس جائیں",
+        "articleOverview": "مضمون کا جائزہ",
+        "codeExample": "کوڈ کی مثال",
+        "ariaLabelCopyCode": "کوڈ کاپی کریں",
+        "copyLink": "لنک کاپی کریں",
+        "ariaLabelCopyLink": "اس مضمون کا لنک کاپی کریں",
+        "copied": "کاپی ہو گیا!",
+        "bookmarkArticle": "یہ مضمون محفوظ کریں",
+        "printArticle": "یہ مضمون پرنٹ کریں",
+        "featured": "نمایاں",
+        "level": "سطح",
+        "updated": "اپ ڈیٹ شدہ",
+        "views": "ملاحظات"
     },
     "blog": {
         "backToBlogs": "تمام بلاگز پر واپس",

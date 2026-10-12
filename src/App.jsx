@@ -4,6 +4,7 @@ import Home from './Pages/Home';
 import BlogPage from './Pages/AllBlogs';
 import BlogDetailsPage from './Pages/BlogsDetails';
 import Navbar from './components/Navbar';
+import ScrollToTop from './components/ScrollToTop';
 import NotFound from './components/NotFound';
 import About  from './Pages/About';
 import ContactPage from './Pages/Contact';
@@ -13,6 +14,7 @@ import AllProjects from './Pages/AllProjects';
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

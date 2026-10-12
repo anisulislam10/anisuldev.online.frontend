@@ -215,7 +215,7 @@ const BlogDetail = () => {
 
       <div className="min-h-screen" style={{ background: 'var(--bg-primary)' }}>
         {/* Navigation */}
-        <div className="sticky top-0 z-50 border-b" style={{ background: 'var(--bg-nav)', backdropFilter: 'blur(16px)', borderColor: 'var(--border-subtle)' }}>
+        <div className="relative z-30 border-b" style={{ background: 'var(--bg-nav)', backdropFilter: 'blur(16px)', borderColor: 'var(--border-subtle)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <button
