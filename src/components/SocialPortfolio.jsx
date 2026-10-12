@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Grid3X3, Code2, Quote, Smartphone, Globe, Server, X, Github, Linkedin, Mail, MapPin, ArrowRight, BadgeCheck, Heart } from 'lucide-react';
 import { projects } from '../data/projects';
 import './SocialPortfolio.css';
+import ServiceStories from './ServiceStories';
 
 const profileImage = 'https://avatars.githubusercontent.com/u/61471461?v=4';
 
@@ -11,6 +12,17 @@ const services = [
   { id: 'mobile', kind: 'services', title: 'Your idea.\nIn their pocket.', subtitle: 'MOBILE DEVELOPMENT', image: '/services-react-native-mobile.png', description: 'Cross-platform mobile applications with React Native, designed for a smooth experience on iOS and Android.', tags: ['React Native', 'Firebase', 'iOS & Android'] },
   { id: 'backend', kind: 'services', title: 'Strong foundations.\nRoom to grow.', subtitle: 'BACKEND & APIs', image: '/services-backend-server.png', description: 'APIs, databases, and deployment for products that need a dependable foundation.', tags: ['Node.js', 'PostgreSQL', 'Docker'] },
 ];
+const techStackStory = {
+  id: 'tech-stack', subtitle: 'MY TECH STACK', title: 'The tools behind\nthe experiences.',
+  image: '/services-backend-server.png', description: 'From the first screen to the API and deployment.',
+  groups: [
+    { name: 'Web', tools: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
+    { name: 'Mobile', tools: ['React Native', 'Firebase'] },
+    { name: 'Backend', tools: ['Node.js', 'Express', 'REST APIs'] },
+    { name: 'Databases & deployment', tools: ['PostgreSQL', 'MongoDB', 'Supabase', 'Docker'] },
+  ],
+};
+const profileStories = [...services, techStackStory];
 const quotes = [
   { id: 'quote-1', kind: 'quotes', title: 'Make it simple.\nMake it useful.\nMake it matter.', description: 'A design principle: give every feature a purpose, and make the next step easy to understand.', subtitle: 'A NOTE ON DESIGN' },
   { id: 'quote-2', kind: 'quotes', title: 'Great products\nstart with a\ngood question.', description: 'Before choosing a framework, understand the person using the product and the problem they need to solve.', subtitle: 'THINKING OUT LOUD' },
@@ -81,6 +93,7 @@ function InteractivePost({ post, liked, onLike, onToggleLike, onOpen }) {
 
 export default function SocialPortfolio() {
   const [filter, setFilter] = useState('all');
+  const [storyIndex, setStoryIndex] = useState(null);
   const [likedPosts, setLikedPosts] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('portfolio-liked-posts') || '[]');
@@ -113,7 +126,7 @@ export default function SocialPortfolio() {
 
   return <div className="social-portfolio">
     <header className="creator-profile">
-      <div className="creator-avatar-ring"><img src={profileImage} alt="Anisul Islam" /></div>
+      <button className="creator-avatar-ring" onClick={() => setStoryIndex(0)} aria-label="View Anisul’s service stories" aria-haspopup="dialog"><img src={profileImage} alt="Anisul Islam" /></button>
       <div className="creator-info">
         <div className="creator-topline"><span className="creator-handle">anisul.dev <BadgeCheck className="creator-verified" size={22} aria-label="Verified profile" role="img" /></span><Link className="creator-message" to="/contact">Let’s talk <ArrowUpRight size={15} /></Link><a className="creator-icon-link" href="https://github.com/anisulislam10" target="_blank" rel="noopener noreferrer" aria-label="Anisul on GitHub"><Github size={20} /></a></div>
         <div className="creator-stats"><span><strong>{posts.length}</strong> posts</span><span><strong>{projects.length}</strong> projects</span><span><strong>{services.length}</strong> services</span></div>
@@ -127,9 +140,10 @@ export default function SocialPortfolio() {
 
     <nav className="story-highlights" aria-label="Portfolio highlights">
       <button onClick={() => showCategory('projects')}><span className="story-circle story-work"><Code2 size={27} strokeWidth={1.4} /></span>My work</button>
-      <button onClick={() => showCategory('services')}><span className="story-circle story-services"><Globe size={27} strokeWidth={1.4} /></span>Services</button>
-      <button onClick={() => { setSelected(services[1]); }}><span className="story-circle story-mobile"><Smartphone size={27} strokeWidth={1.4} /></span>Mobile apps</button>
-      <button onClick={() => { setSelected(services[2]); }}><span className="story-circle story-backend"><Server size={27} strokeWidth={1.4} /></span>Behind the code</button>
+      <button onClick={() => setStoryIndex(0)}><span className="story-circle story-services"><Globe size={27} strokeWidth={1.4} /></span>Services</button>
+      <button onClick={() => setStoryIndex(1)}><span className="story-circle story-mobile"><Smartphone size={27} strokeWidth={1.4} /></span>Mobile apps</button>
+      <button onClick={() => setStoryIndex(2)}><span className="story-circle story-backend"><Server size={27} strokeWidth={1.4} /></span>Behind the code</button>
+      <button onClick={() => setStoryIndex(services.length)}><span className="story-circle story-stack"><Code2 size={27} strokeWidth={1.4} /></span>Tech stack</button>
       <button onClick={() => showCategory('quotes')}><span className="story-circle story-notes"><Quote size={27} strokeWidth={1.4} /></span>Little thoughts</button>
       <Link to="/about"><span className="story-circle story-about"><img src={profileImage} alt="" /></span>About me</Link>
     </nav>
@@ -141,6 +155,8 @@ export default function SocialPortfolio() {
       <div className="post-grid">{visiblePosts.map(post => <InteractivePost key={post.id} post={post} liked={likedPosts.includes(post.id)} onLike={likePost} onToggleLike={toggleLike} onOpen={setSelected} />)}</div>
       <div className="feed-end"><span>You’ve seen the work. Let’s create what’s next.</span><Link to="/contact">Start a conversation <ArrowRight size={16} /></Link></div>
     </section>
+
+    {storyIndex !== null && <ServiceStories stories={profileStories} initialIndex={storyIndex} profileImage={profileImage} onClose={() => setStoryIndex(null)} />}
 
     <dialog ref={dialogRef} className="post-dialog" onCancel={() => setSelected(null)} onClose={() => setSelected(null)} onClick={event => { if (event.target === event.currentTarget) setSelected(null); }} aria-labelledby="post-title">
       {selected && <div className="post-dialog-content"><button className="post-close" onClick={() => setSelected(null)} aria-label="Close post" autoFocus><X size={20} /></button><InteractivePost post={selected} liked={likedPosts.includes(selected.id)} onLike={likePost} onToggleLike={toggleLike} /><div className="post-details"><div className="post-author"><img src={profileImage} alt="" /><span><strong className="post-author-handle">anisul.dev <BadgeCheck className="creator-verified" size={15} aria-label="Verified profile" role="img" /></strong><small>Anisul Islam · {selected.kind === 'quotes' ? 'Notes & quotes' : selected.kind}</small></span></div><span className="detail-category">{selected.subtitle}</span><h2 id="post-title">{selected.title}</h2><p>{selected.description}</p>{selected.tags && <div className="post-tags">{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div>}<div className="post-detail-actions">{selected.liveUrl && <a href={selected.liveUrl} target="_blank" rel="noopener noreferrer">Explore project <ArrowUpRight size={16} /></a>}<Link to="/contact">{selected.kind === 'services' ? 'Discuss your project' : 'Let’s talk'} <Mail size={16} /></Link></div><a className="post-linkedin" href="https://linkedin.com/in/ianisulislam" target="_blank" rel="noopener noreferrer"><Linkedin size={15} /> Connect on LinkedIn</a></div></div>}
