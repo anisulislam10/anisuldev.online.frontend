@@ -1,17 +1,56 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   Mail, Phone, Send, Github, Linkedin, Twitter, ArrowUpRight, MessageCircle
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+// EmailJS credentials live in .env.local (see .env.example).
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+// Inbox that receives every contact form submission.
+const CONTACT_INBOX = 'anis.inbox10@gmail.com';
+
 const Contact = () => {
   const { t } = useTranslation();
   const [formStatus, setFormStatus] = useState('idle');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formStatus === 'sending') return;
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error('EmailJS is not configured. Add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY to .env.local.');
+      setFormStatus('error');
+      return;
+    }
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
     setFormStatus('sending');
-    setTimeout(() => setFormStatus('success'), 1200);
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_email: CONTACT_INBOX,
+          from_name: data.get('name'),
+          reply_to: data.get('email'),
+          subject: data.get('subject'),
+          message: data.get('message'),
+        },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      form.reset();
+      setFormStatus('success');
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      setFormStatus('error');
+    }
   };
 
   const channels = [
@@ -216,6 +255,12 @@ const Contact = () => {
                       className="input-dark resize-none"
                     />
                   </div>
+
+                  {formStatus === 'error' && (
+                    <p role="alert" className="text-[0.8125rem]" style={{ color: '#d9534f' }}>
+                      {t('contact.form.sendFailed')}
+                    </p>
+                  )}
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-2">
                     <button disabled={formStatus === 'sending'} type="submit" className="btn-primary w-full sm:w-auto justify-center">

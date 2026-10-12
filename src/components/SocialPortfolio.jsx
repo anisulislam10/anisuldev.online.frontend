@@ -1,11 +1,38 @@
 import { createElement, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Grid3X3, Code2, Quote, Smartphone, Globe, Server, X, Github, Linkedin, Mail, MapPin, ArrowRight, BadgeCheck, Heart } from 'lucide-react';
+import { ArrowUpRight, Grid3X3, Code2, Quote, Smartphone, Globe, Server, X, Github, Linkedin, Twitter, Mail, MapPin, ArrowRight, BadgeCheck, Heart, Atom, Triangle, Hexagon, Route, Leaf, Database, Zap, Flame, Terminal, Container, Gauge, Braces } from 'lucide-react';
 import { projects } from '../data/projects';
 import './SocialPortfolio.css';
 import ServiceStories from './ServiceStories';
 
 const profileImage = 'https://avatars.githubusercontent.com/u/61471461?v=4';
+
+const socialLinks = [
+  { Icon: Github, href: 'https://github.com/anisulislam10', label: 'Anisul on GitHub' },
+  { Icon: Linkedin, href: 'https://linkedin.com/in/ianisulislam', label: 'Anisul on LinkedIn' },
+  { Icon: Twitter, href: 'https://twitter.com/ianisulislam', label: 'Anisul on X (Twitter)' },
+  { Icon: Mail, href: 'mailto:anisuldev@gmail.com', label: 'Email Anisul' },
+];
+
+const techMarquee = [
+  { name: 'React', Icon: Atom },
+  { name: 'Next.js', Icon: Triangle },
+  { name: 'Node.js', Icon: Hexagon },
+  { name: 'Express', Icon: Route },
+  { name: 'MongoDB', Icon: Leaf },
+  { name: 'PostgreSQL', Icon: Database },
+  { name: 'Supabase', Icon: Zap },
+  { name: 'Firebase', Icon: Flame },
+  { name: 'VPS Deployment', Icon: Server },
+  { name: 'Linux Server', Icon: Terminal },
+  { name: 'Docker', Icon: Container },
+  { name: 'React Native', Icon: Smartphone },
+  { name: 'Fastify', Icon: Gauge },
+  { name: 'JavaScript', Icon: Braces },
+];
+
+// Doubled so the marquee can loop without a visible jump.
+const techMarqueeLoop = [...techMarquee, ...techMarquee];
 
 const services = [
   { id: 'web', kind: 'services', title: 'Web experiences.\nMade to stand out.', subtitle: 'WEB DEVELOPMENT', image: '/services-web-laptop.png', description: 'Responsive websites and web applications built with React and Next.js. From a first landing page to a complete product.', tags: ['React', 'Next.js', 'TypeScript'] },
@@ -128,7 +155,7 @@ export default function SocialPortfolio() {
     <header className="creator-profile">
       <button className="creator-avatar-ring" onClick={() => setStoryIndex(0)} aria-label="View Anisul’s service stories" aria-haspopup="dialog"><img src={profileImage} alt="Anisul Islam" /></button>
       <div className="creator-info">
-        <div className="creator-topline"><span className="creator-handle">anisul.dev <BadgeCheck className="creator-verified" size={22} aria-label="Verified profile" role="img" /></span><Link className="creator-message" to="/contact">Let’s talk <ArrowUpRight size={15} /></Link><a className="creator-icon-link" href="https://github.com/anisulislam10" target="_blank" rel="noopener noreferrer" aria-label="Anisul on GitHub"><Github size={20} /></a></div>
+        <div className="creator-topline"><span className="creator-handle">anisul.dev <BadgeCheck className="creator-verified" size={22} aria-label="Verified profile" role="img" /></span><Link className="creator-message" to="/contact">Let’s talk <ArrowUpRight size={15} /></Link><span className="creator-socials">{socialLinks.map((social) => { const Icon = social.Icon; return <a key={social.label} className="creator-icon-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} title={social.label}><Icon size={20} /></a>; })}</span></div>
         <div className="creator-stats"><span><strong>{posts.length}</strong> posts</span><span><strong>{projects.length}</strong> projects</span><span><strong>{services.length}</strong> services</span></div>
         <h1>Anisul Islam</h1>
         <p className="creator-role">Software Engineer · Full-Stack Developer</p>
@@ -149,7 +176,7 @@ export default function SocialPortfolio() {
     </nav>
 
     <section className="creator-feed" ref={feedRef} aria-label="Portfolio posts">
-      <div className="feed-topbar"><span>A little work. A little inspiration. Double tap to like.</span><span>Made with intention <span aria-hidden="true">✳</span></span></div>
+      <div className="tech-marquee" role="list" aria-label="Tech stack"><div className="tech-marquee-track animate-scroll-left">{techMarqueeLoop.map((tech, index) => <span className="tech-marquee-item" role="listitem" key={`${tech.name}-${index}`} aria-hidden={index >= techMarquee.length ? 'true' : undefined}>{createElement(tech.Icon, { size: 14 })}{tech.name}</span>)}</div></div>
       <div className="feed-filters" role="group" aria-label="Filter posts">{filters.map(({ id, label, Icon }) => <button key={id} aria-pressed={filter === id} className={filter === id ? 'active' : ''} onClick={() => setFilter(id)}>{createElement(Icon, { size: 15 })}<span>{label}</span></button>)}</div>
       <p className="sr-only" aria-live="polite">{visiblePosts.length} posts shown</p>
       <div className="post-grid">{visiblePosts.map(post => <InteractivePost key={post.id} post={post} liked={likedPosts.includes(post.id)} onLike={likePost} onToggleLike={toggleLike} onOpen={setSelected} />)}</div>
