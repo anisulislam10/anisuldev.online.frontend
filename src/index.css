@@ -1134,3 +1134,92 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ─── Site footer ────────────────────────────────────────────
+   Quiet link footer: one centred column, hairline rule, small
+   muted type, no columns and no calls to action. */
+.site-footer {
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+  padding: 40px 20px 34px;
+}
+
+.site-footer-inner {
+  max-width: 1176px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 22px;
+}
+
+.footer-links a {
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 14px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.footer-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-lang button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.footer-lang button:hover {
+  color: var(--text-primary);
+}
+
+.footer-lang button[aria-current='true'] {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.footer-copyright::before {
+  content: '·';
+  margin-right: 14px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 520px) {
+  .site-footer {
+    padding: 30px 16px 28px;
+  }
+
+  .footer-links {
+    gap: 2px 18px;
+  }
+}
