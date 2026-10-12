@@ -1,3 +1,4 @@
+import { projects } from '../data/projects';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import {
@@ -31,148 +32,7 @@ const AllProjects = () => {
   const seoKeywords = t('projects.meta.description'); // reusing description as keywords for now or could add more
   const seoImage = '/blogs-og-image.jpg';
 
-  const projects = [
-    {
-      id: 1,
-      name: 'RunVerse',
-      description: 'Blockchain Fitness App (React Native, Node.js Express.js Firebase MongoDB). Managed the mobile client codebase and backend API integration as Team Lead.',
-      techStack: ['React Native', 'Node.js', 'Express', 'Firebase', 'MongoDB'],
-      platform: 'Mobile',
-      category: 'Fitness',
-      image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: 'https://play.google.com/store/search?q=RunVerse&c=apps',
-      githubUrl: null,
-      liveUrl: 'https://play.google.com/store/search?q=RunVerse&c=apps',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 2,
-      name: 'TheraPieces',
-      description: 'Comprehensive Healthcare Platform designed for client consultation scheduling and record management.',
-      techStack: ['AngularJS', 'Java'],
-      platform: 'Web',
-      category: 'Healthcare',
-      image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://therapieces.com',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 3,
-      name: 'Theka Online',
-      description: 'Mobile home services commerce application connecting local certified service experts with customers.',
-      techStack: ['React Native', 'Firebase'],
-      platform: 'Mobile',
-      category: 'E-commerce',
-      image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: 'https://play.google.com/store/search?q=Theka+Online&c=apps',
-      githubUrl: null,
-      liveUrl: 'https://play.google.com/store/search?q=Theka+Online&c=apps',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 4,
-      name: 'Ustaad Pro',
-      description: 'Served as Backend Lead managing system architecture, cloud deployment, and push notification engines.',
-      techStack: ['Node.js', 'PostgreSQL', 'Firebase', 'Deployment'],
-      platform: 'Mobile',
-      category: 'Education',
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: 'https://play.google.com/store/search?q=Ustaad+Pro&c=apps',
-      githubUrl: null,
-      liveUrl: 'https://play.google.com/store/search?q=Ustaad+Pro&c=apps',
-      featured: false,
-      status: 'Live'
-    },
-    {
-      id: 5,
-      name: 'Taxara Admin Panel',
-      description: 'Secure, modern Admin Dashboard tailored for customer tax processing operations and platform configurations.',
-      techStack: ['React.js', 'Node.js', 'Supabase'],
-      platform: 'Web',
-      category: 'Admin Panel',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://taxara.co.uk',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 6,
-      name: 'Avenly by Huma',
-      description: 'Premium storefront experience featuring inventory lookups, product filters, and payment checkout gateways.',
-      techStack: ['MERN Stack', 'React.js', 'Node.js', 'Express', 'MongoDB'],
-      platform: 'Web',
-      category: 'E-commerce',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://avenlybyhuma.com',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 7,
-      name: 'Al Waqas Business Suite',
-      description: 'High-performance ERP and POS enterprise application managing retail records and inventory analytics.',
-      techStack: ['MERN Stack', 'React.js', 'Node.js', 'Express', 'MongoDB', 'SQL'],
-      platform: 'Web',
-      category: 'Business Suite',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://alwaqaspaint.com',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 8,
-      name: 'Government Graduate College Website & LMS',
-      description: 'College portal landing site alongside a lightweight learning management system for syllabus and results coordination.',
-      techStack: ['React.js', 'Node.js', 'Express', 'MongoDB'],
-      platform: 'Web',
-      category: 'Education',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://ggcwpeshawarroad.edu.pk',
-      featured: true,
-      status: 'Live'
-    },
-    {
-      id: 9,
-      name: 'Northern Treasures Mining',
-      description: 'Corporate platform outlining excavation outputs, safe-conduct declarations, and executive reporting profiles.',
-      techStack: ['React.js', 'Tailwind CSS'],
-      platform: 'Web',
-      category: 'Corporate',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://northerntreasuresmining.com',
-      featured: false,
-      status: 'Live'
-    },
-    {
-      id: 10,
-      name: 'Sharplogicians Platform',
-      description: 'Fully responsive developer organization portal showcasing consulting packages and tech stacks.',
-      techStack: ['Next.js', 'Node.js', 'Tailwind CSS'],
-      platform: 'Web',
-      category: 'Corporate',
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
-      playStoreUrl: null,
-      githubUrl: null,
-      liveUrl: 'https://sharplogicians.com',
-      featured: false,
-      status: 'Live'
-    }
-  ];
+
 
   const categories = [
     { id: 'all', name: t('projects.categories.all'), icon: <Layers className="w-5 h-5" /> },
@@ -246,27 +106,21 @@ const AllProjects = () => {
         keywords={seoKeywords}
         ogImage={seoImage}
       />
-      {/* Hero Section */}
-      <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
-              <Code className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
-              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t('projects.badge')}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-              {t('projects.heading')} <span className="gradient-text animate-grad-shift">{t('projects.headingHighlight')}</span>
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              {t('projects.subheading')}
-            </p>
-          </div>
+      {/* Header */}
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8 pt-32 pb-12">
+        <div className="animate-fade-up">
+          <span className="section-badge">{t('projects.badge')}</span>
+          <h1 className="mt-6 text-[2.5rem] sm:text-[3.25rem] lg:text-[3.75rem] max-w-[24ch]">
+            {t('projects.heading')} <span className="gradient-text">{t('projects.headingHighlight')}</span>
+          </h1>
+          <p className="mt-6 lede max-w-[44rem]">
+            {t('projects.subheading')}
+          </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="p-6 rounded-2xl border text-center transition-all duration-300"
             style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
             <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent-indigo)' }}>{projects.length}</div>
@@ -296,19 +150,16 @@ const AllProjects = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8 py-14">
         {/* Categories Filter */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>{t('projects.filterTitle')}</h2>
-          <div className="flex flex-wrap gap-3">
+        <div className="mb-10">
+          <span className="section-badge mb-6">{t('projects.filterTitle')}</span>
+          <div className="flex flex-wrap gap-2 mt-6">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`inline-flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category.id
-                  ? 'text-white shadow-lg'
-                  : 'hover:shadow-md'
-                  }`}
+                className="inline-flex items-center px-4 py-2.5 rounded-[6px] text-[0.875rem] font-medium transition-all duration-200"
                 style={{
                   background: selectedCategory === category.id ? 'var(--gradient-hero)' : 'var(--bg-card)',
                   color: selectedCategory === category.id ? 'white' : 'var(--text-secondary)',
@@ -327,10 +178,8 @@ const AllProjects = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 border"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}
+              className="group rounded-[14px] overflow-hidden transition-all duration-300 transform hover:-translate-y-1 border"
+              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)', position: 'relative' }}
             >
               {/* Featured Badge */}
               {project.featured && (
@@ -493,8 +342,8 @@ const AllProjects = () => {
 
         {/* Stats Section */}
         <div className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--gradient-card)', borderColor: 'var(--border-subtle)' }}>
-          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: 'var(--text-primary)' }}>{t('projects.techSummary.title')}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <span className="section-badge mb-8">{t('projects.techSummary.title')}</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-8">
             {[
               { name: 'React Native', count: 3, icon: <Smartphone className="w-8 h-8" /> },
               { name: 'Node.js', count: 8, icon: <Server className="w-8 h-8" /> },
@@ -505,7 +354,7 @@ const AllProjects = () => {
             ].map((tech, index) => (
               <div key={index} className="p-6 rounded-xl text-center border transition-all duration-300"
                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-lift)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow-card)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                 <div className="mb-3 flex justify-center" style={{ color: 'var(--accent-indigo)' }}>{tech.icon}</div>
                 <div className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{tech.count}</div>
@@ -518,8 +367,8 @@ const AllProjects = () => {
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <div className="rounded-2xl p-12 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>{t('projects.cta.title')}</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            <h2 className="text-[1.75rem] mb-4" style={{ color: 'var(--text-primary)' }}>{t('projects.cta.title')}</h2>
+            <p className="text-[1.0625rem] mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
               {t('projects.cta.description')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">

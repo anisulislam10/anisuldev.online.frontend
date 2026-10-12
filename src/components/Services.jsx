@@ -1,24 +1,23 @@
 import React from 'react';
-import {
-  Smartphone, Server, Database, Zap, Cloud,
-  Code, CheckCircle, GitBranch, Cpu, Layout,
-} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const technologies = [
-  { name: 'React Native', icon: <Smartphone size={16} />, category: 'Mobile' },
-  { name: 'React.js', icon: <Code size={16} />, category: 'Frontend' },
-  { name: 'Next.js', icon: <Layout size={16} />, category: 'Frontend' },
-  { name: 'Node.js', icon: <Server size={16} />, category: 'Backend' },
-  { name: 'Express.js', icon: <Server size={16} />, category: 'Backend' },
-  { name: 'MongoDB', icon: <Database size={16} />, category: 'Database' },
-  { name: 'PostgreSQL', icon: <Database size={16} />, category: 'Database' },
-  { name: 'MySQL', icon: <Database size={16} />, category: 'Database' },
-  { name: 'Firebase', icon: <Cloud size={16} />, category: 'Cloud' },
-  { name: 'Docker', icon: <Cpu size={16} />, category: 'DevOps' },
-  { name: 'Tailwind CSS', icon: <Layout size={16} />, category: 'Frontend' },
-  { name: 'TypeScript', icon: <Code size={16} />, category: 'Language' },
-  { name: 'Git', icon: <GitBranch size={16} />, category: 'Tools' },
+  'TypeScript',
+  'React.js',
+  'Next.js',
+  'React Native',
+  'Node.js',
+  'Express.js',
+  'MongoDB',
+  'PostgreSQL',
+  'MySQL',
+  'Firebase',
+  'Supabase',
+  'Docker',
+  'Tailwind CSS',
+  'REST & GraphQL',
+  'CI/CD',
+  'Git',
 ];
 
 const Services = () => {
@@ -29,8 +28,6 @@ const Services = () => {
       title: t('services.cards.webApps.title'),
       description: t('services.cards.webApps.description'),
       features: t('services.cards.webApps.features', { returnObjects: true }),
-      gradient: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-      glow: 'rgba(168, 85, 247, 0.3)',
       image: '/services-web-laptop.png',
       imageAlt: 'Open laptop displaying a modern web application dashboard',
     },
@@ -38,8 +35,6 @@ const Services = () => {
       title: t('services.cards.reactNative.title'),
       description: t('services.cards.reactNative.description'),
       features: t('services.cards.reactNative.features', { returnObjects: true }),
-      gradient: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)',
-      glow: 'rgba(99, 102, 241, 0.3)',
       image: '/services-react-native-mobile.png',
       imageAlt: 'Smartphone displaying a polished React Native mobile application',
     },
@@ -47,113 +42,97 @@ const Services = () => {
       title: t('services.cards.backend.title'),
       description: t('services.cards.backend.description'),
       features: t('services.cards.backend.features', { returnObjects: true }),
-      gradient: 'linear-gradient(135deg, #10b981 0%, #22d3ee 100%)',
-      glow: 'rgba(16, 185, 129, 0.3)',
       image: '/services-backend-server.png',
-      imageAlt: 'Open server rack connected to cloud, database, API, and security systems',
+      imageAlt: 'Server infrastructure connected to cloud, database, API and security systems',
     },
   ];
 
   return (
-    <section id="services" className="relative py-16 lg:py-20 overflow-hidden"
-      style={{ background: 'var(--bg-primary)' }}>
+    <section id="services" className="relative py-20 lg:py-28" style={{ background: 'var(--bg-primary)' }}>
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8">
 
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-dot opacity-30" />
-
-      {/* Orbs */}
-      <div className="orb orb-purple w-[500px] h-[500px] top-0 right-0 opacity-15" />
-      <div className="orb orb-cyan w-[400px] h-[400px] bottom-0 left-0 opacity-10" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* ── Section Header ── */}
-        <div className="text-center mb-16 lg:mb-20 animate-fade-up">
-          <span className="section-badge mb-4 inline-flex">
-            <Zap size={13} />
-            {t('services.badge')}
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mt-4">
-            {t('services.heading')}{' '}
-            <span className="gradient-text animate-grad-shift">{t('services.headingHighlight')}</span>
-          </h2>
-          <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            {t('services.description')}
-          </p>
+        {/* ── Header ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end animate-fade-up">
+          <div className="lg:col-span-7">
+            <span className="section-badge">{t('services.badge')}</span>
+            <h2 className="mt-6 text-[2.25rem] sm:text-[3rem] lg:text-[3.5rem]">
+              {t('services.heading')} <span className="gradient-text">{t('services.headingHighlight')}</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="lede lg:pb-2">{t('services.description')}</p>
+          </div>
         </div>
 
-        {/* ── Service Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 animate-fade-up">
-          {services.map((svc, i) => (
-            <div
-              key={i}
-              className="group relative rounded-2xl p-6 flex flex-col overflow-hidden transition-all duration-500"
+        {/* ── Services ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8 lg:mt-10">
+          {services.map((svc) => (
+            <article
+              key={svc.title}
+              className="service-offering group flex flex-col overflow-hidden animate-fade-up"
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--border-subtle)',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent-indigo)';
-                e.currentTarget.style.boxShadow = `0 12px 40px ${svc.glow}`;
-                e.currentTarget.style.transform = 'translateY(-4px)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.transform = 'translateY(0)';
+                borderRadius: 'var(--radius-lg)',
+                boxShadow: 'var(--shadow-card)',
               }}
             >
-              {/* Top glow line */}
-              <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: svc.gradient }} />
-
-              <div className="service-card-visual -mx-6 -mt-6 mb-6">
+              <div className="service-card-visual">
                 <img
                   src={svc.image}
                   alt={svc.imageAlt}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
                   decoding="async"
                 />
                 <div className="service-card-visual-shade" aria-hidden="true" />
               </div>
 
-              <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{svc.title}</h3>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>{svc.description}</p>
+              <div className="flex flex-col flex-1 p-6">
+                <h3 className="text-[1.25rem]" style={{ color: 'var(--text-primary)' }}>
+                  {svc.title}
+                </h3>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  {svc.description}
+                </p>
 
-              <ul className="space-y-2.5 flex-1">
-                {Array.isArray(svc.features) && svc.features.map((f, fi) => (
-                  <li key={fi} className="flex items-center gap-2.5 text-sm" style={{ color: 'var(--text-secondary)' }}>
-                    <CheckCircle size={14} className="flex-shrink-0" style={{ color: '#10b981' }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <ul className="mt-6 pt-5 flex-1 space-y-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                  {Array.isArray(svc.features) && svc.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3 text-[0.875rem]" style={{ color: 'var(--text-secondary)' }}>
+                      <span
+                        className="mt-[0.6rem] h-px w-3 flex-shrink-0"
+                        style={{ background: 'var(--accent)' }}
+                        aria-hidden="true"
+                      />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
           ))}
         </div>
 
-        {/* ── Static Tech Stack Grid ── */}
-        <div className="animate-fade-up">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{t('services.techStack')}</h3>
-            <p className="text-sm mt-2" style={{ color: 'var(--text-secondary)' }}>Tools and languages I use to build scalable products</p>
+        {/* ── Technology index ── */}
+        <div className="mt-10 pt-8 border-t border-[var(--border-subtle)] animate-fade-up">
+          <div className="flex items-baseline justify-between gap-6 flex-wrap">
+            <h3 className="text-[1.5rem] sm:text-[1.75rem]">{t('services.techStack')}</h3>
+            <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em]" style={{ color: 'var(--text-muted)' }}>
+              Tools &amp; languages I build with
+            </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {technologies.map((tech, i) => (
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px mt-8"
+            style={{ background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}
+          >
+            {technologies.map((tech) => (
               <div
-                key={i}
-                className="flex items-center gap-3 p-4 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-500/30"
-                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
+                key={tech}
+                className="px-5 py-4 text-[0.8125rem] transition-colors duration-200 hover:text-[var(--accent)]"
+                style={{ background: 'var(--bg-card)', color: 'var(--text-secondary)' }}
               >
-                <div style={{ color: 'var(--accent-indigo)' }}>
-                  {tech.icon}
-                </div>
-                <div>
-                  <div className="text-xs font-bold" style={{ color: 'var(--text-primary)' }}>{tech.name}</div>
-                  <div className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{tech.category}</div>
-                </div>
+                {tech}
               </div>
             ))}
           </div>

@@ -122,32 +122,29 @@ const About = () => {
                 canonical="https://www.anisuldev.online/about"
                 image="https://www.anisuldev.online/Anisul_Islam_Software_Developer_Chitral.png"
             />
-            <section id="about" className="py-20" style={{ background: 'var(--bg-primary)' }}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section id="about" className="py-20 lg:py-28" style={{ background: 'var(--bg-primary)' }}>
+                <div className="max-w-[76rem] mx-auto px-5 sm:px-8">
                     {/* Section Header */}
-                    <div className="text-center mb-16">
-                        <div className="inline-flex items-center px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 font-semibold mb-4" style={{ color: 'var(--accent-indigo)' }}>
-                            <User className="w-4 h-4 mr-2" />
-                            {t('about.badge')}
-                        </div>
-                        <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-                            {t('about.heading')} <span className="gradient-text animate-grad-shift">{t('about.headingHighlight')}</span>
+                    <div className="mb-14 lg:mb-20 animate-fade-up">
+                        <span className="section-badge">{t('about.badge')}</span>
+                        <h2 className="mt-6 text-[2.25rem] sm:text-[3rem] lg:text-[3.5rem]">
+                            {t('about.heading')} <span className="gradient-text">{t('about.headingHighlight')}</span>
                         </h2>
-                        <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+                        <p className="mt-5 lede max-w-[36rem]">
                             {t('about.subheading')}
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
                         {/* Left Column - Personal Info & Download CV */}
                         <div className="lg:col-span-1">
                             {/* Profile Card */}
-                            <div className="rounded-2xl p-8 border mb-8"
-                                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+                            <div className="rounded-[14px] p-7 mb-8"
+                                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
                                 <div className="text-center mb-6">
-                                    <div className="w-40 h-40 mx-auto rounded-full p-1 mb-7 shadow-xl" style={{ background: 'var(--gradient-hero)' }}>
-                                        <div className="w-full h-full rounded-full overflow-hidden border-4"
-                                            style={{ borderColor: 'var(--bg-card)' }}>
+                                    <div className="w-40 h-40 mx-auto rounded-full p-1 mb-7" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
+                                        <div className="w-full h-full rounded-full overflow-hidden">
+
                                             <img
                                                 src="/Anisul_Islam_Software_Developer_Chitral.png"
                                                 alt="Anisul Islam - Full Stack Software Engineer"
@@ -200,7 +197,7 @@ const About = () => {
                                 <a
                                     href="/cv/Anisul_Resume[Updated].pdf"
                                     download
-                                    className="w-full inline-flex items-center justify-center text-white px-6 py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                    className="w-full inline-flex items-center justify-center text-white px-6 py-3 rounded-[6px] font-medium transition-all duration-200 hover:brightness-105"
                                     style={{ background: 'var(--gradient-hero)' }}
                                 >
                                     <Download className="w-5 h-5 mr-2" />
@@ -209,35 +206,18 @@ const About = () => {
                             </div>
 
                             {/* Expertise Areas */}
-                            <div className="rounded-2xl p-6 border"
-                                style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}
-                                onMouseEnter={e => {
-                                    e.currentTarget.style.background = 'var(--bg-card-hover)';
-                                    e.currentTarget.style.borderColor = 'var(--accent-indigo)';
-                                    e.currentTarget.style.color = 'var(--accent-indigo)';
-                                    e.currentTarget.style.transform = 'translateY(-2px)';
-                                }}>
-                                <h3 className="text-xl font-bold mb-4 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Cpu className="w-5 h-5 mr-2" style={{ color: 'var(--accent-blue)' }} />
+                            <div className="rounded-[14px] p-6"
+                                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
+                                <h3 className="text-[1.125rem] mb-5" style={{ color: 'var(--text-primary)' }}>
                                     {t('about.expertise.title')}
                                 </h3>
-                                <div className="space-y-3">
-                                    <div className="flex items-center">
-                                        <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                                        <span style={{ color: 'var(--text-secondary)' }}>{t('about.expertise.web')}</span>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                                        <span style={{ color: 'var(--text-secondary)' }}>{t('about.expertise.mobile')}</span>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                                        <span style={{ color: 'var(--text-secondary)' }}>{t('about.expertise.api')}</span>
-                                    </div>
-                                    <div className="flex items-center">
-                                        <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                                        <span style={{ color: 'var(--text-secondary)' }}>{t('about.expertise.integration')}</span>
-                                    </div>
+                                <div className="space-y-4">
+                                    {[t('about.expertise.web'), t('about.expertise.mobile'), t('about.expertise.api'), t('about.expertise.integration')].map((item) => (
+                                        <div key={item} className="flex items-center gap-3">
+                                            <span className="h-px w-3 flex-shrink-0" style={{ background: 'var(--accent)' }} />
+                                            <span className="text-[0.9375rem]" style={{ color: 'var(--text-secondary)' }}>{item}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -245,10 +225,10 @@ const About = () => {
                         {/* Middle Column - About Text & Skills */}
                         <div className="lg:col-span-2">
                             {/* About Text */}
-                            <div className="rounded-2xl p-8 border mb-8"
+                            <div className="rounded-[14px] p-7 lg:p-8 border mb-8"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
-                                <h3 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>{t('about.journey.title')}</h3>
-                                <div className="space-y-4" style={{ color: 'var(--text-secondary)' }}>
+                                <h3 className="text-[1.5rem] mb-6" style={{ color: 'var(--text-primary)' }}>{t('about.journey.title')}</h3>
+                                <div className="space-y-4 text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                                     <p>{t('about.journey.p1')}</p>
                                     <p>{t('about.journey.p2')}</p>
                                     <p>{t('about.journey.p3')}</p>
@@ -257,10 +237,9 @@ const About = () => {
                             </div>
 
                             {/* Skills */}
-                            <div className="rounded-2xl p-8 border mb-8"
+                            <div className="rounded-[14px] p-7 lg:p-8 border mb-8"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
-                                <h3 className="text-2xl font-bold mb-6 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Code className="w-6 h-6 mr-2" style={{ color: 'var(--accent-indigo)' }} />
+                                <h3 className="text-[1.5rem] mb-7" style={{ color: 'var(--text-primary)' }}>
                                     {t('about.techStack')}
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -270,10 +249,10 @@ const About = () => {
                                                 <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{skill.name}</span>
                                                 <span style={{ color: 'var(--text-muted)' }}>{skill.level}%</span>
                                             </div>
-                                            <div className="w-full rounded-full h-2.5" style={{ background: 'var(--bg-card-hover)' }}>
+                                            <div className="w-full rounded-full h-1.5" style={{ background: 'var(--bg-sunken)' }}>
                                                 <div
-                                                    className="h-2.5 rounded-full transition-all duration-1000"
-                                                    style={{ width: `${skill.level}%`, background: 'var(--gradient-hero)' }}
+                                                    className="h-1.5 rounded-full transition-all duration-1000"
+                                                    style={{ width: `${skill.level}%`, background: 'var(--accent)' }}
                                                 ></div>
                                             </div>
                                         </div>
@@ -282,29 +261,17 @@ const About = () => {
                             </div>
 
                             {/* Certifications */}
-                            <div className="rounded-2xl p-8 border"
+                            <div className="rounded-[14px] p-7 lg:p-8 border"
                                 style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
-                                <h3 className="text-2xl font-bold mb-6 flex items-center" style={{ color: 'var(--text-primary)' }}>
-                                    <Award className="w-6 h-6 mr-2" style={{ color: 'var(--accent-cyan)' }} />
+                                <h3 className="text-[1.5rem] mb-7" style={{ color: 'var(--text-primary)' }}>
                                     {t('about.certifications.title')}
                                 </h3>
-                                <div className="space-y-4">
+                                <div style={{ borderTop: '1px solid var(--border-subtle)' }}>
                                     {certifications.map((cert, index) => (
-                                        <div key={index} className="flex items-start p-4 rounded-lg transition-colors duration-300"
-                                            style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
-                                            <div className="flex-shrink-0">
-                                                <div className="w-10 h-10 rounded-full flex items-center justify-center mr-4"
-                                                    style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)' }}>
-                                                    {cert.issuer.includes('Cisco') ? (
-                                                        <Cpu className="w-5 h-5" style={{ color: 'var(--accent-blue)' }} />
-                                                    ) : cert.issuer.includes('Coursera') ? (
-                                                        <Brain className="w-5 h-5" style={{ color: 'var(--accent-indigo)' }} />
-                                                    ) : (
-                                                        <Award className="w-5 h-5" style={{ color: 'var(--accent-cyan)' }} />
-                                                    )}
-                                                </div>
-                                            </div>
+                                        <div key={index} className="flex items-start py-4"
+                                            style={{ borderBottom: '1px solid var(--border-subtle)' }}>
                                             <div>
+
                                                 <h4 className="font-semibold" style={{ color: 'var(--text-primary)' }}>{cert.name}</h4>
                                                 <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{cert.issuer}</p>
                                                 <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{cert.year}</p>
@@ -317,25 +284,17 @@ const About = () => {
                     </div>
 
                     <div className="mt-16">
-                        <div className="flex items-center mb-12">
-                            <GraduationCap className="w-10 h-10 mr-4" style={{ color: 'var(--accent-indigo)' }} />
-                            <h3 className="text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>{t('about.education.title')}</h3>
+                        <div className="mb-12">
+                            <span className="section-badge">{t('about.education.title')}</span>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {education.map((edu, index) => (
-                                <div key={index} className="rounded-2xl p-8 border transition-shadow duration-300"
-                                    style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
-                                    onMouseEnter={e => {
-                                        e.currentTarget.style.background = 'var(--bg-card-hover)';
-                                        e.currentTarget.style.borderColor = 'var(--accent-indigo)';
-                                        e.currentTarget.style.color = 'var(--accent-indigo)';
-                                        e.currentTarget.style.transform = 'translateY(-2px)';
-                                    }}>
-                                    <div className="flex items-center mb-4" style={{ color: 'var(--accent-indigo)' }}>
-                                        <Calendar className="w-5 h-5 mr-2" />
-                                        <span className="font-semibold">{edu.year}</span>
+                                <div key={index} className="rounded-[14px] p-7 border"
+                                    style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+                                    <div className="mb-4 font-mono text-[0.6875rem] uppercase tracking-[0.14em]" style={{ color: 'var(--accent)' }}>
+                                        {edu.year}
                                     </div>
-                                    <h4 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{edu.degree}</h4>
+                                    <h4 className="text-[1.25rem] mb-2" style={{ color: 'var(--text-primary)' }}>{edu.degree}</h4>
                                     <p className="font-medium mb-3" style={{ color: 'var(--text-secondary)' }}>{edu.institution}</p>
                                     <div className="flex items-center mb-4" style={{ color: 'var(--text-muted)' }}>
                                         <MapPin className="w-4 h-4 mr-2" />

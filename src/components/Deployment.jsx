@@ -1,310 +1,223 @@
 import React from 'react';
-import {
-  Server,
-  Cloud,
-  Zap,
-  Shield,
-  CheckCircle,
-  Globe,
-  Lock,
-  RefreshCw,
-  Cpu,
-  Database,
-  Upload,
-  Terminal,
-  Code
-} from 'lucide-react';
+import { Server, Cloud, Zap, ArrowUpRight } from 'lucide-react';
 
 const Deployment = () => {
   const deploymentServices = [
     {
-      icon: <Server className="w-8 h-8" />,
-      title: "VPS Deployment",
-      description: "Complete setup and deployment on Virtual Private Servers with full control and customization.",
+      icon: <Server size={19} />,
+      title: 'VPS Deployment',
+      description: 'Complete setup and deployment on Virtual Private Servers with full control and customization.',
       features: [
-        "Ubuntu/CentOS Server Setup",
-        "NGINX/Apache Configuration",
-        "SSL Certificate Installation",
-        "Domain & DNS Management",
-        "Server Security Hardening",
-        "Auto-scaling & Load Balancing"
+        'Ubuntu/CentOS Server Setup',
+        'NGINX/Apache Configuration',
+        'SSL Certificate Installation',
+        'Domain & DNS Management',
+        'Server Security Hardening',
+        'Auto-scaling & Load Balancing',
       ],
-      color: "from-green-500 to-emerald-600",
-      accent: "#10b981",
-      tech: ["Ubuntu", "Docker", "NGINX", "PM2", "SSL", "CI/CD"]
+      tech: ['Ubuntu', 'Docker', 'NGINX', 'PM2', 'SSL', 'CI/CD'],
     },
     {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "Vercel Deployment",
-      description: "Lightning-fast deployment for frontend applications with automatic CI/CD pipelines.",
+      icon: <Cloud size={19} />,
+      title: 'Vercel Deployment',
+      description: 'Lightning-fast deployment for frontend applications with automatic CI/CD pipelines.',
       features: [
-        "Automatic Deployments from Git",
-        "Preview Deployments for PRs",
-        "Edge Network Optimization",
-        "Serverless Functions",
-        "Automatic SSL/TLS",
-        "Global CDN Distribution"
+        'Automatic Deployments from Git',
+        'Preview Deployments for PRs',
+        'Edge Network Optimization',
+        'Serverless Functions',
+        'Automatic SSL/TLS',
+        'Global CDN Distribution',
       ],
-      color: "from-blue-500 to-cyan-600",
-      accent: "#3b82f6",
-      tech: ["Next.js", "React", "Vercel CLI", "Edge Functions", "Git Integration"]
+      tech: ['Next.js', 'React', 'Vercel CLI', 'Edge Functions', 'Git Integration'],
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Full Stack Deployment",
-      description: "End-to-end deployment solutions for complex applications with multiple services.",
+      icon: <Zap size={19} />,
+      title: 'Full Stack Deployment',
+      description: 'End-to-end deployment solutions for complex applications with multiple services.',
       features: [
-        "Microservices Architecture",
-        "Database Deployment & Migration",
-        "WebSocket Server Setup",
-        "Redis Cache Configuration",
-        "Background Jobs Setup",
-        "Monitoring & Logging"
+        'Microservices Architecture',
+        'Database Deployment & Migration',
+        'WebSocket Server Setup',
+        'Redis Cache Configuration',
+        'Background Jobs Setup',
+        'Monitoring & Logging',
       ],
-      color: "from-purple-500 to-pink-600",
-      accent: "#d946ef",
-      tech: ["MongoDB", "Redis", "WebSocket", "Microservices", "Docker", "Kubernetes"]
-    }
+      tech: ['MongoDB', 'Redis', 'WebSocket', 'Microservices', 'Docker', 'Kubernetes'],
+    },
   ];
 
   const deploymentProcess = [
-    {
-      step: 1,
-      title: "Environment Setup",
-      icon: <Terminal />,
-      description: "Configure development, staging, and production environments"
-    },
-    {
-      step: 2,
-      title: "CI/CD Pipeline",
-      icon: <RefreshCw />,
-      description: "Set up automated testing, building, and deployment workflows"
-    },
-    {
-      step: 3,
-      title: "Security Configuration",
-      icon: <Shield />,
-      description: "Implement SSL, firewall, and security best practices"
-    },
-    {
-      step: 4,
-      title: "Performance Optimization",
-      icon: <Zap />,
-      description: "Configure caching, CDN, and performance monitoring"
-    },
-    {
-      step: 5,
-      title: "Monitoring & Analytics",
-      icon: <Cpu />,
-      description: "Set up logging, error tracking, and performance analytics"
-    },
-    {
-      step: 6,
-      title: "Backup & Recovery",
-      icon: <Database />,
-      description: "Implement automated backups and disaster recovery plans"
-    }
+    { step: '01', title: 'Environment Setup', description: 'Configure development, staging, and production environments' },
+    { step: '02', title: 'CI/CD Pipeline', description: 'Set up automated testing, building, and deployment workflows' },
+    { step: '03', title: 'Security Configuration', description: 'Implement SSL, firewall, and security best practices' },
+    { step: '04', title: 'Performance Optimization', description: 'Configure caching, CDN, and performance monitoring' },
+    { step: '05', title: 'Monitoring & Analytics', description: 'Set up logging, error tracking, and performance analytics' },
+    { step: '06', title: 'Backup & Recovery', description: 'Implement automated backups and disaster recovery plans' },
   ];
 
   const deploymentStats = [
-    { label: "Deployment Time", value: "< 5 min", description: "Average deployment time" },
-    { label: "Uptime", value: "99.9%", description: "Guaranteed server uptime" },
-    { label: "Projects Deployed", value: "50+", description: "Successfully deployed" },
-    { label: "Response Time", value: "< 100ms", description: "Global CDN response" }
+    { label: 'Deployment Time', value: '< 5 min' },
+    { label: 'Uptime', value: '99.9%' },
+    { label: 'Projects Deployed', value: '50+' },
+    { label: 'Response Time', value: '< 100ms' },
+  ];
+
+  const tools = [
+    'Vercel', 'AWS', 'DigitalOcean', 'Docker', 'NGINX', 'GitHub Actions',
+    'PM2', 'SSL/TLS', 'Redis', 'MongoDB Atlas', 'Cloudflare', "Let's Encrypt",
   ];
 
   return (
-    <section id="deployment" className="py-20 transition-colors duration-300" style={{ background: 'var(--bg-primary)' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
-            style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-green)', color: 'var(--accent-green)', backdropFilter: 'blur(8px)' }}>
-            <Upload className="w-4 h-4 mr-2" />
-            Deployment & DevOps
+    <section id="deployment" className="py-20 lg:py-28" style={{ background: 'var(--bg-primary)' }}>
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8">
+
+        {/* ── Header ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end animate-fade-up">
+          <div className="lg:col-span-7">
+            <span className="section-badge">Deployment &amp; DevOps</span>
+            <h2 className="mt-6 text-[2.25rem] sm:text-[3rem] lg:text-[3.25rem]">
+              Seamless <span className="gradient-text">Deployment</span> Solutions
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-            Seamless <span className="gradient-text animate-grad-shift">Deployment</span> Solutions
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-            From VPS setup to Vercel deployment - I handle everything to get your application live and running smoothly.
-          </p>
+          <div className="lg:col-span-5">
+            <p className="lede lg:pb-2">
+              From VPS setup to Vercel deployment — I handle everything to get your application live and running smoothly.
+            </p>
+          </div>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {deploymentStats.map((stat, index) => (
-            <div key={index} className="rounded-2xl p-6 border transition-all duration-300 transform hover:-translate-y-1"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-              <div className="text-3xl font-bold gradient-text mb-2">
+        {/* ── Stats ── */}
+        <div
+          className="grid grid-cols-2 lg:grid-cols-4 gap-px mt-14 lg:mt-20"
+          style={{ background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}
+        >
+          {deploymentStats.map((stat) => (
+            <div key={stat.label} className="px-6 py-8" style={{ background: 'var(--bg-card)' }}>
+              <div className="font-display text-[2rem] leading-none" style={{ color: 'var(--accent)', fontWeight: 640 }}>
                 {stat.value}
               </div>
-              <div className="text-lg font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>{stat.label}</div>
-              <div className="text-sm" style={{ color: 'var(--text-muted)' }}>{stat.description}</div>
+              <div className="mt-3 text-[0.875rem]" style={{ color: 'var(--text-secondary)' }}>
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Deployment Services */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
-          {deploymentServices.map((service, index) => (
-            <div
-              key={index}
-              className="deployment-service-card group rounded-2xl p-8 border transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2"
-              style={{ '--deployment-accent': service.accent }}
-            >
-              {/* Icon */}
-              <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.color} text-white mb-6`}>
+        {/* ── Services ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-14 lg:mt-20">
+          {deploymentServices.map((service) => (
+            <div key={service.title} className="deployment-service-card p-7 flex flex-col">
+              <div
+                className="inline-flex items-center justify-center w-11 h-11 rounded-[8px] mb-6"
+                style={{ border: '1px solid var(--border-subtle)', color: 'var(--accent)' }}
+              >
                 {service.icon}
               </div>
 
-              {/* Title */}
-              <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>{service.title}</h3>
+              <h3 className="text-[1.25rem] mb-3" style={{ color: 'var(--text-primary)' }}>{service.title}</h3>
+              <p className="text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                {service.description}
+              </p>
 
-              {/* Description */}
-              <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>{service.description}</p>
-
-              {/* Features */}
-              <ul className="space-y-3 mb-6">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start" style={{ color: 'var(--text-secondary)' }}>
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
+              <ul className="mt-6 pt-5 flex-1 space-y-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-[0.875rem]" style={{ color: 'var(--text-secondary)' }}>
+                    <span className="mt-[0.6rem] h-px w-3 flex-shrink-0" style={{ background: 'var(--accent)' }} aria-hidden="true" />
+                    {feature}
                   </li>
                 ))}
               </ul>
 
-              {/* Tech Tags */}
-              <div className="flex flex-wrap gap-2">
-                {service.tech.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 rounded-full text-xs font-medium border transition-colors"
-                    style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}
-                  >
-                    {tech}
-                  </span>
+              <div className="flex flex-wrap gap-2 mt-6">
+                {service.tech.map((tech) => (
+                  <span key={tech} className="chip">{tech}</span>
                 ))}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Deployment Process */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-12" style={{ color: 'var(--text-primary)' }}>
-            Deployment <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Process</span>
-          </h3>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 via-blue-400 to-purple-400 transform -translate-x-1/2"></div>
-
-            <div className="space-y-12 lg:space-y-0">
-              {deploymentProcess.map((process, index) => (
-                <div
-                  key={index}
-                  className={`relative lg:flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
-                >
-                  {/* Content */}
-                  <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12'}`}>
-                    <div className="rounded-2xl p-6 border transition-all duration-300"
-                      style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white mb-4 shadow-lg">
-                        {process.icon}
-                      </div>
-                      <h4 className="text-xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{process.title}</h4>
-                      <p style={{ color: 'var(--text-secondary)' }}>{process.description}</p>
-                    </div>
-                  </div>
-
-                  {/* Center Circle */}
-                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-12 h-12 items-center justify-center">
-                    <div className="w-8 h-8 rounded-full border-4 flex items-center justify-center shadow-md"
-                      style={{ background: 'var(--bg-card)', borderColor: 'var(--accent-indigo)' }}>
-                      <div className="text-sm font-bold" style={{ color: 'var(--accent-indigo)' }}>{process.step}</div>
-                    </div>
-                  </div>
-
-                  {/* Empty space for opposite side */}
-                  <div className="lg:w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Deployment Tools & Technologies */}
-        <div className="bg-gradient-to-r from-gray-900 to-black rounded-3xl p-8 md:p-12 text-white mb-16">
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold mb-4">
-              Deployment <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">Tools & Stack</span>
+        {/* ── Process ── */}
+        <div className="mt-24 lg:mt-32">
+          <div className="flex items-baseline justify-between gap-6 flex-wrap">
+            <h3 className="text-[1.5rem] sm:text-[1.75rem]">
+              Deployment <span className="gradient-text">Process</span>
             </h3>
-            <p className="text-gray-300">
-              Comprehensive toolkit for modern application deployment
-            </p>
+            <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em]" style={{ color: 'var(--text-muted)' }}>
+              Six steps, start to live
+            </span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              { name: "Vercel", icon: "▲", color: "from-black to-gray-800" },
-              { name: "AWS", icon: "☁️", color: "from-yellow-500 to-orange-500" },
-              { name: "DigitalOcean", icon: "🌊", color: "from-blue-400 to-blue-600" },
-              { name: "Docker", icon: "🐳", color: "from-blue-500 to-cyan-500" },
-              { name: "NGINX", icon: "🎯", color: "from-green-500 to-emerald-600" },
-              { name: "GitHub Actions", icon: "⚡", color: "from-gray-700 to-black" },
-              { name: "PM2", icon: "🔄", color: "from-yellow-400 to-orange-400" },
-              { name: "SSL/TLS", icon: "🔒", color: "from-green-400 to-emerald-500" },
-              { name: "Redis", icon: "🗃️", color: "from-red-500 to-orange-500" },
-              { name: "MongoDB Atlas", icon: "🍃", color: "from-green-600 to-emerald-700" },
-              { name: "Cloudflare", icon: "🌩️", color: "from-orange-500 to-yellow-500" },
-              { name: "Let's Encrypt", icon: "🔐", color: "from-blue-400 to-cyan-500" }
-            ].map((tool, index) => (
-              <div
-                key={index}
-                className="group bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 text-center border border-gray-700 hover:border-green-500 transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${tool.color} flex items-center justify-center text-2xl mb-3 mx-auto`}>
-                  {tool.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 mt-8">
+            {deploymentProcess.map((process) => (
+              <div key={process.step} className="index-row">
+                <span className="index-number">{process.step}</span>
+                <div>
+                  <h4 className="text-[1.0625rem] mb-1.5" style={{ color: 'var(--text-primary)' }}>{process.title}</h4>
+                  <p className="text-[0.875rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    {process.description}
+                  </p>
                 </div>
-                <div className="font-semibold">{tool.name}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <div className="max-w-4xl mx-auto rounded-3xl p-8 md:p-12 border"
-            style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-            <h3 className="text-3xl font-bold mb-4" style={{ color: 'var(--text-primary)' }}>
-              Ready to Deploy Your Project?
+        {/* ── Tools ── */}
+        <div className="mt-24 lg:mt-32">
+          <div className="flex items-baseline justify-between gap-6 flex-wrap">
+            <h3 className="text-[1.5rem] sm:text-[1.75rem]">
+              Deployment <span className="gradient-text">Toolkit</span>
             </h3>
-            <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              Whether it's a simple website or a complex microservices architecture, I'll handle the deployment from start to finish.
-            </p>
+            <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em]" style={{ color: 'var(--text-muted)' }}>
+              What I deploy with
+            </span>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <Server className="w-5 h-5" />
-                <span>Discuss VPS Deployment</span>
-              </button>
-
-              <button className="group border-2 px-8 py-3 rounded-full font-semibold flex items-center justify-center space-x-2 transition-all duration-300"
-                style={{ background: 'var(--bg-card-hover)', borderColor: 'var(--accent-indigo)', color: 'var(--text-primary)' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-purple)'; e.currentTarget.style.color = 'var(--accent-purple)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-px mt-8"
+            style={{ background: 'var(--border-subtle)', border: '1px solid var(--border-subtle)' }}
+          >
+            {tools.map((tool) => (
+              <div
+                key={tool}
+                className="px-5 py-4 text-[0.8125rem] transition-colors duration-200 hover:text-[var(--accent)]"
+                style={{ background: 'var(--bg-card)', color: 'var(--text-secondary)' }}
               >
-                <Cloud className="w-5 h-5" />
-                <span>Vercel Deployment Inquiry</span>
-              </button>
-            </div>
-
-            <p className="text-sm mt-6" style={{ color: 'var(--text-muted)' }}>
-              Includes server setup, domain configuration, SSL installation, and ongoing maintenance
-            </p>
+                {tool}
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* ── CTA ── */}
+        <div
+          className="mt-20 lg:mt-24 p-8 sm:p-12 text-center rounded-[14px]"
+          style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+        >
+          <h3 className="text-[1.75rem] sm:text-[2rem] mb-4" style={{ color: 'var(--text-primary)' }}>
+            Ready to deploy your project?
+          </h3>
+          <p className="text-[1.0625rem] mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+            Whether it&apos;s a simple website or a complex microservices architecture, I&apos;ll handle the deployment from start to finish.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="mailto:anisuldev@gmail.com" className="btn-primary justify-center">
+              Discuss VPS Deployment
+              <ArrowUpRight size={15} />
+            </a>
+            <a href="/contact" className="btn-ghost justify-center">
+              Vercel Deployment Inquiry
+            </a>
+          </div>
+
+          <p className="mt-6 font-mono text-[0.6875rem] tracking-[0.04em]" style={{ color: 'var(--text-muted)' }}>
+            Includes server setup, domain configuration, SSL installation, and ongoing maintenance
+          </p>
+        </div>
+
       </div>
     </section>
   );

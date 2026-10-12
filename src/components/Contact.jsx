@@ -1,211 +1,233 @@
 import React, { useState } from 'react';
 import {
-  Mail, Phone, Send, MessageSquare,
-  Clock, Github, Linkedin, Twitter, CheckCircle, MessageCircle
+  Mail, Phone, Send, Github, Linkedin, Twitter, ArrowUpRight, MessageCircle
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [formStatus, setFormStatus] = useState('idle'); // idle | sending | success | error
+  const [formStatus, setFormStatus] = useState('idle');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
+    setTimeout(() => setFormStatus('success'), 1200);
   };
 
+  const channels = [
+    {
+      Icon: Mail,
+      label: t('contact.form.email'),
+      value: 'anisuldev@gmail.com',
+      href: 'mailto:anisuldev@gmail.com',
+    },
+    {
+      Icon: Phone,
+      label: t('contact.form.phone'),
+      value: '+92 343 927 5550',
+      href: 'tel:+923439275550',
+    },
+    {
+      Icon: MessageCircle,
+      label: 'WhatsApp',
+      value: '+92 343 927 5550',
+      href: 'https://wa.me/923439275550',
+    },
+  ];
+
+  const expectations = [
+    { title: t('contact.response24h'), desc: t('contact.response24hDesc') },
+    { title: t('contact.noSpam'), desc: t('contact.noSpamDesc') },
+    { title: t('contact.freeConsult'), desc: t('contact.freeConsultDesc') },
+  ];
+
+  const socials = [
+    { href: 'https://github.com/anisulislam10', label: 'GitHub', Icon: Github },
+    { href: 'https://linkedin.com/in/ianisulislam', label: 'LinkedIn', Icon: Linkedin },
+    { href: 'https://twitter.com/ianisulislam', label: 'Twitter', Icon: Twitter },
+  ];
+
   return (
-    <section id="contact" className="relative py-16 lg:py-20 overflow-hidden"
-      style={{ background: 'var(--bg-primary)' }}>
+    <section id="contact" className="relative py-20 lg:py-28" style={{ background: 'var(--bg-secondary)' }}>
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8">
 
-      {/* Background patterns */}
-      <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="orb orb-indigo w-[600px] h-[600px] -bottom-32 -right-32 opacity-15" />
-      <div className="orb orb-purple w-[400px] h-[400px] top-1/4 -left-20 opacity-10" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* ── Section Header ── */}
-        <div className="max-w-3xl mb-16 lg:mb-20 animate-fade-up">
-          <span className="section-badge mb-4 flex w-fit">
-            <MessageSquare size={13} />
-            {t('contact.badge')}
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mt-4">
-            {t('contact.heading')}{' '}
-            <span className="gradient-text animate-grad-shift">{t('contact.headingHighlight')}</span>
-          </h2>
-          <p className="mt-4 text-base sm:text-lg" style={{ color: 'var(--text-secondary)' }}>
-            {t('contact.description')}
-          </p>
+        {/* ── Header ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end animate-fade-up">
+          <div className="lg:col-span-7">
+            <span className="section-badge">{t('contact.badge')}</span>
+            <h2 className="mt-6 text-[2.25rem] sm:text-[3rem] lg:text-[3.5rem]">
+              {t('contact.heading')} <span className="gradient-text">{t('contact.headingHighlight')}</span>
+            </h2>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="lede lg:pb-2">{t('contact.description')}</p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 mt-8 lg:mt-10 items-start">
 
-          {/* ── Left Column: Quick Info & Socials ── */}
-          <div className="lg:col-span-5 space-y-8 animate-fade-up">
+          {/* ── Details ── */}
+          <div className="lg:col-span-5 flex flex-col animate-fade-up">
 
-            {/* Availability card */}
-            <div
-              className="p-6 rounded-2xl flex items-center gap-5"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
-            >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10b981' }}>
-                <Clock size={24} />
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm font-bold uppercase tracking-wider" style={{ color: '#10b981' }}>{t('contact.available')}</span>
-                </div>
-                <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>Status: {t('contact.open')} · Mon — Fri, 9:00 — 18:00 PKT</p>
-              </div>
+            <div className="flex items-center gap-3">
+              <span className="status-dot" />
+              <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em]" style={{ color: 'var(--text-secondary)' }}>
+                {t('contact.available')}
+              </span>
+            </div>
+            <p className="mt-2 text-[0.875rem]" style={{ color: 'var(--text-muted)' }}>
+              {t('contact.open')} · Mon — Fri, 9:00 — 18:00 PKT
+            </p>
+
+            {/* Channels */}
+            <div className="mt-9" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+              {channels.map((channel) => {
+                const Icon = channel.Icon;
+                const external = channel.href.startsWith('http');
+                return (
+                  <a
+                    key={channel.label}
+                    href={channel.href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    className="group flex items-center gap-4 py-5 transition-colors duration-200"
+                    style={{ borderBottom: '1px solid var(--border-subtle)' }}
+                  >
+                    <Icon size={17} style={{ color: 'var(--text-muted)' }} className="flex-shrink-0" />
+                    <span className="w-20 flex-shrink-0 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
+                      {channel.label}
+                    </span>
+                    <span className="flex-1 truncate text-[0.9375rem]" style={{ color: 'var(--text-primary)' }}>
+                      {channel.value}
+                    </span>
+                    <ArrowUpRight
+                      size={15}
+                      className="flex-shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      style={{ color: 'var(--text-muted)' }}
+                    />
+                  </a>
+                );
+              })}
             </div>
 
-            {/* Quick Contact Links */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                { icon: <Mail size={18} />, label: t('contact.form.email'), val: 'anisuldev@gmail.com', href: 'mailto:anisuldev@gmail.com' },
-                { icon: <Phone size={18} />, label: t('contact.form.phone'), val: '+92 343 9275550', href: 'tel:+923439275550' },
-                { icon: <MessageCircle size={18} />, label: 'WhatsApp', val: '+92 343 9275550', href: 'https://wa.me/923439275550?text=Hi%20Anisul%21%20%F0%9F%91%8B%20I%20found%20you%20through%20anisuldev.online%20and%20would%20love%20to%20connect.%20I%20have%20an%20idea%20or%20project%20I%27d%20like%20to%20discuss%20with%20you.%20Are%20you%20available%20for%20a%20quick%20chat%3F' },
-              ].map((item, i) => (
-                <a
-                  key={i}
-                  href={item.href}
-                  className="p-5 rounded-2xl transition-all duration-300 group"
-                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = `var(--accent-indigo)`; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; }}
-                >
-                  <div className="mb-3 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
-                    style={{ color: 'var(--accent-indigo)' }}>
-                    {item.icon}
+            {/* Expectations */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+              {expectations.map((item) => (
+                <div key={item.title}>
+                  <div className="text-[0.875rem] font-medium" style={{ color: 'var(--text-primary)' }}>
+                    {item.title}
                   </div>
-                  <div className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--text-muted)' }}>{item.label}</div>
-                  <div className="text-sm font-semibold truncate" style={{ color: 'var(--text-primary)' }}>{item.val}</div>
-                </a>
+                  <div className="mt-1 text-[0.8125rem] leading-snug" style={{ color: 'var(--text-muted)' }}>
+                    {item.desc}
+                  </div>
+                </div>
               ))}
             </div>
 
-            {/* Social Connect */}
-            <div className="pt-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>{t('contact.connectSocial')}</h4>
-              <div className="flex gap-3">
-                {[
-                  { icon: <Github size={18} />, href: 'https://github.com/anisulislam10' },
-                  { icon: <Linkedin size={18} />, href: 'https://linkedin.com/in/ianisulislam' },
-                  { icon: <Twitter size={18} />, href: 'https://twitter.com/ianisulislam' },
-                ].map((s, i) => (
-                  <a
-                    key={i} href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-                    style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent-indigo)'; e.currentTarget.style.color = 'var(--accent-indigo)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                  >
-                    {s.icon}
-                  </a>
-                ))}
+            {/* Social */}
+            <div className="mt-10 flex items-center gap-5">
+              <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em]" style={{ color: 'var(--text-muted)' }}>
+                {t('contact.connectSocial')}
+              </span>
+              <div className="flex gap-1">
+                {socials.map((social) => {
+                  const Icon = social.Icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label}
+                      className="flex items-center justify-center w-9 h-9 rounded-[6px] transition-colors duration-200 hover:text-[var(--accent)]"
+                      style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
+                    >
+                      <Icon size={16} />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          {/* ── Right Column: Clean Simple Form ── */}
-          <div className="lg:col-span-7 lg:mt-0 mt-8 animate-fade-up">
+          {/* ── Form ── */}
+          <div className="lg:col-span-7 w-full animate-fade-up delay-100">
             <div
-              className="rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden h-full"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+              className="p-6 sm:p-9"
+              style={{
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: 'var(--radius-lg)',
+                boxShadow: 'var(--shadow-card)',
+              }}
             >
-              {/* Form header */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>{t('contact.form.heading')}</h3>
-                <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>{t('contact.form.subheading')}</p>
-              </div>
+              <h3 className="text-[1.375rem]" style={{ color: 'var(--text-primary)' }}>
+                {t('contact.form.heading')}
+              </h3>
+              <p className="mt-2 text-[0.875rem]" style={{ color: 'var(--text-muted)' }}>
+                {t('contact.form.subheading')}
+              </p>
+
+              <div className="mt-8" style={{ borderTop: '1px solid var(--border-subtle)' }} />
 
               {formStatus === 'success' ? (
-                <div className="py-12 flex flex-col items-center text-center animate-fade-up">
-                  <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mb-6 text-emerald-500">
-                    <CheckCircle size={48} />
-                  </div>
-                  <h4 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{t('contact.form.successTitle')}</h4>
-                  <p className="text-sm max-w-xs mx-auto mb-8" style={{ color: 'var(--text-secondary)' }}>{t('contact.form.successDesc')}</p>
-                  <button
-                    onClick={() => setFormStatus('idle')}
-                    className="btn-ghost"
-                  >
+                <div className="py-14 flex flex-col items-start animate-fade-up">
+                  <span className="section-badge">{t('contact.form.successTitle')}</span>
+                  <h4 className="mt-5 text-[1.5rem]" style={{ color: 'var(--text-primary)' }}>
+                    {t('contact.form.successDesc')}
+                  </h4>
+                  <button onClick={() => setFormStatus('idle')} className="btn-ghost mt-7">
                     Send another message
                   </button>
                 </div>
               ) : (
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>{t('contact.form.fullName')}</label>
-                      <input
-                        required
-                        type="text"
-                        name="name"
-                        placeholder={t('contact.form.namePlaceholder')}
-                        className="input-dark"
-                      />
+                    <div>
+                      <label className="block mb-2 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
+                        {t('contact.form.fullName')}
+                      </label>
+                      <input required type="text" name="name" placeholder={t('contact.form.namePlaceholder')} className="input-dark" />
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>{t('contact.form.email')}</label>
-                      <input
-                        required
-                        type="email"
-                        name="email"
-                        placeholder={t('contact.form.emailPlaceholder')}
-                        className="input-dark"
-                      />
+                    <div>
+                      <label className="block mb-2 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
+                        {t('contact.form.email')}
+                      </label>
+                      <input required type="email" name="email" placeholder={t('contact.form.emailPlaceholder')} className="input-dark" />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>Subject</label>
-                    <input
-                      required
-                      type="text"
-                      name="subject"
-                      placeholder="Project details, inquiries, etc."
-                      className="input-dark"
-                    />
+                  <div>
+                    <label className="block mb-2 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
+                      Subject
+                    </label>
+                    <input required type="text" name="subject" placeholder="Project details, timelines, budget…" className="input-dark" />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider pl-1" style={{ color: 'var(--text-muted)' }}>{t('contact.form.message')}</label>
+                  <div>
+                    <label className="block mb-2 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
+                      {t('contact.form.message')}
+                    </label>
                     <textarea
                       required
                       name="message"
-                      placeholder={t('contact.form.messagePlaceholder')}
                       rows="5"
-                      className="input-dark !py-4"
-                    ></textarea>
+                      placeholder={t('contact.form.messagePlaceholder')}
+                      className="input-dark resize-none"
+                    />
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
-                    <button
-                      disabled={formStatus === 'sending'}
-                      type="submit"
-                      className="btn-primary w-full sm:w-auto"
-                    >
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-2">
+                    <button disabled={formStatus === 'sending'} type="submit" className="btn-primary w-full sm:w-auto justify-center">
                       {formStatus === 'sending' ? t('contact.form.sending') : t('contact.form.submit')}
-                      <Send size={16} />
+                      <Send size={15} />
                     </button>
-                    <p className="text-[10px] sm:text-xs text-center sm:text-left leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                    <p className="text-[0.75rem] leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                       {t('contact.form.privacy')}
                     </p>
                   </div>
                 </form>
               )}
-
             </div>
           </div>
 

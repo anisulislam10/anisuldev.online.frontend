@@ -1,14 +1,10 @@
-import Hero from '../components/Hero';
-import Services from '../components/Services';
-import Contact from '../components/Contact';
+import SocialPortfolio from '../components/SocialPortfolio';
 
 const Home = () => {
   return (
-    <div className="home-page">
+    <div className="home-page social-home">
       <main>
-        <Hero />
-        <Services />
-        <Contact />
+        <SocialPortfolio />
       </main>
 
       <a

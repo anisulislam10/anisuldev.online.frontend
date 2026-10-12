@@ -162,35 +162,29 @@ const AllBlogs = () => {
         </ul>
       </div>
 
-      {/* Main Content */}
-      <div className="text-white" style={{ background: 'var(--gradient-hero)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border mb-4"
-              style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', backdropFilter: 'blur(16px)' }}>
-              <BookOpen className="w-4 h-4 mr-2" style={{ color: 'var(--accent-indigo)' }} />
-              <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{t('blogs_page.badge')}</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-              {t('blogs_page.heading')} <span className="gradient-text animate-grad-shift">{t('blogs_page.headingHighlight')}</span>
-            </h1>
-            <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
-              {t('blogs_page.subheading')}
-            </p>
+      {/* Header */}
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8 pt-32 pb-12">
+        <div className="animate-fade-up">
+          <span className="section-badge">{t('blogs_page.badge')}</span>
+          <h1 className="mt-6 text-[2.5rem] sm:text-[3.25rem] lg:text-[3.75rem] max-w-[22ch]">
+            {t('blogs_page.heading')} <span className="gradient-text">{t('blogs_page.headingHighlight')}</span>
+          </h1>
+          <p className="mt-6 lede max-w-[44rem]">
+            {t('blogs_page.subheading')}
+          </p>
 
-            {/* Search Schema */}
-            <div itemScope itemType="https://schema.org/WebSite" className="sr-only">
-              <meta itemProp="url" content="https://anisuldev.online/blogs" />
-              <form itemProp="potentialAction" itemScope itemType="https://schema.org/SearchAction">
-                <meta itemProp="target" content="https://anisuldev.online/blogs?q={search_term_string}" />
-                <input itemProp="query-input" name="search_term_string" required type="text" />
-              </form>
-            </div>
+          {/* Search Schema */}
+          <div itemScope itemType="https://schema.org/WebSite" className="sr-only">
+            <meta itemProp="url" content="https://anisuldev.online/blogs" />
+            <form itemProp="potentialAction" itemScope itemType="https://schema.org/SearchAction">
+              <meta itemProp="target" content="https://anisuldev.online/blogs?q={search_term_string}" />
+              <input itemProp="query-input" name="search_term_string" required type="text" />
+            </form>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8 py-12">
         {/* Search and Filters */}
         <div className="mb-12">
           <form onSubmit={handleSearch} className="relative mb-8" role="search" aria-label="Search blogs">
@@ -200,15 +194,14 @@ const AllBlogs = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('blogs_page.searchPlaceholder')}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border outline-none transition-all duration-300"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
+              className="input-dark pl-12"
               aria-label="Search blog articles"
             />
           </form>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
             <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
+              <label className="block mb-3 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
                 {t('blogs_page.filters.category')}
               </label>
               <div className="flex flex-wrap gap-2">
@@ -216,11 +209,10 @@ const AllBlogs = () => {
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedCategory === cat.id
-                      ? 'text-white shadow-lg'
-                      : 'hover:bg-gray-200'
-                      }`}
-                    style={selectedCategory === cat.id ? { background: 'var(--gradient-hero)' } : { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' }}
+                    className="px-3.5 py-2 rounded-[6px] text-[0.8125rem] font-medium transition-all duration-200"
+                    style={selectedCategory === cat.id
+                      ? { background: 'var(--accent)', color: '#fff', border: '1px solid var(--accent)' }
+                      : { border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                     aria-label={`Filter by ${cat.name} category`}
                   >
                     {cat.name}
@@ -230,7 +222,7 @@ const AllBlogs = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
+              <label className="block mb-3 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
                 {t('blogs_page.filters.difficulty')}
               </label>
               <div className="flex flex-wrap gap-2">
@@ -238,11 +230,10 @@ const AllBlogs = () => {
                   <button
                     key={diff.id}
                     onClick={() => setSelectedDifficulty(diff.id)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${selectedDifficulty === diff.id
-                      ? 'text-white shadow-lg'
-                      : 'hover:bg-gray-200'
-                      }`}
-                    style={selectedDifficulty === diff.id ? { background: 'var(--gradient-hero)' } : { background: 'var(--bg-card-hover)', color: 'var(--text-secondary)' }}
+                    className="px-3.5 py-2 rounded-[6px] text-[0.8125rem] font-medium transition-all duration-200"
+                    style={selectedDifficulty === diff.id
+                      ? { background: 'var(--accent)', color: '#fff', border: '1px solid var(--accent)' }
+                      : { border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
                     aria-label={`Filter by ${diff.name} difficulty`}
                   >
                     {diff.name}
@@ -252,15 +243,14 @@ const AllBlogs = () => {
             </div>
 
             <div>
-              <label htmlFor="sort-select" className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>
+              <label htmlFor="sort-select" className="block mb-3 font-mono text-[0.625rem] uppercase tracking-[0.14em]" style={{ color: 'var(--text-muted)' }}>
                 {t('blogs_page.filters.sort')}
               </label>
               <select
                 id="sort-select"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border outline-none transition-all duration-300"
-                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
+                className="input-dark"
                 aria-label="Sort articles"
               >
                 {sortOptions.map(option => (
@@ -293,7 +283,7 @@ const AllBlogs = () => {
                 {filteredArticles.map((article) => (
                   <article
                     key={article.id}
-                    className="group rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 border"
+                    className="group relative flex flex-col rounded-[14px] overflow-hidden transition-all duration-300 transform hover:-translate-y-1 border"
                     style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
                     itemScope
                     itemType="https://schema.org/Article"
@@ -316,7 +306,7 @@ const AllBlogs = () => {
                         loading="lazy"
                         itemProp="image"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent"></div>
                       <div className="absolute bottom-4 right-4 flex gap-2">
                         <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getDifficultyColor(article.difficulty)}`}>
                           {article.difficulty}
@@ -328,7 +318,7 @@ const AllBlogs = () => {
                       </div>
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       <div className="flex items-center space-x-4 text-sm mb-3" style={{ color: 'var(--text-muted)' }}>
                         <time className="flex items-center" dateTime={article.date} itemProp="datePublished">
                           <Calendar className="w-4 h-4 mr-1" />
@@ -358,18 +348,18 @@ const AllBlogs = () => {
 
                       <div className="mb-6 flex flex-wrap gap-2">
                         {article.tags.slice(0, 3).map((tag, index) => (
-                          <span key={index} className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }} itemProp="keywords">
+                          <span key={index} className="chip" itemProp="keywords">
                             {tag}
                           </span>
                         ))}
                         {article.tags.length > 3 && (
-                          <span className="px-3 py-1 text-xs font-medium rounded-full" style={{ background: 'var(--bg-card-hover)', border: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}>
+                          <span className="chip">
                             +{article.tags.length - 3}
                           </span>
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between border-t pt-4">
+                      <div className="flex items-center justify-between pt-4 mt-auto" style={{ borderTop: '1px solid var(--border-subtle)' }}>
                         <div className="flex items-center" itemProp="author" itemScope itemType="https://schema.org/Person">
                           <div className="w-8 h-8 rounded-full overflow-hidden mr-3">
                             <img
@@ -387,8 +377,8 @@ const AllBlogs = () => {
 
                         <Link
                           to={`/blog/${article.slug}`}
-                          className="inline-flex items-center text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
-                          style={{ background: 'var(--gradient-hero)' }}
+                          className="inline-flex items-center text-white px-4 py-2 rounded-[6px] text-[0.8125rem] font-medium transition-all duration-200 hover:brightness-105"
+                          style={{ background: 'var(--accent)' }}
                           aria-label={`Read more about ${article.title}`}
                           itemProp="url"
                         >
@@ -402,7 +392,7 @@ const AllBlogs = () => {
               </div>
             </section>
 
-            <div className="mt-12 text-center text-gray-600">
+            <div className="mt-12 text-[0.8125rem]" style={{ color: 'var(--text-muted)' }}>
               <p>
                 {t('blogs_page.status.showing')} {filteredArticles.length} {t('blogs_page.status.of')} {blogs.length} {t('blogs_page.status.articles')}
                 {searchQuery && ` ${t('blogs_page.status.for')} "${searchQuery}"`}
@@ -412,9 +402,9 @@ const AllBlogs = () => {
         )}
 
         {/* Author Section with semantic markup */}
-        <section className="mt-16 rounded-2xl p-8 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }} itemScope itemType="https://schema.org/Person">
+        <section className="mt-16 rounded-[14px] p-7 lg:p-8 border" style={{ background: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }} itemScope itemType="https://schema.org/Person">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="w-32 h-32 rounded-full overflow-hidden border-4 shadow-lg" style={{ borderColor: 'var(--bg-card)' }}>
+            <div className="w-28 h-28 rounded-full overflow-hidden flex-shrink-0" style={{ border: '1px solid var(--border-subtle)' }}>
               <img
                 src="favico.png"
                 alt="Anisul Islam"
@@ -423,16 +413,15 @@ const AllBlogs = () => {
               />
             </div>
             <div className="flex-1 text-center md:text-left">
-              <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }} itemProp="name">Anisul Islam</h3>
-              <p className="text-lg mb-4" style={{ color: 'var(--text-secondary)' }} itemProp="jobTitle">{t('blogs_page.author.role')}</p>
-              <p style={{ color: 'var(--text-secondary)' }} itemProp="description">
+              <h3 className="text-[1.5rem] mb-2" style={{ color: 'var(--text-primary)' }} itemProp="name">Anisul Islam</h3>
+              <p className="text-[1rem] mb-4" style={{ color: 'var(--accent)' }} itemProp="jobTitle">{t('blogs_page.author.role')}</p>
+              <p className="text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }} itemProp="description">
                 {t('blogs_page.author.description')}
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">React.js</span>
-                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">Node.js</span>
-                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">Express.js</span>
-                <span className="px-3 py-1 rounded-full text-sm" style={{ background: 'var(--bg-card-hover)', color: 'var(--accent-indigo)', border: '1px solid var(--border-subtle)' }} itemProp="knowsAbout">MongoDB</span>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['React.js', 'Node.js', 'Express.js', 'MongoDB'].map((item) => (
+                  <span key={item} className="chip" itemProp="knowsAbout">{item}</span>
+                ))}
               </div>
             </div>
           </div>

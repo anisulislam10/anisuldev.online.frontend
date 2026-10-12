@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from './../../public/anisuldev.online_logo_light.png';
-import {
-  Heart, Github, Linkedin, Twitter, Mail, ArrowUp,
-  Code, MapPin, Phone, Zap
-} from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -20,92 +16,120 @@ const Footer = () => {
     { name: t('nav.contact'), to: '/contact' },
   ];
 
-  const socialLinks = [
-    { icon: <Github size={17} />, href: 'https://github.com/anisulislam10', label: 'GitHub' },
-    { icon: <Linkedin size={17} />, href: 'https://linkedin.com/in/ianisulislam', label: 'LinkedIn' },
-    { icon: <Twitter size={17} />, href: 'https://twitter.com/ianisulislam', label: 'Twitter' },
-    { icon: <Mail size={17} />, href: 'mailto:anisuldev@gmail.com', label: 'Email' },
+  const serviceLinks = [
+    t('footer.services_list.webApplications'),
+    t('footer.services_list.reactNativeApps'),
+    t('footer.services_list.backendAPIs'),
+    t('footer.services_list.databaseDesign'),
+    t('footer.services_list.vpsDeployment'),
+    t('footer.services_list.vercelDeployment'),
   ];
+
+  const socialLinks = [
+    { Icon: Github, href: 'https://github.com/anisulislam10', label: 'GitHub' },
+    { Icon: Linkedin, href: 'https://linkedin.com/in/ianisulislam', label: 'LinkedIn' },
+    { Icon: Twitter, href: 'https://twitter.com/ianisulislam', label: 'Twitter' },
+    { Icon: Mail, href: 'mailto:anisuldev@gmail.com', label: 'Email' },
+  ];
+
+  const columnLabel = 'font-mono text-[0.625rem] uppercase tracking-[0.16em]';
 
   return (
     <footer
-      className="relative overflow-hidden"
-      style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-subtle)' }}
+      className="relative"
+      style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border-subtle)' }}
     >
-      {/* Orbs */}
-      <div className="orb orb-indigo w-[400px] h-[400px] bottom-0 right-0 opacity-10" />
-      <div className="orb orb-purple w-[300px] h-[300px] top-0 left-0 opacity-8" />
+      <div className="max-w-[76rem] mx-auto px-5 sm:px-8 pt-16 pb-8">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
-        <div className="flex flex-col items-center text-center gap-6">
-          {/* Logo & Brand */}
-          <Link to="/" className="inline-block">
-            <img src={logo} alt="AnisulDev" className="h-7 w-auto opacity-85 hover:opacity-100 transition-opacity" />
-          </Link>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
 
-          <p className="text-sm max-w-md leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            {t('footer.tagline')}
-          </p>
+          {/* Brand */}
+          <div className="md:col-span-5">
+            <Link to="/" className="inline-block">
+              <span className="font-display text-[1.375rem] tracking-[-0.03em]" style={{ color: 'var(--text-primary)', fontWeight: 640 }}>
+                Anisul Islam
+              </span>
+            </Link>
+            <p className="mt-4 max-w-[24rem] text-[0.9375rem] leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {t('footer.tagline')}
+            </p>
 
-          {/* Minimal Navigation */}
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-medium">
-            {navLinks.map((link, i) => (
-              <Link
-                key={i}
-                to={link.to}
-                className="transition-colors hover:text-indigo-500"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-3">
-            {socialLinks.map((s, i) => (
-              <a
-                key={i}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300"
-                style={{ background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'var(--accent-indigo)';
-                  e.currentTarget.style.color = 'var(--accent-indigo)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                  e.currentTarget.style.color = 'var(--text-secondary)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
-
-          {/* Bottom Copyright & Scroll to Top */}
-          <div className="pt-6 w-full border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style={{ borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}>
-            <div>
-              &copy; {currentYear} Anisul Islam. All rights reserved.
+            <div className="flex gap-1 mt-7">
+              {socialLinks.map((social) => {
+                const Icon = social.Icon;
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex items-center justify-center w-9 h-9 rounded-[6px] transition-colors duration-200 hover:text-[var(--accent)]"
+                    style={{ border: '1px solid var(--border-subtle)', color: 'var(--text-secondary)' }}
+                  >
+                    <Icon size={16} />
+                  </a>
+                );
+              })}
             </div>
-            <div className="flex items-center gap-1.5">
-              <Code size={13} />
-              {t('footer.builtWith')}
-            </div>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 text-xs transition-colors hover:text-indigo-500"
-              style={{ color: 'var(--text-muted)' }}
-            >
-              <ArrowUp size={13} />
-              {t('footer.top')}
-            </button>
           </div>
+
+          {/* Navigation */}
+          <div className="md:col-span-3">
+            <h3 className={columnLabel} style={{ color: 'var(--text-muted)' }}>
+              {t('footer.navigation')}
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-[0.9375rem] transition-colors duration-200 hover:text-[var(--accent)]"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="md:col-span-4">
+            <h3 className={columnLabel} style={{ color: 'var(--text-muted)' }}>
+              {t('footer.services')}
+            </h3>
+            <ul className="mt-5 space-y-3">
+              {serviceLinks.map((name) => (
+                <li key={name} className="text-[0.9375rem]" style={{ color: 'var(--text-secondary)' }}>
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          className="mt-14 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          style={{ borderTop: '1px solid var(--border-subtle)' }}
+        >
+          <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-muted)' }}>
+            © {currentYear} Anisul Islam
+          </span>
+
+          <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-muted)' }}>
+            {t('footer.builtWith')}
+          </span>
+
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-200 hover:text-[var(--accent)]"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            <ArrowUp size={13} />
+            {t('footer.top')}
+          </button>
         </div>
       </div>
     </footer>
